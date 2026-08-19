@@ -1,0 +1,6 @@
+{
+  "name": "Epika Chapultepec Marketing Intelligence & Funnel Analytics",
+  "description": "Dashboard integral de marketing multicanal (Meta Ads, Google Ads, StackAdapt, Web Analytics y Embudo Comercial Sierra Providencia) para Epika Chapultepec con análisis de CAC, CPL, fuga de leads y sincronización de datos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

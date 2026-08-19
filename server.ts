@@ -1,24 +1,26 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Shared Gemini AI client with required User-Agent header
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY || '',
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
-    },
-  },
-});
+// Lazy Gemini AI client with required User-Agent header
+let aiClient: GoogleGenAI | null = null;
+function getGeminiClient(): GoogleGenAI {
+  if (!aiClient) {
+    aiClient = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY || '',
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        },
+      },
+    });
+  }
+  return aiClient;
+}
 
 const app = express();
 const PORT = 3000;
@@ -436,7 +438,8 @@ Por favor genera un análisis estratégico en formato JSON estricto con las sigu
 }
 `;
 
-    const response = await ai.models.generateContent({
+    const geminiAi = getGeminiClient();
+    const response = await geminiAi.models.generateContent({
       model: 'gemini-3.7-flash',
       contents: prompt,
       config: {

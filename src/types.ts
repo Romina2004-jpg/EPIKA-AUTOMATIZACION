@@ -71,11 +71,11 @@ export interface FunnelCalculations {
 }
 
 export interface WebBehaviorMetrics {
-  bounceRate: number; // e.g. 42.5%
-  avgTimeSeconds: number; // e.g. 48 seconds
-  qualifiedTrafficPercent: number; // % of visits > 20s (e.g. 58.2%)
-  qualifiedTrafficVisits: number; // e.g. 3,420
-  qualifiedAvgTimeSeconds: number; // Average time of non-bounced/qualified users (e.g. 115 seconds)
+  bounceRate: number; // e.g. 41.8%
+  avgTimeSeconds: number; // e.g. 52 seconds
+  qualifiedTrafficPercent: number; // % of visits > 20s (e.g. 58.4%)
+  qualifiedTrafficVisits: number; // e.g. 840
+  qualifiedAvgTimeSeconds: number; // Average time of non-bounced/qualified users (e.g. 124 seconds)
   totalSessions: number;
   events: {
     whatsappClicks: number;
@@ -84,6 +84,13 @@ export interface WebBehaviorMetrics {
     thankYouPageViews: number; // Seccion "Gracias"
     brochureDownloads: number;
   };
+  thankYouSources?: {
+    source: string; // e.g. 'ADS GOOGLE (Search & Maps)', 'ADS META (FB / IG)', 'STACKADAPT (DSP Programática)', 'ORGÁNICO / DIRECTO / OTRO MEDIO'
+    count: number;
+    percentage: number;
+    color?: string;
+    details?: string;
+  }[];
   channelTraffic: {
     channel: string;
     sessions: number;
@@ -104,6 +111,7 @@ export interface AdPlatformSyncStatus {
   lastSynced: string;
   spend?: number;
   impressions?: number;
+  reach?: number;
   clicks?: number;
   leadsReported?: number;
   recordsImported?: number;
@@ -142,6 +150,8 @@ export interface FunnelPeriod {
   periodType: PeriodType;
   periodLabel: string; // e.g. 'Del 3 al 9 de Agosto' or 'Agosto 2026'
   dateRange: string;
+  startDate?: string; // ISO date 'YYYY-MM-DD'
+  endDate?: string; // ISO date 'YYYY-MM-DD'
   projectName?: string; // 'Epika Chapultepec'
   rows: FunnelRow[];
   webMetrics: WebBehaviorMetrics;

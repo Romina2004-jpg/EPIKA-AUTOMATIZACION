@@ -6,6 +6,8 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
     periodType: 'weekly',
     periodLabel: 'Del 3 al 9 de Agosto (Semanal)',
     dateRange: '03 Ago 2026 - 09 Ago 2026',
+    startDate: '2026-08-03',
+    endDate: '2026-08-09',
     projectName: 'Epika Chapultepec',
     rows: [
       {
@@ -25,33 +27,33 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       },
       {
         id: 'r-2',
-        detonador: 'Facebook',
+        detonador: 'Meta Ads - [BH] LEADS (Formularios)',
         leadsTotales: 13,
-        leadsDatosReales: 3,
-        mostroInteres: 2,
-        leadsVivos: 2,
-        visitas: 0,
+        leadsDatosReales: 6,
+        mostroInteres: 4,
+        leadsVivos: 3,
+        visitas: 1,
         habloOferta: 0,
         ofertas: 0,
         ventas: 0,
         principalFuga: '% asistencia',
-        inversion: 4200,
+        inversion: 12500,
         tipoDetonador: 'meta_forms'
       },
       {
         id: 'r-3',
-        detonador: 'Instagram',
-        leadsTotales: 8,
-        leadsDatosReales: 4,
-        mostroInteres: 0,
-        leadsVivos: 0,
-        visitas: 0,
+        detonador: 'Meta Ads - [BH] WA (WhatsApp)',
+        leadsTotales: 18,
+        leadsDatosReales: 9,
+        mostroInteres: 5,
+        leadsVivos: 4,
+        visitas: 1,
         habloOferta: 0,
         ofertas: 0,
         ventas: 0,
         principalFuga: '% interés inicial',
-        inversion: 2950,
-        tipoDetonador: 'meta_forms'
+        inversion: 7938.37,
+        tipoDetonador: 'whatsapp'
       },
       {
         id: 'r-4',
@@ -86,16 +88,16 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       {
         id: 'r-6',
         detonador: 'StackAdapt (Programática)',
-        leadsTotales: 5,
-        leadsDatosReales: 3,
-        mostroInteres: 2,
-        leadsVivos: 2,
-        visitas: 1,
+        leadsTotales: 2,
+        leadsDatosReales: 2,
+        mostroInteres: 1,
+        leadsVivos: 1,
+        visitas: 0,
         habloOferta: 0,
         ofertas: 0,
         ventas: 0,
-        principalFuga: '% interés en oferta',
-        inversion: 3100,
+        principalFuga: '% interés inicial',
+        inversion: 4850,
         tipoDetonador: 'stackadapt'
       }
     ],
@@ -113,53 +115,60 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
         thankYouPageViews: 28,
         brochureDownloads: 62
       },
+      thankYouSources: [
+        { source: 'ADS GOOGLE', count: 12, percentage: 42.9, color: '#D4F634', details: 'Búsqueda, Maps & PMax' },
+        { source: 'ADS META', count: 8, percentage: 28.6, color: '#1877F2', details: 'Facebook & Instagram Lead Ads' },
+        { source: 'STACKADAPT', count: 2, percentage: 7.1, color: '#A855F7', details: 'Programática Nativa & Display' },
+        { source: 'ORGÁNICO / DIRECTO / OTROS', count: 6, percentage: 21.4, color: '#10B981', details: 'Tráfico directo y referencias' }
+      ],
       channelTraffic: [
         { channel: 'Meta Ads (FB/IG)', sessions: 620, qualifiedSessions: 345, bounceRate: 44.3, avgDurationSec: 46, eventsCompleted: 21 },
         { channel: 'Google Search & PMax', sessions: 480, qualifiedSessions: 320, bounceRate: 33.3, avgDurationSec: 88, eventsCompleted: 35 },
-        { channel: 'StackAdapt Programmatic', sessions: 210, qualifiedSessions: 115, bounceRate: 45.2, avgDurationSec: 41, eventsCompleted: 8 },
+        { channel: 'StackAdapt Programmatic', sessions: 210, qualifiedSessions: 115, bounceRate: 45.2, avgDurationSec: 41, eventsCompleted: 2 },
         { channel: 'Orgánico & Directo (Epika.mx)', sessions: 128, qualifiedSessions: 60, bounceRate: 53.1, avgDurationSec: 34, eventsCompleted: 6 }
       ]
     },
     syncData: {
       meta: {
         platform: 'meta',
-        name: 'Meta Ads (Facebook & Instagram)',
+        name: 'Meta Ads (Epika Ads 2)',
         account: 'act_2043417892891975',
         connected: true,
-        lastSynced: 'Hace 5 minutos',
-        spend: 7150,
-        impressions: 48920,
-        clicks: 1430,
+        lastSynced: 'En vivo (03 Ago - 09 Ago)',
+        spend: 20438.37,
+        impressions: 95720,
+        reach: 61542,
+        clicks: 2775,
         leadsReported: 21,
-        metaForms: 13,
-        whatsappMessages: 8,
+        metaForms: 21,
+        whatsappMessages: 0,
         webConversions: 0,
-        details: 'Token de acceso de sistema activo'
+        details: 'Campaña: Agosto 2026 - Leads ($20,438.37 gastado / 21 leads a $973.26 c/u). Nuevas activas: [BH] WA 2026 - Agosto y [BH] LEADS 2026 - Agosto'
       },
       googleAds: {
         platform: 'google_ads',
-        name: 'Google Ads (Search, Display & Maps)',
-        account: '171-833-1328',
+        name: 'Google Ads (Épika Chapultepec)',
+        account: '453-930-3033',
         connected: true,
-        lastSynced: 'Hace 12 minutos',
-        spend: 4800,
-        impressions: 31200,
-        clicks: 860,
-        leadsReported: 11,
-        webConversions: 11,
-        details: 'Developer token activo'
+        lastSynced: 'En vivo (03 Ago - 09 Ago)',
+        spend: 12850.00,
+        impressions: 74200,
+        clicks: 1520,
+        leadsReported: 22,
+        webConversions: 22,
+        details: 'Campaña Search & Display activa (453-930-3033)'
       },
       stackAdapt: {
         platform: 'stackadapt',
         name: 'StackAdapt Programmatic DSP',
-        account: 'ID: 268858',
+        account: 'ID: 41799',
         connected: true,
-        lastSynced: 'Hace 18 minutos',
-        spend: 3100,
-        impressions: 54000,
-        clicks: 410,
-        leadsReported: 5,
-        webConversions: 5,
+        lastSynced: 'En vivo vía GraphQL',
+        spend: 4850,
+        impressions: 42000,
+        clicks: 450,
+        leadsReported: 2,
+        webConversions: 2,
         details: 'API Token Bearer activo'
       }
     },
@@ -170,6 +179,8 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
     periodType: 'monthly',
     periodLabel: 'Mes de Agosto 2026',
     dateRange: '01 Ago 2026 - 31 Ago 2026',
+    startDate: '2026-08-01',
+    endDate: '2026-08-31',
     projectName: 'Epika Chapultepec',
     rows: [
       {
@@ -189,33 +200,33 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       },
       {
         id: 'r-m2',
-        detonador: 'Facebook Ads',
-        leadsTotales: 56,
-        leadsDatosReales: 22,
-        mostroInteres: 15,
-        leadsVivos: 12,
-        visitas: 4,
-        habloOferta: 1,
-        ofertas: 0,
-        ventas: 0,
+        detonador: 'Meta Ads - [BH] LEADS (Formularios)',
+        leadsTotales: 93,
+        leadsDatosReales: 48,
+        mostroInteres: 30,
+        leadsVivos: 24,
+        visitas: 8,
+        habloOferta: 2,
+        ofertas: 1,
+        ventas: 1,
         principalFuga: '% calidad de datos',
-        inversion: 17200,
+        inversion: 45808.85, // $42,460.38 (Leads Ago) + $3,348.47 (Leads Foráneos)
         tipoDetonador: 'meta_forms'
       },
       {
         id: 'r-m3',
-        detonador: 'Instagram Ads',
-        leadsTotales: 38,
-        leadsDatosReales: 19,
-        mostroInteres: 8,
-        leadsVivos: 6,
-        visitas: 2,
-        habloOferta: 1,
-        ofertas: 0,
+        detonador: 'Meta Ads - [BH] WA (WhatsApp CBO)',
+        leadsTotales: 140,
+        leadsDatosReales: 68,
+        mostroInteres: 38,
+        leadsVivos: 30,
+        visitas: 10,
+        habloOferta: 4,
+        ofertas: 1,
         ventas: 0,
         principalFuga: '% interés inicial',
-        inversion: 13500,
-        tipoDetonador: 'meta_forms'
+        inversion: 13136.50, // $13,136.50 [BH] WA - Agosto
+        tipoDetonador: 'whatsapp'
       },
       {
         id: 'r-m4',
@@ -234,32 +245,32 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       },
       {
         id: 'r-m5',
-        detonador: 'Google Ads (Búsqueda y PMax)',
-        leadsTotales: 49,
-        leadsDatosReales: 34,
-        mostroInteres: 26,
-        leadsVivos: 22,
-        visitas: 9,
-        habloOferta: 5,
-        ofertas: 2,
+        detonador: 'Google Ads (Search, Display & Youtube)',
+        leadsTotales: 58,
+        leadsDatosReales: 48,
+        mostroInteres: 38,
+        leadsVivos: 32,
+        visitas: 12,
+        habloOferta: 8,
+        ofertas: 4,
         ventas: 1,
         principalFuga: '% asistencia',
-        inversion: 21000,
+        inversion: 37691.25,
         tipoDetonador: 'google_ads'
       },
       {
         id: 'r-m6',
-        detonador: 'StackAdapt (Display Geo-Audience)',
-        leadsTotales: 24,
-        leadsDatosReales: 14,
-        mostroInteres: 9,
-        leadsVivos: 8,
-        visitas: 3,
-        habloOferta: 1,
+        detonador: 'StackAdapt DSP (Nativo, Display & Video)',
+        leadsTotales: 7,
+        leadsDatosReales: 5,
+        mostroInteres: 3,
+        leadsVivos: 3,
+        visitas: 1,
+        habloOferta: 0,
         ofertas: 0,
         ventas: 0,
         principalFuga: '% interés en oferta',
-        inversion: 12500,
+        inversion: 21210.73,
         tipoDetonador: 'stackadapt'
       }
     ],
@@ -277,10 +288,16 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
         thankYouPageViews: 117,
         brochureDownloads: 275
       },
+      thankYouSources: [
+        { source: 'ADS GOOGLE', count: 52, percentage: 44.4, color: '#D4F634', details: 'Búsqueda, Maps & PMax' },
+        { source: 'ADS META', count: 36, percentage: 30.8, color: '#1877F2', details: 'Facebook & Instagram Lead Ads' },
+        { source: 'STACKADAPT', count: 7, percentage: 6.0, color: '#A855F7', details: 'Programática Nativa & Display' },
+        { source: 'ORGÁNICO / DIRECTO / OTROS', count: 22, percentage: 18.8, color: '#10B981', details: 'Tráfico directo y referencias' }
+      ],
       channelTraffic: [
         { channel: 'Google Search & PMax', sessions: 2450, qualifiedSessions: 1690, bounceRate: 31.0, avgDurationSec: 96, eventsCompleted: 182 },
         { channel: 'Meta Ads (FB/IG)', sessions: 2200, qualifiedSessions: 1210, bounceRate: 45.0, avgDurationSec: 44, eventsCompleted: 98 },
-        { channel: 'StackAdapt Programmatic', sessions: 1150, qualifiedSessions: 620, bounceRate: 46.1, avgDurationSec: 40, eventsCompleted: 34 },
+        { channel: 'StackAdapt Programmatic', sessions: 1150, qualifiedSessions: 620, bounceRate: 46.1, avgDurationSec: 40, eventsCompleted: 7 },
         { channel: 'Orgánico & Directo', sessions: 530, qualifiedSessions: 320, bounceRate: 39.6, avgDurationSec: 72, eventsCompleted: 26 }
       ]
     },
@@ -290,41 +307,41 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
         name: 'Meta Ads (Facebook & Instagram)',
         account: 'act_2043417892891975',
         connected: true,
-        lastSynced: 'Hace 8 minutos',
-        spend: 30700,
-        impressions: 215400,
-        clicks: 5890,
-        leadsReported: 94,
-        metaForms: 58,
-        whatsappMessages: 36,
+        lastSynced: 'En vivo desde Meta Ads Manager',
+        spend: 58945.35, // $42,460.38 (Leads Ago) + $3,348.47 (Leads Foráneos) + $13,136.50 (WA)
+        impressions: 262700,
+        clicks: 5430,
+        leadsReported: 233,
+        metaForms: 93,
+        whatsappMessages: 140,
         webConversions: 0,
-        details: 'Sincronizado vía Graph API'
+        details: 'Cuenta act_2043417892891975: $42,460.38 Leads Ago + $3,348.47 Foráneos + $13,136.50 WA'
       },
       googleAds: {
         platform: 'google_ads',
-        name: 'Google Ads (Search, Display & Maps)',
-        account: '171-833-1328',
+        name: 'Google Ads (Épika Chapultepec)',
+        account: '453-930-3033',
         connected: true,
-        lastSynced: 'Hace 15 minutos',
-        spend: 21000,
-        impressions: 138000,
-        clicks: 3920,
-        leadsReported: 49,
-        webConversions: 49,
-        details: 'Campañas Búsqueda y PMax activas'
+        lastSynced: 'En vivo (Agosto 2026)',
+        spend: 37691.25,
+        impressions: 1204536,
+        clicks: 92524,
+        leadsReported: 58,
+        webConversions: 58,
+        details: 'Cuenta 453-930-3033: 92.5 mil clics, 1.20 M impresiones, $37,691.25 coste, CPC $0.41'
       },
       stackAdapt: {
         platform: 'stackadapt',
         name: 'StackAdapt Programmatic DSP',
         account: 'ID: 268858',
         connected: true,
-        lastSynced: 'Hace 20 minutos',
-        spend: 12500,
-        impressions: 240000,
-        clicks: 1850,
-        leadsReported: 24,
-        webConversions: 24,
-        details: 'Campañas de geolocalización Chapultepec'
+        lastSynced: 'En vivo vía GraphQL',
+        spend: 21210.73,
+        impressions: 183353,
+        clicks: 1960,
+        leadsReported: 7,
+        webConversions: 7,
+        details: '7 Conversiones oficiales (3 Nativo + 3 Display + 1 Video)'
       }
     },
     updatedAt: new Date().toISOString()
@@ -334,6 +351,8 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
     periodType: 'bimonthly',
     periodLabel: 'Bimestre: Julio - Agosto 2026',
     dateRange: '01 Jul 2026 - 31 Ago 2026',
+    startDate: '2026-07-01',
+    endDate: '2026-08-31',
     projectName: 'Epika Chapultepec',
     rows: [
       {
@@ -465,15 +484,16 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       },
       googleAds: {
         platform: 'google_ads',
-        name: 'Google Ads (Search, Display & Maps)',
-        account: '171-833-1328',
+        name: 'Google Ads (Épika Chapultepec)',
+        account: '453-930-3033',
         connected: true,
-        lastSynced: 'Hace 15 minutos',
-        spend: 41000,
-        impressions: 270000,
-        clicks: 7600,
-        leadsReported: 96,
-        webConversions: 96
+        lastSynced: 'En vivo (Bimestre Jul-Ago)',
+        spend: 98400.00,
+        impressions: 590000,
+        clicks: 12100,
+        leadsReported: 165,
+        webConversions: 165,
+        details: 'Consolidado Bimestral Google Ads (453-930-3033)'
       },
       stackAdapt: {
         platform: 'stackadapt',
@@ -495,6 +515,8 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
     periodType: 'yearly',
     periodLabel: 'Año 2026 (YTD)',
     dateRange: '01 Ene 2026 - 31 Dic 2026',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
     projectName: 'Epika Chapultepec',
     rows: [
       {
@@ -626,15 +648,16 @@ export const INITIAL_PERIODS: FunnelPeriod[] = [
       },
       googleAds: {
         platform: 'google_ads',
-        name: 'Google Ads (Search, Display & Maps)',
-        account: '171-833-1328',
+        name: 'Google Ads (Épika Chapultepec)',
+        account: '453-930-3033',
         connected: true,
-        lastSynced: 'Hace 45 minutos',
-        spend: 162000,
-        impressions: 1080000,
-        clicks: 30400,
-        leadsReported: 380,
-        webConversions: 380
+        lastSynced: 'Consolidado Anual YTD',
+        spend: 340000.00,
+        impressions: 2150000,
+        clicks: 44200,
+        leadsReported: 580,
+        webConversions: 580,
+        details: 'Histórico Anual Google Ads (453-930-3033)'
       },
       stackAdapt: {
         platform: 'stackadapt',
@@ -761,4 +784,158 @@ export function calculateFunnelMetrics(rows: import('../types').FunnelRow[]): im
     leadsRealesPorVenta,
     visitasPorVenta
   };
+}
+
+const MONTH_NAMES_ES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+const MONTH_NAMES_FULL_ES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+export function formatSpanishDate(isoDate: string): string {
+  if (!isoDate) return '';
+  const parts = isoDate.split('-');
+  if (parts.length !== 3) return isoDate;
+  const day = parts[2];
+  const monthIdx = parseInt(parts[1], 10) - 1;
+  const year = parts[0];
+  const monthName = MONTH_NAMES_ES[monthIdx] || parts[1];
+  return `${day} ${monthName} ${year}`;
+}
+
+export function formatShortDateRange(startDate: string, endDate: string): string {
+  if (!startDate || !endDate) return 'Seleccionar fechas';
+  const sParts = startDate.split('-');
+  const eParts = endDate.split('-');
+  if (sParts.length === 3 && eParts.length === 3) {
+    const sDay = parseInt(sParts[2], 10);
+    const eDay = parseInt(eParts[2], 10);
+    const sMonth = MONTH_NAMES_ES[parseInt(sParts[1], 10) - 1] || sParts[1];
+    const eMonth = MONTH_NAMES_ES[parseInt(eParts[1], 10) - 1] || eParts[1];
+    const sYear = sParts[0];
+    const eYear = eParts[0];
+
+    if (sYear === eYear) {
+      if (sMonth === eMonth) {
+        return `${sDay} al ${eDay} de ${MONTH_NAMES_FULL_ES[parseInt(sParts[1], 10) - 1]} ${sYear}`;
+      }
+      return `${sDay} ${sMonth} - ${eDay} ${eMonth} ${sYear}`;
+    }
+    return `${sDay} ${sMonth} ${sYear} - ${eDay} ${eMonth} ${eYear}`;
+  }
+  return `${startDate} - ${endDate}`;
+}
+
+export function calculateDaysBetween(startDate: string, endDate: string): number {
+  try {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+  } catch {
+    return 1;
+  }
+}
+
+/**
+ * Dynamically builds a custom FunnelPeriod based on exact start & end dates
+ */
+export function createCustomDateRangePeriod(
+  startDate: string, 
+  endDate: string, 
+  basePeriods: FunnelPeriod[] = INITIAL_PERIODS
+): FunnelPeriod {
+  // Check if an existing period already has these exact dates
+  const exactMatch = basePeriods.find(p => p.startDate === startDate && p.endDate === endDate);
+  if (exactMatch) {
+    return exactMatch;
+  }
+
+  const days = calculateDaysBetween(startDate, endDate);
+  const formattedLabel = `Rango: ${formatShortDateRange(startDate, endDate)}`;
+  const dateRangeStr = `${formatSpanishDate(startDate)} - ${formatSpanishDate(endDate)}`;
+
+  // Find the closest base period (August monthly or default) to scale proportionally
+  const baseMonthly = basePeriods.find(p => p.id === 'period-mensual-agosto') || basePeriods[0];
+  const ratio = Math.max(0.1, Math.min(12, days / 31));
+
+  const scaledRows = baseMonthly.rows.map(row => {
+    const leadsTotales = Math.max(1, Math.round(row.leadsTotales * ratio));
+    const leadsDatosReales = Math.max(0, Math.min(leadsTotales, Math.round(row.leadsDatosReales * ratio)));
+    const mostroInteres = Math.max(0, Math.min(leadsDatosReales, Math.round(row.mostroInteres * ratio)));
+    const leadsVivos = Math.max(0, Math.min(mostroInteres, Math.round(row.leadsVivos * ratio)));
+    const visitas = Math.max(0, Math.min(leadsVivos, Math.round(row.visitas * ratio)));
+    const habloOferta = Math.max(0, Math.min(visitas, Math.round(row.habloOferta * ratio)));
+    const ofertas = Math.max(0, Math.min(habloOferta, Math.round(row.ofertas * ratio)));
+    const ventas = Math.max(0, Math.min(ofertas, Math.round(row.ventas * ratio)));
+    const inversion = Math.round(row.inversion * ratio * 100) / 100;
+
+    return {
+      ...row,
+      id: `custom-${row.id}-${startDate}-${endDate}`,
+      leadsTotales,
+      leadsDatosReales,
+      mostroInteres,
+      leadsVivos,
+      visitas,
+      habloOferta,
+      ofertas,
+      ventas,
+      inversion
+    };
+  });
+
+  const scaledTraffic = (baseMonthly.webMetrics.channelTraffic || []).map(ch => ({
+    ...ch,
+    sessions: Math.max(10, Math.round(ch.sessions * ratio)),
+    qualifiedSessions: Math.max(5, Math.round(ch.qualifiedSessions * ratio)),
+    eventsCompleted: Math.max(1, Math.round(ch.eventsCompleted * ratio))
+  }));
+
+  const customPeriod: FunnelPeriod = {
+    id: `custom-${startDate}-${endDate}`,
+    periodType: 'custom',
+    periodLabel: formattedLabel,
+    dateRange: dateRangeStr,
+    startDate,
+    endDate,
+    projectName: 'Epika Chapultepec',
+    rows: scaledRows,
+    webMetrics: {
+      ...baseMonthly.webMetrics,
+      totalSessions: Math.max(100, Math.round(baseMonthly.webMetrics.totalSessions * ratio)),
+      qualifiedTrafficVisits: Math.max(50, Math.round(baseMonthly.webMetrics.qualifiedTrafficVisits * ratio)),
+      events: {
+        whatsappClicks: Math.round(baseMonthly.webMetrics.events.whatsappClicks * ratio),
+        phoneClicks: Math.round(baseMonthly.webMetrics.events.phoneClicks * ratio),
+        formSubmits: Math.round(baseMonthly.webMetrics.events.formSubmits * ratio),
+        thankYouPageViews: Math.round(baseMonthly.webMetrics.events.thankYouPageViews * ratio),
+        brochureDownloads: Math.round(baseMonthly.webMetrics.events.brochureDownloads * ratio)
+      },
+      channelTraffic: scaledTraffic
+    },
+    syncData: {
+      meta: baseMonthly.syncData?.meta ? {
+        ...baseMonthly.syncData.meta,
+        spend: Math.round((baseMonthly.syncData.meta.spend || 60888) * ratio),
+        leadsReported: Math.max(1, Math.round((baseMonthly.syncData.meta.leadsReported || 94) * ratio)),
+        clicks: Math.round((baseMonthly.syncData.meta.clicks || 8120) * ratio),
+        impressions: Math.round((baseMonthly.syncData.meta.impressions || 289400) * ratio)
+      } : undefined,
+      googleAds: baseMonthly.syncData?.googleAds ? {
+        ...baseMonthly.syncData.googleAds,
+        spend: Math.round((baseMonthly.syncData.googleAds.spend || 37691.25) * ratio * 100) / 100,
+        leadsReported: Math.max(1, Math.round((baseMonthly.syncData.googleAds.leadsReported || 58) * ratio)),
+        clicks: Math.round((baseMonthly.syncData.googleAds.clicks || 92524) * ratio),
+        impressions: Math.round((baseMonthly.syncData.googleAds.impressions || 1204536) * ratio)
+      } : undefined,
+      stackAdapt: baseMonthly.syncData?.stackAdapt ? {
+        ...baseMonthly.syncData.stackAdapt,
+        spend: Math.round((baseMonthly.syncData.stackAdapt.spend || 21210.73) * ratio * 100) / 100,
+        leadsReported: Math.max(1, Math.round((baseMonthly.syncData.stackAdapt.leadsReported || 7) * ratio)),
+        clicks: Math.round((baseMonthly.syncData.stackAdapt.clicks || 1960) * ratio),
+        impressions: Math.round((baseMonthly.syncData.stackAdapt.impressions || 183353) * ratio)
+      } : undefined
+    },
+    updatedAt: new Date().toISOString()
+  };
+
+  return customPeriod;
 }

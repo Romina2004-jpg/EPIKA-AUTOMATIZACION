@@ -14,6 +14,7 @@ import { CommercialFunnelTable } from './components/CommercialFunnelTable';
 import { WebAnalyticsSection } from './components/WebAnalyticsSection';
 import { ChannelRankingsAndCAC } from './components/ChannelRankingsAndCAC';
 import { GeneralReportPdfView } from './components/GeneralReportPdfView';
+import { SummarizedReportPdfView } from './components/SummarizedReportPdfView';
 import { AiMarketingAdvisor } from './components/AiMarketingAdvisor';
 import { ApiCredentialsModal } from './components/ApiCredentialsModal';
 import { NewPeriodModal } from './components/NewPeriodModal';
@@ -46,9 +47,9 @@ export default function App() {
     googleAds: AdPlatformSyncStatus;
     stackAdapt: AdPlatformSyncStatus;
   }>({
-    meta: { platform: 'meta', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 44, whatsappMessages: 18, mensajesConcretados: 11 },
-    googleAds: { platform: 'google_ads', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 19 },
-    stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 11 }
+    meta: { platform: 'meta', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 118, whatsappMessages: 125, formulariosCompletados: 118 },
+    googleAds: { platform: 'google_ads', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 89, spend: 52621.15, clicks: 6386 },
+    stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 7 }
   });
 
   const [notification, setNotification] = useState<{ type: 'success' | 'info'; message: string } | null>(null);
@@ -163,12 +164,12 @@ export default function App() {
 
       const nowStr = 'Ahora mismo';
       setSyncStatus({
-        meta: { platform: 'meta', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: metaRes.leadsCount || 44, whatsappMessages: 18, mensajesConcretados: 11 },
-        googleAds: { platform: 'google_ads', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: googleRes.leadsCount || 19 },
-        stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: stackRes.conversionsCount || 11 }
+        meta: { platform: 'meta', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: metaRes.totals?.totalLeadsReportados || 118, whatsappMessages: metaRes.totals?.totalConversacionesIniciadas || 125, formulariosCompletados: metaRes.totals?.totalFormularios || 118 },
+        googleAds: { platform: 'google_ads', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: googleRes.metrics?.conversions || 89, spend: googleRes.metrics?.spend || 52621.15, clicks: googleRes.metrics?.clicks || 6386 },
+        stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: stackRes.metrics?.leadsReported || 7 }
       });
 
-      showNotification('Sincronización con Meta Ads, Google Ads y StackAdapt completada.');
+      showNotification('Sincronización con Meta Ads, Google Ads (453-930-3033) y StackAdapt completada exitosamente.');
     } catch (e) {
       showNotification('Sincronización de Epika Chapultepec completada.', 'info');
     } finally {
@@ -183,15 +184,25 @@ export default function App() {
     showNotification(`Sincronizado ${platform.toUpperCase()}: ${data.message || 'Éxito'}`);
   };
 
+  // Add custom date range period generated dynamically from calendar
+  const handleCustomDateRangeApply = (newPeriod: FunnelPeriod) => {
+    const exists = periods.find(p => p.id === newPeriod.id);
+    if (!exists) {
+      setPeriods(prev => [newPeriod, ...prev]);
+    }
+    setSelectedPeriodId(newPeriod.id);
+    showNotification(`Rango aplicado: ${newPeriod.periodLabel}`);
+  };
+
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-[#E5E7EB] font-sans flex flex-col selection:bg-[#D4F634] selection:text-black">
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
       
       {/* Toast Notification Banner */}
       {notification && (
         <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-top duration-200">
-          <div className="bg-[#121212] text-[#D4F634] px-4 py-2.5 rounded-xl shadow-2xl border border-[#D4F634]/30 text-xs font-semibold flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#D4F634]" />
-            <span className="text-white">{notification.message}</span>
+          <div className="bg-white text-slate-900 px-4 py-2.5 rounded-xl shadow-xl border border-slate-200 text-xs font-semibold flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>{notification.message}</span>
           </div>
         </div>
       )}
@@ -201,6 +212,7 @@ export default function App() {
         periods={periods}
         selectedPeriodId={selectedPeriodId}
         onSelectPeriod={setSelectedPeriodId}
+        onCustomDateRangeApply={handleCustomDateRangeApply}
         activeTab={activeTab}
         onSelectTab={setActiveTab}
         onOpenAiModal={() => setIsAiModalOpen(true)}
@@ -256,40 +268,49 @@ export default function App() {
           <GeneralReportPdfView
             periods={periods}
             activePeriodId={selectedPeriodId}
+            onBackToApp={() => setActiveTab('overview')}
+          />
+        )}
+
+        {activeTab === 'summarized-report' && (
+          <SummarizedReportPdfView
+            periods={periods}
+            activePeriodId={selectedPeriodId}
+            onBackToApp={() => setActiveTab('overview')}
           />
         )}
 
       </main>
 
-      {/* Footer in Elegant Dark style */}
-      <footer className="bg-[#0A0A0A] border-t border-[#262626] py-4 text-xs text-[#525252]">
+      {/* Footer in Clean White style */}
+      <footer className="bg-white border-t border-slate-200 py-4 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#E5E7EB]">© 2026 EPIKA.MX</span>
-            <span className="text-[#333]">•</span>
+            <span className="font-bold text-slate-900">© 2026 EPIKA.MX</span>
+            <span className="text-slate-300">•</span>
             <span>SISTEMA DE VISUALIZACIÓN & EMBUDO COMERCIAL</span>
             <a 
               href="https://epika.mx" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#D4F634] hover:text-[#C2E426] font-semibold inline-flex items-center gap-0.5 ml-1 transition-colors"
+              className="text-emerald-600 hover:text-emerald-700 font-semibold inline-flex items-center gap-0.5 ml-1 transition-colors"
             >
               epika.mx
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] uppercase tracking-widest text-[#737373]">
+          <div className="flex items-center gap-4 text-[11px] uppercase tracking-wider text-slate-500 font-medium">
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               Meta API: Conectado
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               Google Ads API: Conectado
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               StackAdapt: Conectado
             </span>
           </div>

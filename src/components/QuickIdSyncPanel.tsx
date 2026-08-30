@@ -35,7 +35,7 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
   const [metaAppId, setMetaAppId] = useState(() => localStorage.getItem('epika_meta_app_id') || '2373560423171686');
   const [metaToken, setMetaToken] = useState(() => localStorage.getItem('epika_meta_token') || 'EAAhuvZAngRmYBSCTPnMtUZCvlOSzRZB5uwWxHHShYmjUICtdfQhGFRBVDDXU3wlGFzi38FuPUJknK4vIqL3bxJ7RFaABdEvyRkOXz3jLzQesASRYQ3rsZAdj3aAKW6l84zmP89yFIUdS7JNsDx3JPbaOZBUoj9ID4WdsFVoGShdBnKX5MG8MKZAYixTjK9RXgcXgZDZD');
 
-  const [googleId, setGoogleId] = useState(() => localStorage.getItem('epika_google_id') || '171-833-1328');
+  const [googleId, setGoogleId] = useState(() => localStorage.getItem('epika_google_id') || '453-930-3033');
   const [googleDevToken, setGoogleDevToken] = useState(() => localStorage.getItem('epika_google_dev_token') || '9WP0xwvo9PYPwZ02KYs_Ag');
   const [googleClientId, setGoogleClientId] = useState(() => localStorage.getItem('epika_google_client_id') || '359442674926-kj0e2tufn6il1doudpt66qev1odm1npp.apps.googleusercontent.com');
 
@@ -83,7 +83,7 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
     setMetaAppId('2373560423171686');
     setMetaToken('EAAhuvZAngRmYBSCTPnMtUZCvlOSzRZB5uwWxHHShYmjUICtdfQhGFRBVDDXU3wlGFzi38FuPUJknK4vIqL3bxJ7RFaABdEvyRkOXz3jLzQesASRYQ3rsZAdj3aAKW6l84zmP89yFIUdS7JNsDx3JPbaOZBUoj9ID4WdsFVoGShdBnKX5MG8MKZAYixTjK9RXgcXgZDZD');
 
-    setGoogleId('171-833-1328');
+    setGoogleId('453-930-3033');
     setGoogleDevToken('9WP0xwvo9PYPwZ02KYs_Ag');
     setGoogleClientId('359442674926-kj0e2tufn6il1doudpt66qev1odm1npp.apps.googleusercontent.com');
 
@@ -101,27 +101,27 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
   };
 
   return (
-    <div className="bg-[#121212] border border-[#262626] rounded-xl shadow-xl overflow-hidden text-[#E5E7EB] mb-6">
+    <div className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden text-slate-800 mb-6">
       
       {/* Top Banner (Always Visible on Page) */}
-      <div className="p-3 sm:p-4 bg-[#141414] flex flex-col md:flex-row items-center justify-between gap-3 border-b border-[#262626]">
+      <div className="p-3 sm:p-4 bg-slate-50/80 flex flex-col md:flex-row items-center justify-between gap-3 border-b border-slate-200">
         
         {/* Left Info */}
         <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="w-8 h-8 rounded-lg bg-[#D4F634]/15 border border-[#D4F634]/30 text-[#D4F634] flex items-center justify-center font-bold text-sm shrink-0">
-            <Key className="w-4 h-4 text-[#D4F634]" />
+          <div className="w-8 h-8 rounded-lg bg-emerald-100 border border-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-sm shrink-0">
+            <Key className="w-4 h-4 text-emerald-700" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-tight">
+              <h3 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-tight">
                 Panel Directo de IDs & Tokens de Acceso
               </h3>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-[#D4F634]/10 text-[#D4F634] border border-[#D4F634]/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4F634]"></span>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 Ingreso Manual Directo
               </span>
             </div>
-            <p className="text-[11px] text-[#A3A3A3]">
+            <p className="text-[11px] text-slate-500">
               Ingresa o actualiza las IDs y Tokens de Meta, Google Ads y StackAdapt conforme los tengas a la mano.
             </p>
           </div>
@@ -132,9 +132,9 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
           
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-xs px-3 py-1.5 rounded-lg bg-[#1A1A1A] hover:bg-[#262626] text-white font-semibold border border-[#262626] flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="text-xs px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 font-semibold border border-slate-300 flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <Key className="w-3.5 h-3.5 text-[#D4F634]" />
+            <Key className="w-3.5 h-3.5 text-emerald-600" />
             <span>{isExpanded ? 'Ocultar Formulario de IDs' : 'Ingresar / Editar IDs y Tokens'}</span>
             {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </button>
@@ -142,9 +142,9 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
           <button
             onClick={onSyncAll}
             disabled={isSyncing}
-            className="text-xs px-3.5 py-1.5 rounded-lg bg-[#D4F634] hover:bg-[#C2E426] text-black font-black flex items-center gap-1.5 transition-all shadow-lg shadow-[#D4F634]/20 disabled:opacity-50 cursor-pointer"
+            className="text-xs px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold flex items-center gap-1.5 transition-all shadow-xs disabled:opacity-50 cursor-pointer"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 text-emerald-400 ${isSyncing ? 'animate-spin' : ''}`} />
             <span>{isSyncing ? 'Sincronizando...' : 'Sincronizar Datos'}</span>
           </button>
 
@@ -153,19 +153,19 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
 
       {/* Confirmation feedback */}
       {statusMessage && (
-        <div className="bg-[#D4F634]/10 border-b border-[#D4F634]/30 px-4 py-2 text-xs font-semibold text-[#D4F634] flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-[#D4F634] shrink-0" />
+        <div className="bg-emerald-50 border-b border-emerald-200 px-4 py-2 text-xs font-semibold text-emerald-800 flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>{statusMessage}</span>
         </div>
       )}
 
       {/* Direct Interactive Form on the Web Page */}
       {isExpanded && (
-        <div className="p-4 sm:p-5 bg-[#0D0D0D] space-y-4 animate-in slide-in-from-top-2 duration-200 text-xs">
+        <div className="p-4 sm:p-5 bg-white space-y-4 animate-in slide-in-from-top-2 duration-200 text-xs">
           
-          <div className="flex items-center justify-between pb-2 border-b border-[#262626]">
-            <span className="text-xs font-bold text-white uppercase tracking-tight flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#D4F634]" />
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+            <span className="text-xs font-bold text-slate-900 uppercase tracking-tight flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               Configuración Manual de Credenciales y Cuentas
             </span>
 
@@ -173,16 +173,16 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
               <button
                 type="button"
                 onClick={() => setShowTokens(!showTokens)}
-                className="text-[11px] text-[#A3A3A3] hover:text-white flex items-center gap-1 cursor-pointer"
+                className="text-[11px] text-slate-500 hover:text-slate-900 flex items-center gap-1 cursor-pointer"
               >
-                {showTokens ? <EyeOff className="w-3 h-3 text-[#D4F634]" /> : <Eye className="w-3 h-3" />}
+                {showTokens ? <EyeOff className="w-3 h-3 text-emerald-600" /> : <Eye className="w-3 h-3" />}
                 {showTokens ? 'Ocultar Tokens' : 'Mostrar Tokens'}
               </button>
 
               <button
                 type="button"
                 onClick={handleApplyKnownDefaults}
-                className="text-[11px] text-[#D4F634] hover:underline font-bold"
+                className="text-[11px] text-emerald-700 hover:underline font-bold"
               >
                 Cargar valores precargados
               </button>
@@ -192,137 +192,137 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             
             {/* 1. META ADS */}
-            <div className="bg-[#141414] border border-[#262626] rounded-xl p-3.5 space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#262626]">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#D4F634]"></span>
-                  <span className="font-bold text-white text-xs">Meta Ads (FB / IG)</span>
+                  <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                  <span className="font-bold text-slate-900 text-xs">Meta Ads (FB / IG)</span>
                 </div>
-                <span className="text-[10px] text-[#D4F634] font-mono">
+                <span className="text-[10px] text-emerald-700 font-mono font-medium">
                   {metaToken ? 'Token cargado' : 'Token pendiente'}
                 </span>
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">Ad Account ID</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Ad Account ID</label>
                 <input
                   type="text"
                   placeholder="ej. 2043417892891975"
                   value={metaId}
                   onChange={(e) => setMetaId(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">App ID</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">App ID</label>
                 <input
                   type="text"
                   placeholder="ej. 2373560423171686"
                   value={metaAppId}
                   onChange={(e) => setMetaAppId(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">Access Token (User / Page)</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Access Token (User / Page)</label>
                 <input
                   type={showTokens ? "text" : "password"}
                   placeholder="Pega aquí tu token de Meta"
                   value={metaToken}
                   onChange={(e) => setMetaToken(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
-              <div className="pt-1 text-[10px] text-[#D4F634]/90 flex items-center gap-1">
+              <div className="pt-1 text-[10px] text-emerald-800 flex items-center gap-1">
                 <span>✓</span>
                 <span>No necesitas App Secret: el Access Token es suficiente.</span>
               </div>
             </div>
 
             {/* 2. GOOGLE ADS */}
-            <div className="bg-[#141414] border border-[#262626] rounded-xl p-3.5 space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#262626]">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#8DB600]"></span>
-                  <span className="font-bold text-white text-xs">Google Ads</span>
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span className="font-bold text-slate-900 text-xs">Google Ads</span>
                 </div>
-                <span className="text-[10px] text-[#D4F634] font-mono">
+                <span className="text-[10px] text-emerald-700 font-mono font-medium">
                   {googleDevToken ? 'Token cargado' : 'Token pendiente'}
                 </span>
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">Customer ID</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Customer ID</label>
                 <input
                   type="text"
-                  placeholder="ej. 171-833-1328"
+                  placeholder="ej. 453-930-3033"
                   value={googleId}
                   onChange={(e) => setGoogleId(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">Developer Token</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Developer Token</label>
                 <input
                   type={showTokens ? "text" : "password"}
                   placeholder="ej. 9WP0xwvo9PYPwZ02KYs_Ag"
                   value={googleDevToken}
                   onChange={(e) => setGoogleDevToken(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">OAuth Client ID</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">OAuth Client ID</label>
                 <input
                   type="text"
                   placeholder="ej. 359442674926-..."
                   value={googleClientId}
                   onChange={(e) => setGoogleClientId(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
             </div>
 
             {/* 3. STACKADAPT */}
-            <div className="bg-[#141414] border border-[#262626] rounded-xl p-3.5 space-y-3">
-              <div className="flex items-center justify-between pb-2 border-b border-[#262626]">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-white"></span>
-                  <span className="font-bold text-white text-xs">StackAdapt DSP</span>
+                  <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+                  <span className="font-bold text-slate-900 text-xs">StackAdapt DSP</span>
                 </div>
-                <span className="text-[10px] text-[#D4F634] font-mono">
+                <span className="text-[10px] text-emerald-700 font-mono font-medium">
                   {stackAdaptToken ? 'Token cargado' : 'Token pendiente'}
                 </span>
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">Account ID</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Account ID</label>
                 <input
                   type="text"
                   placeholder="ej. 268858"
                   value={stackAdaptId}
                   onChange={(e) => setStackAdaptId(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[10px] text-[#737373] uppercase font-bold block mb-1">API Token</label>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">API Token</label>
                 <input
                   type={showTokens ? "text" : "password"}
                   placeholder="ej. e6bcab244d239a..."
                   value={stackAdaptToken}
                   onChange={(e) => setStackAdaptToken(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#333] rounded px-2.5 py-1.5 font-mono text-white text-xs focus:ring-1 focus:ring-[#D4F634] focus:outline-none"
+                  className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
-              <div className="pt-2 text-[11px] text-[#737373]">
+              <div className="pt-2 text-[11px] text-slate-500">
                 Segmentación activa: Corredor Chapultepec y Guadalajara
               </div>
             </div>
@@ -330,17 +330,17 @@ export const QuickIdSyncPanel: React.FC<QuickIdSyncPanelProps> = ({
           </div>
 
           {/* Bottom Save Action */}
-          <div className="pt-3 border-t border-[#262626] flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span className="text-[11px] text-[#737373]">
+          <div className="pt-3 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span className="text-[11px] text-slate-500">
               💡 Puedes dejar campos vacíos si aún no tienes el token a la mano; el sistema mantendrá la operación sin interrupciones.
             </span>
 
             <button
               type="button"
               onClick={handleSaveCredentials}
-              className="w-full sm:w-auto px-5 py-2 rounded-lg bg-[#D4F634] hover:bg-[#C2E426] text-black font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#D4F634]/20 transition-all active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs transition-all active:scale-95 cursor-pointer"
             >
-              <Save className="w-3.5 h-3.5" />
+              <Save className="w-3.5 h-3.5 text-emerald-400" />
               <span>Guardar Credenciales en el Sistema</span>
             </button>
           </div>

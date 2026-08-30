@@ -1,0 +1,5968 @@
+{
+  "actData": {
+    "id": "act_2043417892891975",
+    "name": "Epika Ads 2",
+    "account_status": 1,
+    "currency": "MXN",
+    "timezone_name": "America/Mexico_City",
+    "amount_spent": "12879267",
+    "insights": {
+      "data": [
+        {
+          "spend": "89594.3",
+          "impressions": "426909",
+          "reach": "177480",
+          "clicks": "7392",
+          "actions": [
+            {
+              "action_type": "offsite_complete_registration_add_meta_leads",
+              "value": "126"
+            },
+            {
+              "action_type": "link_click",
+              "value": "4336"
+            },
+            {
+              "action_type": "offsite_search_add_meta_leads",
+              "value": "126"
+            },
+            {
+              "action_type": "post_reaction",
+              "value": "1739"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+              "value": "28"
+            },
+            {
+              "action_type": "landing_page_view",
+              "value": "454"
+            },
+            {
+              "action_type": "omni_landing_page_view",
+              "value": "454"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_block",
+              "value": "2"
+            },
+            {
+              "action_type": "onsite_conversion.total_messaging_connection",
+              "value": "211"
+            },
+            {
+              "action_type": "onsite_conversion.post_unlike",
+              "value": "54"
+            },
+            {
+              "action_type": "post_engagement",
+              "value": "47004"
+            },
+            {
+              "action_type": "like",
+              "value": "13"
+            },
+            {
+              "action_type": "post_interaction_gross",
+              "value": "1884"
+            },
+            {
+              "action_type": "comment",
+              "value": "25"
+            },
+            {
+              "action_type": "page_engagement",
+              "value": "47017"
+            },
+            {
+              "action_type": "post_interaction_net",
+              "value": "1940"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+              "value": "54"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_first_reply",
+              "value": "200"
+            },
+            {
+              "action_type": "post",
+              "value": "62"
+            },
+            {
+              "action_type": "onsite_conversion.post_unsave",
+              "value": "2"
+            },
+            {
+              "action_type": "photo_view",
+              "value": "54"
+            },
+            {
+              "action_type": "onsite_conversion.post_save",
+              "value": "58"
+            },
+            {
+              "action_type": "onsite_conversion.post_net_comment",
+              "value": "25"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+              "value": "19"
+            },
+            {
+              "action_type": "onsite_conversion.post_net_save",
+              "value": "56"
+            },
+            {
+              "action_type": "onsite_conversion.post_net_like",
+              "value": "1685"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+              "value": "5"
+            },
+            {
+              "action_type": "lead",
+              "value": "126"
+            },
+            {
+              "action_type": "offsite_content_view_add_meta_leads",
+              "value": "126"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_conversation_started_7d",
+              "value": "218"
+            },
+            {
+              "action_type": "onsite_conversion.lead_grouped",
+              "value": "126"
+            },
+            {
+              "action_type": "video_view",
+              "value": "40730"
+            }
+          ],
+          "cost_per_action_type": [
+            {
+              "action_type": "offsite_submit_application_add_meta_leads",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "offsite_search_add_meta_leads",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "offsite_complete_registration_add_meta_leads",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "video_view",
+              "value": "2.199713"
+            },
+            {
+              "action_type": "link_click",
+              "value": "20.662892"
+            },
+            {
+              "action_type": "like",
+              "value": "6891.869231"
+            },
+            {
+              "action_type": "onsite_conversion.lead_grouped",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "post_interaction_gross",
+              "value": "47.555361"
+            },
+            {
+              "action_type": "onsite_conversion.total_messaging_connection",
+              "value": "424.617536"
+            },
+            {
+              "action_type": "post_engagement",
+              "value": "1.906099"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+              "value": "17918.86"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+              "value": "1659.153704"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+              "value": "4715.489474"
+            },
+            {
+              "action_type": "lead",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "offsite_contact_website_add_meta_leads",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "page_engagement",
+              "value": "1.905572"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+              "value": "3199.796429"
+            },
+            {
+              "action_type": "offsite_content_view_add_meta_leads",
+              "value": "711.065873"
+            },
+            {
+              "action_type": "omni_landing_page_view",
+              "value": "197.344273"
+            },
+            {
+              "action_type": "landing_page_view",
+              "value": "197.344273"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_first_reply",
+              "value": "447.9715"
+            },
+            {
+              "action_type": "onsite_conversion.messaging_conversation_started_7d",
+              "value": "410.983028"
+            }
+          ],
+          "date_start": "2026-07-28",
+          "date_stop": "2026-08-26"
+        }
+      ],
+      "paging": {
+        "cursors": {
+          "before": "MAZDZD",
+          "after": "MAZDZD"
+        }
+      }
+    }
+  },
+  "campData": {
+    "data": [
+      {
+        "id": "120253571157370728",
+        "name": "[BH] WA 2026 - Agosto",
+        "status": "ACTIVE",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "created_time": "2026-08-10T19:14:36-0600",
+        "insights": {
+          "data": [
+            {
+              "spend": "13134.68",
+              "impressions": "148284",
+              "reach": "16974",
+              "clicks": "2139",
+              "ctr": "1.442502",
+              "cpc": "6.14057",
+              "cpm": "88.577864",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "896"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "182"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_block",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "129"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "11"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "7014"
+                },
+                {
+                  "action_type": "like",
+                  "value": "3"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "230"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "13"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "7017"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "241"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "54"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "121"
+                },
+                {
+                  "action_type": "post",
+                  "value": "31"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "19"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "171"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "135"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "5888"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "video_view",
+                  "value": "2.230754"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "14.659241"
+                },
+                {
+                  "action_type": "like",
+                  "value": "4378.226667"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "57.107304"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "101.819225"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.872638"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+                  "value": "2626.936"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "243.234815"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "691.298947"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.871837"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "108.551074"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "97.293926"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253570596410728",
+        "name": "[BH] LEADS 2026 - Agosto",
+        "status": "ACTIVE",
+        "objective": "OUTCOME_LEADS",
+        "created_time": "2026-08-10T18:49:32-0600",
+        "insights": {
+          "data": [
+            {
+              "spend": "47753.73",
+              "impressions": "110187",
+              "reach": "58735",
+              "clicks": "2806",
+              "ctr": "2.54658",
+              "cpc": "17.018436",
+              "cpm": "433.388058",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "90"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "1819"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "90"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "363"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "28"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "454"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "454"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "81"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "12"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "20995"
+                },
+                {
+                  "action_type": "like",
+                  "value": "9"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "403"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "7"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "21004"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "415"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "79"
+                },
+                {
+                  "action_type": "post",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "20"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "20"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "351"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "90"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "90"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "82"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "90"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "18773"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2.543745"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "26.252738"
+                },
+                {
+                  "action_type": "like",
+                  "value": "5305.97"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "118.495608"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "589.552222"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2.274529"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2.273554"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1705.490357"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "530.597"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "105.184427"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "105.184427"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "604.477595"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "582.362561"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253335110950728",
+        "name": "Agosto 2026 - Leads",
+        "status": "PAUSED",
+        "objective": "OUTCOME_LEADS",
+        "lifetime_budget": "8500000",
+        "created_time": "2026-07-31T14:53:58-0600",
+        "insights": {
+          "data": [
+            {
+              "spend": "27927.52",
+              "impressions": "160468",
+              "reach": "102511",
+              "clicks": "2004",
+              "ctr": "1.248847",
+              "cpc": "13.935888",
+              "cpm": "174.037939",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "36"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "1621"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "36"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "182"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_block",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "20"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "17895"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "205"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "5"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "17896"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "225"
+                },
+                {
+                  "action_type": "post",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "11"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "11"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "162"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "36"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "36"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "36"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "16069"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "1.737975"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "17.228575"
+                },
+                {
+                  "action_type": "like",
+                  "value": "27927.52"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "136.231805"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "27927.52"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.560633"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.560545"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "775.764444"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "27927.52"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809785800728",
+        "name": "Julio - Interacción - IG",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "250000",
+        "created_time": "2026-07-10T10:34:34-0600",
+        "insights": {
+          "data": [
+            {
+              "spend": "368.87",
+              "impressions": "1983",
+              "reach": "1606",
+              "clicks": "2",
+              "ctr": "0.100857",
+              "cpc": "184.435",
+              "cpm": "186.016137",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "465"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "486"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "486"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "486"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "494"
+                },
+                {
+                  "action_type": "post",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unsave",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "19"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "17"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "459"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.758992"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.758992"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.758992"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809517950728",
+        "name": "Julio - Interacción - FB",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "250000",
+        "created_time": "2026-07-10T10:27:44-0600",
+        "insights": {
+          "data": [
+            {
+              "spend": "409.5",
+              "impressions": "5987",
+              "reach": "4221",
+              "clicks": "441",
+              "ctr": "7.36596",
+              "cpc": "0.928571",
+              "cpm": "68.398196",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "547"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "614"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "560"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "614"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "565"
+                },
+                {
+                  "action_type": "post",
+                  "value": "9"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "54"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "542"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.73125"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.666938"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.666938"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120251353511420728",
+        "name": "Junio - Interacción - FB",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "500000",
+        "created_time": "2026-06-12T17:54:20-0600"
+      },
+      {
+        "id": "120251353384080728",
+        "name": "Junio - Interacción - IG",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "500000",
+        "created_time": "2026-06-12T17:47:04-0600"
+      },
+      {
+        "id": "120249629598080728",
+        "name": "Mayo 2026 - Weekend",
+        "status": "PAUSED",
+        "objective": "OUTCOME_LEADS",
+        "lifetime_budget": "200000",
+        "created_time": "2026-05-19T16:51:25-0600"
+      },
+      {
+        "id": "120249409801090728",
+        "name": "Mayo - Interacción - FB",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "300000",
+        "created_time": "2026-05-15T12:13:37-0600"
+      },
+      {
+        "id": "120249409658220728",
+        "name": "Mayo - Interacción - IG",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "300000",
+        "created_time": "2026-05-15T12:06:22-0600"
+      },
+      {
+        "id": "120249190543980728",
+        "name": "Mayo - Weekend 15-17 Mayo",
+        "status": "PAUSED",
+        "objective": "OUTCOME_AWARENESS",
+        "created_time": "2026-05-12T11:03:25-0600"
+      },
+      {
+        "id": "120247100081820728",
+        "name": "Abril - Interacción - IG",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "500000",
+        "created_time": "2026-04-09T17:08:19-0600"
+      },
+      {
+        "id": "120247099541520728",
+        "name": "Abril - Interacción - FB",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "500000",
+        "created_time": "2026-04-09T16:53:19-0600"
+      },
+      {
+        "id": "120245429666700728",
+        "name": "Marzo - Interacción - IG",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "250000",
+        "created_time": "2026-03-11T17:38:44-0600"
+      },
+      {
+        "id": "120245327178750728",
+        "name": "Marzo - Interacción - FB",
+        "status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "lifetime_budget": "250000",
+        "created_time": "2026-03-11T09:44:02-0600"
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "QVFIVFltZAWwybTZArZA2x0T3RBNmhDSzBtZAzliRmg4TjMtdHNXQWIyQndkMGt4azBKTFQ3M1VESlplUk9wLUl0dzduS056cDVQNG9OMndIbFY5SlNvR0Nxb1ZAB",
+        "after": "QVFIVDhmQmZADcjdLWk85aVcxb2ZAlcXRfM0RiRFBGSXVqblZAKenJGcHJDb1hMZA1pCVkJfVWQ0Y0hySFZAzM1pweFZAlWG5meElpZA0F1YUdOVVdaMHVlVzRnMFJR"
+      }
+    }
+  },
+  "adsData": {
+    "data": [
+      {
+        "id": "120253810915130728",
+        "name": "[BH] Norte - Ago Ad 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253810915140728",
+          "name": "[BH] Leads - Foráneos Norte - Ago-Sep26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "3347.57",
+              "impressions": "12958",
+              "reach": "8632",
+              "clicks": "251",
+              "ctr": "1.937027",
+              "cpc": "13.336932",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "3"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "164"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "3"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "46"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "5"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2430"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "52"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "3"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2431"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "53"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "4"
+                },
+                {
+                  "action_type": "post",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "45"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "3"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "3"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2214"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "1.512001"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "20.412012"
+                },
+                {
+                  "action_type": "like",
+                  "value": "3347.57"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "64.376346"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "836.8925"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.377601"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.377034"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "3347.57"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "1115.856667"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "669.514"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "669.514"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "836.8925"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "836.8925"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253811199610728",
+        "name": "[BH] CEDIS - Ago Ad 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253811199600728",
+          "name": "[BH] Leads - Foráneos CEDIS - Ago-Sep26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "1947.05",
+              "impressions": "2013",
+              "reach": "1322",
+              "clicks": "60",
+              "ctr": "2.980626",
+              "cpc": "32.450833",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "39"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "12"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "3"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "461"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "12"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "461"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "11"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "2"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "2"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "410"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "4.748902"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "49.924359"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "162.254167"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "4.223536"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "4.223536"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1947.05"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "649.016667"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "649.016667"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "973.525"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "973.525"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589698530728",
+        "name": "Ago - Carrusel 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "851.54",
+              "impressions": "3444",
+              "reach": "2603",
+              "clicks": "164",
+              "ctr": "4.761905",
+              "cpc": "5.192317",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "116"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "14"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "91"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "91"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "130"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "14"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "130"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "14"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "14"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "7.340862"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "60.824286"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "6.550308"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "6.550308"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "9.357582"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "9.357582"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571105360728",
+        "name": "Ago - Ad 7",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "1411.95",
+              "impressions": "23598",
+              "reach": "19185",
+              "clicks": "372",
+              "ctr": "1.576405",
+              "cpc": "3.795565",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "311"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "18"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "243"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "243"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "334"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "23"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "334"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "23"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "18"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "4.540032"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "61.38913"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "4.227395"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "4.227395"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "5.810494"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "5.810494"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589486740728",
+        "name": "WA - Ago - Ad 3",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "4397.66",
+              "impressions": "117963",
+              "reach": "114025",
+              "clicks": "992",
+              "ctr": "0.840942",
+              "cpc": "4.433125",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "597"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "43"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "30"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "658"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "61"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "659"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "66"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "10"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "29"
+                },
+                {
+                  "action_type": "post",
+                  "value": "18"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "38"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "40"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "7.366265"
+                },
+                {
+                  "action_type": "like",
+                  "value": "4397.66"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "72.092787"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "146.588667"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "6.683374"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "439.766"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "879.532"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "6.673232"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "151.643448"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "109.9415"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589433960728",
+        "name": "WA - Ago - Ad 2",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "7569.89",
+              "impressions": "18077",
+              "reach": "10024",
+              "clicks": "985",
+              "ctr": "5.448913",
+              "cpc": "7.685168",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "195"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "107"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_block",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "82"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "5644"
+                },
+                {
+                  "action_type": "like",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "131"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "12"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "5646"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "136"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "39"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "76"
+                },
+                {
+                  "action_type": "post",
+                  "value": "8"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "12"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "14"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "102"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "77"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "5318"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "video_view",
+                  "value": "1.423447"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "38.819949"
+                },
+                {
+                  "action_type": "like",
+                  "value": "3784.945"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "57.78542"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "92.315732"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.341228"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_5_message_send",
+                  "value": "1513.978"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "194.099744"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_3_message_send",
+                  "value": "540.706429"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.340753"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "99.603816"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "98.31026"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571157390728",
+        "name": "WA - Ago - Ad 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "1042.9",
+              "impressions": "10521",
+              "reach": "6830",
+              "clicks": "130",
+              "ctr": "1.235624",
+              "cpc": "8.022308",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "86"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "15"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "16"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "676"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "20"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "676"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "21"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "15"
+                },
+                {
+                  "action_type": "post",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "14"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "17"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "570"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "video_view",
+                  "value": "1.829649"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "12.126744"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "52.145"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "65.18125"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.542751"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_user_depth_2_message_send",
+                  "value": "208.58"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.542751"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "69.526667"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "61.347059"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589658490728",
+        "name": "WA - Ago - Carrusel 3",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "11.51",
+              "impressions": "377",
+              "reach": "347",
+              "clicks": "3",
+              "ctr": "0.795756",
+              "cpc": "3.836667",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "4"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "4"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "4"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "5.755"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "2.8775"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.918333"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.918333"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589614490728",
+        "name": "WA - Ago - Carrusel 2",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "76.87",
+              "impressions": "929",
+              "reach": "738",
+              "clicks": "20",
+              "ctr": "2.152853",
+              "cpc": "3.8435",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "10"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "6"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "16"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "6"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "16"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "6"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "6"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "1"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "7.687"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "12.811667"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "76.87"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "4.804375"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "4.804375"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "76.87"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "76.87"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253589519340728",
+        "name": "WA - Ago - Carrusel 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253571157370728",
+          "name": "[BH] WA 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253571157380728",
+          "name": "[BH] WA - Agosto"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "35.85",
+              "impressions": "417",
+              "reach": "291",
+              "clicks": "9",
+              "ctr": "2.158273",
+              "cpc": "3.983333",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "7"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "14"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "8"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "14"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "8"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "7"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "link_click",
+                  "value": "5.975"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "4.48125"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2.560714"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2.560714"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571022330728",
+        "name": "Ago - Ad 6",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "2731.51",
+              "impressions": "3614",
+              "reach": "2019",
+              "clicks": "91",
+              "ctr": "2.517986",
+              "cpc": "30.016593",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "9"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "48"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "9"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "13"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "5"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "64"
+                },
+                {
+                  "action_type": "like",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "14"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "66"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "14"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "13"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "9"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "9"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "6"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "9"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "1365.755"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "56.906458"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1365.755"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "195.107857"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "455.251667"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "42.679844"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "41.386515"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "303.501111"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "546.302"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "546.302"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "455.251667"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "455.251667"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571017740728",
+        "name": "Ago - Ad 5",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "8451.17",
+              "impressions": "10098",
+              "reach": "6125",
+              "clicks": "400",
+              "ctr": "3.96118",
+              "cpc": "21.127925",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "18"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "229"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "18"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "51"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "7"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "23"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "23"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "17"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "3486"
+                },
+                {
+                  "action_type": "like",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "52"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "3488"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "54"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "16"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "49"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "18"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "18"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "17"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "18"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "3205"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2.636871"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "36.904672"
+                },
+                {
+                  "action_type": "like",
+                  "value": "4225.585"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "162.5225"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "497.127647"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2.424317"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2.422927"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1207.31"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "469.509444"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "367.442174"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "367.442174"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "528.198125"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "497.127647"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253570596430728",
+        "name": "Ago - Ad 1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "1611.78",
+              "impressions": "2298",
+              "reach": "1664",
+              "clicks": "88",
+              "ctr": "3.829417",
+              "cpc": "18.315682",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "1"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "48"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "12"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "4"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "739"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "13"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "740"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "12"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "1"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "1"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "678"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2.377257"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "33.57875"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "123.983077"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2.181028"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2.178081"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "402.945"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "402.945"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "1611.78"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "1611.78"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571004460728",
+        "name": "Ago - Ad 4",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "1969.57",
+              "impressions": "2612",
+              "reach": "1578",
+              "clicks": "57",
+              "ctr": "2.182236",
+              "cpc": "34.55386",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "37"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "14"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "1"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "517"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "14"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "517"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "16"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "12"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "2"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "2"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "466"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "4.226545"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "53.231622"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "140.683571"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "3.809613"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "3.809613"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1969.57"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "1969.57"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "1969.57"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "984.785"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "984.785"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253571148540728",
+        "name": "Ago - Ad 8",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "5110.98",
+              "impressions": "11535",
+              "reach": "6800",
+              "clicks": "193",
+              "ctr": "1.673169",
+              "cpc": "26.481762",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "102"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "16"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "3"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "8"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "8"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "12"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "132"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "21"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "132"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "22"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "12"
+                },
+                {
+                  "action_type": "post",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "15"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "13"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "12"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "13"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "9"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "567.886667"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "50.107647"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "243.38"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "425.915"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "38.719545"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "38.719545"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1703.66"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "393.152308"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "638.8725"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "638.8725"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "425.915"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "425.915"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253570997030728",
+        "name": "Ago - Ad 3",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "379.64",
+              "impressions": "746",
+              "reach": "559",
+              "clicks": "11",
+              "ctr": "1.474531",
+              "cpc": "34.512727",
+              "actions": [
+                {
+                  "action_type": "link_click",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "3"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "129"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "6"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "129"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "6"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "3"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "122"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "video_view",
+                  "value": "3.111803"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "379.64"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "63.273333"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "2.942946"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "2.942946"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253570987130728",
+        "name": "Ago - Ad 2",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253570596410728",
+          "name": "[BH] LEADS 2026 - Agosto"
+        },
+        "adset": {
+          "id": "120253570596420728",
+          "name": "[BH] Leads - Agosto26*"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "19940.97",
+              "impressions": "37271",
+              "reach": "20069",
+              "clicks": "1119",
+              "ctr": "3.002334",
+              "cpc": "17.820349",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "42"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "724"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "42"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "164"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "14"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "71"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "71"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "37"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "12573"
+                },
+                {
+                  "action_type": "like",
+                  "value": "3"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "182"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "2"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "12576"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "187"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "36"
+                },
+                {
+                  "action_type": "post",
+                  "value": "6"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "10"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "10"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "159"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "42"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "42"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "38"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "42"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "11667"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "1.709177"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "27.542776"
+                },
+                {
+                  "action_type": "like",
+                  "value": "6646.99"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "109.565769"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "538.945135"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.586015"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.585637"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_replied_7d",
+                  "value": "1424.355"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "474.785"
+                },
+                {
+                  "action_type": "omni_landing_page_view",
+                  "value": "280.858732"
+                },
+                {
+                  "action_type": "landing_page_view",
+                  "value": "280.858732"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_first_reply",
+                  "value": "553.915833"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "524.762368"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253335110960728",
+        "name": "Torre 1",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120253335110950728",
+          "name": "Agosto 2026 - Leads"
+        },
+        "adset": {
+          "id": "120253335110970728",
+          "name": "ADS"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "4858.15",
+              "impressions": "52693",
+              "reach": "41640",
+              "clicks": "646",
+              "ctr": "1.225969",
+              "cpc": "7.520356",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "464"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "47"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_block",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "5709"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "56"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "2"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "5709"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "61"
+                },
+                {
+                  "action_type": "post",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "42"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "13"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "13"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "13"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "5189"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "0.93624"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "10.470151"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "86.752679"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.850963"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "373.703846"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.850963"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "373.703846"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253336057450728",
+        "name": "Torre 2",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120253335110950728",
+          "name": "Agosto 2026 - Leads"
+        },
+        "adset": {
+          "id": "120253335110970728",
+          "name": "ADS"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "23069.37",
+              "impressions": "107775",
+              "reach": "69882",
+              "clicks": "1358",
+              "ctr": "1.260032",
+              "cpc": "16.987754",
+              "actions": [
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "23"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "1157"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "23"
+                },
+                {
+                  "action_type": "post_reaction",
+                  "value": "135"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "15"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "12186"
+                },
+                {
+                  "action_type": "like",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "149"
+                },
+                {
+                  "action_type": "comment",
+                  "value": "3"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "12187"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "164"
+                },
+                {
+                  "action_type": "post",
+                  "value": "4"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_comment",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "120"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "23"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "23"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "23"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "10880"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "offsite_submit_application_add_meta_leads",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "offsite_search_add_meta_leads",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "offsite_complete_registration_add_meta_leads",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "video_view",
+                  "value": "2.120347"
+                },
+                {
+                  "action_type": "link_click",
+                  "value": "19.938954"
+                },
+                {
+                  "action_type": "like",
+                  "value": "23069.37"
+                },
+                {
+                  "action_type": "onsite_conversion.lead_grouped",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "154.827987"
+                },
+                {
+                  "action_type": "onsite_conversion.total_messaging_connection",
+                  "value": "23069.37"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "1.893104"
+                },
+                {
+                  "action_type": "lead",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "offsite_contact_website_add_meta_leads",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "1.892949"
+                },
+                {
+                  "action_type": "offsite_content_view_add_meta_leads",
+                  "value": "1003.016087"
+                },
+                {
+                  "action_type": "onsite_conversion.messaging_conversation_started_7d",
+                  "value": "23069.37"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106637300728",
+        "name": "22 Julio",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "238.8",
+              "impressions": "1442",
+              "reach": "1225",
+              "clicks": "1",
+              "ctr": "0.069348",
+              "cpc": "238.8",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "305"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "4"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "316"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "316"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "316"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "322"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unsave",
+                  "value": "2"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "10"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "8"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "301"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.755696"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.755696"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.755696"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106657070728",
+        "name": "19 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "153.29",
+              "impressions": "2217",
+              "reach": "1806",
+              "clicks": "180",
+              "ctr": "8.11908",
+              "cpc": "0.851611",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "220"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "237"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "222"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "237"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "224"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "15"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "218"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.690496"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.646793"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.646793"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106664830728",
+        "name": "20 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "8.76",
+              "impressions": "257",
+              "reach": "248",
+              "clicks": "11",
+              "ctr": "4.280156",
+              "cpc": "0.796364",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "8"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "16"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "8"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "16"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "8"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "8"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "8"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "1.095"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.5475"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.5475"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106674490728",
+        "name": "22 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "213.52",
+              "impressions": "3122",
+              "reach": "2258",
+              "clicks": "221",
+              "ctr": "7.078796",
+              "cpc": "0.966154",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "267"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "2"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "306"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "278"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "306"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "280"
+                },
+                {
+                  "action_type": "post",
+                  "value": "8"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "28"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "3"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "265"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.768058"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.697778"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.697778"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106649570728",
+        "name": "18 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "3.3",
+              "impressions": "37",
+              "reach": "37",
+              "clicks": "2",
+              "ctr": "5.405405",
+              "cpc": "1.65",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "7"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "8"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "7"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "8"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "7"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "7"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.471429"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.4125"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.4125"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106600720728",
+        "name": "18 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "2.62",
+              "impressions": "7",
+              "reach": "7",
+              "clicks": "0",
+              "ctr": "0",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "5"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "5"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "5"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.524"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.524"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.524"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120253106612770728",
+        "name": "19 Julio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "9.47",
+              "impressions": "56",
+              "reach": "54",
+              "clicks": "1",
+              "ctr": "1.785714",
+              "cpc": "9.47",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "19"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "20"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "20"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "20"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "21"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "18"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.4735"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.4735"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.4735"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809639800728",
+        "name": "5 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252987316580728",
+        "name": "15 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809934200728",
+        "name": "6 Julio",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809911180728",
+        "name": "5 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252987305490728",
+        "name": "15 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252896788850728",
+        "name": "12 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252896818870728",
+        "name": "12 Julio",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809557190728",
+        "name": "2 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809709460728",
+        "name": "10 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809962310728",
+        "name": "10 Julio",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809851010728",
+        "name": "2 Jul",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252809891120728",
+        "name": "4 Jul",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "112.01",
+              "impressions": "461",
+              "reach": "418",
+              "clicks": "0",
+              "ctr": "0",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "128"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "136"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "136"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "136"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "137"
+                },
+                {
+                  "action_type": "post",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "7"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "127"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.823603"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.823603"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.823603"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809871840728",
+        "name": "3 Jul",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809785800728",
+          "name": "Julio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120252809785780728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "5.97",
+              "impressions": "17",
+              "reach": "17",
+              "clicks": "0",
+              "ctr": "0",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "8"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "9"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "9"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "9"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "9"
+                },
+                {
+                  "action_type": "onsite_conversion.post_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_save",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "8"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.663333"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.663333"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.663333"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809665140728",
+        "name": "6 Jul",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "16.06",
+              "impressions": "204",
+              "reach": "172",
+              "clicks": "15",
+              "ctr": "7.352941",
+              "cpc": "1.070667",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "23"
+                },
+                {
+                  "action_type": "onsite_conversion.post_unlike",
+                  "value": "1"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "24"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "23"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "24"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "24"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "22"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.698261"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.669167"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.669167"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809596320728",
+        "name": "3 Jul",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "11.57",
+              "impressions": "100",
+              "reach": "95",
+              "clicks": "8",
+              "ctr": "8",
+              "cpc": "1.44625",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "18"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "18"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "18"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "18"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "18"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "18"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.642778"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.642778"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.642778"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252809614650728",
+        "name": "4 Jul",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120252809517950728",
+          "name": "Julio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120252809517960728",
+          "name": "Feed"
+        },
+        "insights": {
+          "data": [
+            {
+              "spend": "3",
+              "impressions": "50",
+              "reach": "47",
+              "clicks": "4",
+              "ctr": "8",
+              "cpc": "0.75",
+              "actions": [
+                {
+                  "action_type": "post_reaction",
+                  "value": "4"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "4"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "5"
+                },
+                {
+                  "action_type": "post_interaction_net",
+                  "value": "4"
+                },
+                {
+                  "action_type": "photo_view",
+                  "value": "1"
+                },
+                {
+                  "action_type": "onsite_conversion.post_net_like",
+                  "value": "4"
+                }
+              ],
+              "cost_per_action_type": [
+                {
+                  "action_type": "post_interaction_gross",
+                  "value": "0.75"
+                },
+                {
+                  "action_type": "post_engagement",
+                  "value": "0.6"
+                },
+                {
+                  "action_type": "page_engagement",
+                  "value": "0.6"
+                }
+              ],
+              "date_start": "2026-07-28",
+              "date_stop": "2026-08-26"
+            }
+          ],
+          "paging": {
+            "cursors": {
+              "before": "MAZDZD",
+              "after": "MAZDZD"
+            }
+          }
+        }
+      },
+      {
+        "id": "120252100301870728",
+        "name": "21",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100263740728",
+        "name": "20",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100255130728",
+        "name": "18",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353631730728",
+        "name": "9",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251525600050728",
+        "name": "9",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353624980728",
+        "name": "7",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251799121060728",
+        "name": "12",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353610280728",
+        "name": "4",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251799193970728",
+        "name": "17",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100234320728",
+        "name": "23",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100227990728",
+        "name": "21",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100222700728",
+        "name": "20 Junio",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120252100230810728",
+        "name": "22",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251799033270728",
+        "name": "18",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353511500728",
+        "name": "2",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251799008940728",
+        "name": "17",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353619070728",
+        "name": "5",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353384100728",
+        "name": "2 Junio",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353384080728",
+          "name": "Junio - Interacción - IG"
+        },
+        "adset": {
+          "id": "120251353384060728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251525411990728",
+        "name": "7",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353511410728",
+        "name": "4",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251525449160728",
+        "name": "9",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251525466130728",
+        "name": "12",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120251353511400728",
+        "name": "5",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120251353511420728",
+          "name": "Junio - Interacción - FB"
+        },
+        "adset": {
+          "id": "120251353511510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061170110728",
+        "name": "19",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250274840300728",
+        "name": "26",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250274605380728",
+        "name": "27",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250184848500728",
+        "name": "27",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249410072040728",
+        "name": "8 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061254660728",
+        "name": "19",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250183397110728",
+        "name": "25",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061193580728",
+        "name": "23",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249628802720728",
+        "name": "13",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061276710728",
+        "name": "25",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249628870800728",
+        "name": "14",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061246350728",
+        "name": "18",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249629101430728",
+        "name": "15",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249629134730728",
+        "name": "16",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120250061154270728",
+        "name": "18",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249409929000728",
+        "name": "8 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249628902430728",
+        "name": "16",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249629038120728",
+        "name": "14",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249629598060728",
+        "name": "Weekend",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249629598080728",
+          "name": "Mayo 2026 - Weekend"
+        },
+        "adset": {
+          "id": "120249629598070728",
+          "name": "AD"
+        }
+      },
+      {
+        "id": "120249629023560728",
+        "name": "13",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249628937010728",
+        "name": "17",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249410002770728",
+        "name": "8 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249410205240728",
+        "name": "10 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249410040480728",
+        "name": "10 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249410102610728",
+        "name": "8 Mayo",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249409801100728",
+        "name": "7 Mayo",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409801090728",
+          "name": "Mayo - Interacción - FB"
+        },
+        "adset": {
+          "id": "120249409801070728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249409658200728",
+        "name": "7 mayo",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249409658220728",
+          "name": "Mayo - Interacción - IG"
+        },
+        "adset": {
+          "id": "120249409658160728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120249190543950728",
+        "name": "1",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120249190543980728",
+          "name": "Mayo - Weekend 15-17 Mayo"
+        },
+        "adset": {
+          "id": "120249190543970728",
+          "name": "Post"
+        }
+      },
+      {
+        "id": "120248221663030728",
+        "name": "27",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247100081820728",
+          "name": "Abril - Interacción - IG"
+        },
+        "adset": {
+          "id": "120247100081870728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120248221597890728",
+        "name": "24",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247100081820728",
+          "name": "Abril - Interacción - IG"
+        },
+        "adset": {
+          "id": "120247100081870728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120248221569500728",
+        "name": "27",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247099541520728",
+          "name": "Abril - Interacción - FB"
+        },
+        "adset": {
+          "id": "120247099541510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120248221587570728",
+        "name": "23",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247100081820728",
+          "name": "Abril - Interacción - IG"
+        },
+        "adset": {
+          "id": "120247100081870728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120248221516420728",
+        "name": "24",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247099541520728",
+          "name": "Abril - Interacción - FB"
+        },
+        "adset": {
+          "id": "120247099541510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120248221440160728",
+        "name": "Nuevo anuncio de Interacción",
+        "status": "ACTIVE",
+        "campaign": {
+          "id": "120247099541520728",
+          "name": "Abril - Interacción - FB"
+        },
+        "adset": {
+          "id": "120247099541510728",
+          "name": "Feed"
+        }
+      },
+      {
+        "id": "120247851739880728",
+        "name": "21 Abril",
+        "status": "PAUSED",
+        "campaign": {
+          "id": "120247100081820728",
+          "name": "Abril - Interacción - IG"
+        },
+        "adset": {
+          "id": "120247100081870728",
+          "name": "Feed"
+        }
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "QVFIVHhzODRydzZA4bG8zWWpSVTM1Rmd5V0hwSnpBTGRpVThrMHJtaWZAJd3N6OW9LX2lES0w3ZAlZA2aE1iUkpRdXl5dUxoQ1F2TGlMdkl1UTctR0tYZAEhvd2NB",
+        "after": "QVFIVGNPa1dTWVVYMk1nY25BSnRvZA0JNbDlUT05hd1hOM0h4UWVYNkluZAW5aUzFyS2FHaU9MNDFwRFhSelQzVjhrLWFxVG45aURoMnNwMHA2dHFIajc3RFlB"
+      },
+      "next": "https://graph.facebook.com/v26.0/act_2043417892891975/ads?fields=id,name,status,campaign{id,name},adset{id,name},insights{spend,impressions,reach,clicks,ctr,cpc,actions,cost_per_action_type}&limit=100&access_token=EAAhuvZAngRmYBSCTPnMtUZCvlOSzRZB5uwWxHHShYmjUICtdfQhGFRBVDDXU3wlGFzi38FuPUJknK4vIqL3bxJ7RFaABdEvyRkOXz3jLzQesASRYQ3rsZAdj3aAKW6l84zmP89yFIUdS7JNsDx3JPbaOZBUoj9ID4WdsFVoGShdBnKX5MG8MKZAYixTjK9RXgcXgZDZD&after=QVFIVGNPa1dTWVVYMk1nY25BSnRvZA0JNbDlUT05hd1hOM0h4UWVYNkluZAW5aUzFyS2FHaU9MNDFwRFhSelQzVjhrLWFxVG45aURoMnNwMHA2dHFIajc3RFlB"
+    }
+  }
+}

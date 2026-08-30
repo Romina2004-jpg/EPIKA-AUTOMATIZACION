@@ -64,22 +64,22 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-[#121212] border border-[#262626] rounded-2xl w-full max-w-md shadow-2xl overflow-hidden text-[#E5E7EB]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden text-slate-800">
         
         {/* Header */}
-        <div className="bg-[#0D0D0D] border-b border-[#262626] px-5 py-4 flex items-center justify-between">
+        <div className="bg-slate-50 border-b border-slate-200 px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#D4F634] text-black border border-black flex items-center justify-center font-bold text-sm shadow-md">
+            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-sm shadow-xs">
               <Calendar className="w-4 h-4" />
             </div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-tight font-sans">
+            <h2 className="text-sm font-bold text-slate-900 uppercase tracking-tight font-sans">
               Nuevo Periodo de Análisis
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-[#1A1A1A] hover:bg-[#262626] text-[#A3A3A3] hover:text-white border border-[#262626] transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-900 border border-slate-200 transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -89,7 +89,7 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
         <form onSubmit={handleSubmit} className="p-5 space-y-4 text-xs">
           
           <div>
-            <label className="text-[10px] text-[#A3A3A3] uppercase font-semibold block mb-1">
+            <label className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">
               Frecuencia / Tipo de Periodo
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -100,8 +100,8 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
                   onClick={() => setPeriodType(type)}
                   className={`py-2 rounded-lg border font-bold capitalize transition-colors cursor-pointer ${
                     periodType === type
-                      ? 'bg-[#D4F634] text-black border-black font-extrabold shadow-sm'
-                      : 'bg-[#1A1A1A] text-[#A3A3A3] border-[#262626] hover:text-white'
+                      ? 'bg-slate-900 text-white border-slate-900 font-extrabold shadow-xs'
+                      : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                   }`}
                 >
                   {type === 'monthly' ? 'Mensual' : type === 'bimonthly' ? 'Bimestral' : 'Anual'}
@@ -111,7 +111,7 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
           </div>
 
           <div>
-            <label className="text-[10px] text-[#A3A3A3] uppercase font-semibold block mb-1">
+            <label className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">
               Nombre / Etiqueta del Periodo
             </label>
             <input
@@ -120,12 +120,12 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
               placeholder="p. ej. Septiembre 2026 o Del 10 al 16 de Agosto"
               value={periodLabel}
               onChange={(e) => setPeriodLabel(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#333] rounded-lg px-3 py-2 text-white font-medium focus:outline-none focus:ring-1 focus:ring-[#D4F634]"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900 focus:bg-white"
             />
           </div>
 
           <div>
-            <label className="text-[10px] text-[#A3A3A3] uppercase font-semibold block mb-1">
+            <label className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">
               Rango de Fechas
             </label>
             <input
@@ -134,38 +134,38 @@ export const NewPeriodModal: React.FC<NewPeriodModalProps> = ({
               placeholder="p. ej. 1 Sep - 30 Sep 2026"
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#333] rounded-lg px-3 py-2 text-white font-medium focus:outline-none focus:ring-1 focus:ring-[#D4F634]"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900 focus:bg-white"
             />
           </div>
 
           <div>
-            <label className="text-[10px] text-[#A3A3A3] uppercase font-semibold block mb-1">
+            <label className="text-[10px] text-slate-500 uppercase font-semibold block mb-1">
               Clonar Estructura de Detonadores
             </label>
             <select
               value={cloneFromId}
               onChange={(e) => setCloneFromId(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#333] rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#D4F634]"
+              className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 focus:bg-white"
             >
               {existingPeriods.map((p) => (
-                <option key={p.id} value={p.id} className="bg-[#121212] text-white">
+                <option key={p.id} value={p.id} className="bg-white text-slate-900">
                   {p.periodLabel}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#262626]">
+          <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-3.5 py-2 rounded-lg bg-[#1A1A1A] hover:bg-[#262626] text-[#A3A3A3] hover:text-white font-semibold transition-colors cursor-pointer"
+              className="px-3.5 py-2 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-semibold transition-colors cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-4 py-2 rounded-lg bg-[#D4F634] hover:bg-[#C2E426] text-black font-extrabold shadow-lg shadow-[#D4F634]/20 transition-all active:scale-95 cursor-pointer"
+              className="px-4 py-2 rounded-lg bg-[#D4F634] hover:bg-[#C2E426] text-black border border-black font-extrabold shadow-xs transition-all active:scale-95 cursor-pointer"
             >
               Crear Periodo
             </button>

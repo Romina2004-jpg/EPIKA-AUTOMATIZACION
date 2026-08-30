@@ -5,6 +5,7 @@ import {
   FunnelCalculations,
   FunnelHistoryEntry 
 } from '../types';
+import { UnifiedCampaignControlBar } from './UnifiedCampaignControlBar';
 import { 
   Plus, 
   Trash2, 
@@ -269,25 +270,25 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
   };
 
   return (
-    <div className="space-y-6 pb-12 text-[#E5E7EB]">
+    <div className="space-y-6 pb-12 text-slate-800">
       
-      {/* Top Action Toolbar in Elegant Dark */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-[#121212] p-4 rounded-xl border border-[#262626] shadow-xl">
+      {/* Top Action Toolbar in Crisp Light */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-[#D4F634] border border-black text-black flex items-center justify-center font-black text-base shrink-0 shadow-xs">
             📊
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-tight font-sans">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-tight font-sans">
                 Plantilla de Embudo Comercial (Sierra Providencia)
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#D4F634]/15 text-[#D4F634] border border-[#D4F634]/30 flex items-center gap-1 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4F634]"></span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-lime-100 text-lime-900 border border-lime-300 flex items-center gap-1 font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime-600"></span>
                 {autoSaveStatus}
               </span>
             </div>
-            <p className="text-xs text-[#A3A3A3]">
+            <p className="text-xs text-slate-500">
               Llenado manual con cálculo instantáneo de indicadores y registro de histórico guardado abajo.
             </p>
           </div>
@@ -301,7 +302,7 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
             className={`text-xs px-3 py-1.5 rounded-lg border font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
               showMetaMessagesColumns 
                 ? 'bg-[#D4F634] text-black border-black shadow-xs' 
-                : 'bg-[#1A1A1A] text-[#A3A3A3] border-[#262626] hover:bg-[#262626]'
+                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
             }`}
             title="Mostrar u ocultar desglose de mensajes concretados en Meta"
           >
@@ -314,7 +315,7 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
             className={`text-xs px-3 py-1.5 rounded-lg border font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
               showInversionColumn 
                 ? 'bg-[#D4F634] text-black border-black shadow-xs' 
-                : 'bg-[#1A1A1A] text-[#A3A3A3] border-[#262626] hover:bg-[#262626]'
+                : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
             }`}
             title="Mostrar u ocultar columna de presupuesto invertido"
           >
@@ -324,15 +325,15 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
 
           <button
             onClick={handleAddRow}
-            className="text-xs px-3 py-1.5 rounded-lg bg-[#1A1A1A] hover:bg-[#262626] text-white font-bold flex items-center gap-1.5 border border-[#262626] transition-colors cursor-pointer"
+            className="text-xs px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold flex items-center gap-1.5 border border-slate-300 transition-colors cursor-pointer"
           >
-            <Plus className="w-3.5 h-3.5 text-[#D4F634]" />
+            <Plus className="w-3.5 h-3.5 text-slate-900" />
             <span>Agregar Fila</span>
           </button>
 
           <button
             onClick={handleSaveWithHistory}
-            className="text-xs px-4 py-1.5 rounded-lg bg-[#D4F634] hover:bg-[#c5e628] text-black font-black flex items-center gap-1.5 transition-all shadow-md active:scale-95 border border-black cursor-pointer"
+            className="text-xs px-4 py-1.5 rounded-lg bg-[#D4F634] hover:bg-[#c5e628] text-black font-black flex items-center gap-1.5 transition-all shadow-sm active:scale-95 border border-black cursor-pointer"
           >
             {savedSuccess ? <Check className="w-3.5 h-3.5 text-black" /> : <Save className="w-3.5 h-3.5 text-black" />}
             <span>{savedSuccess ? '¡Guardado!' : 'Guardar en Historial'}</span>
@@ -340,7 +341,7 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
 
           <button
             onClick={handleExportCsv}
-            className="text-xs px-3 py-1.5 rounded-lg bg-[#1A1A1A] hover:bg-[#262626] text-[#A3A3A3] hover:text-white font-semibold flex items-center gap-1.5 border border-[#262626] transition-colors cursor-pointer"
+            className="text-xs px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-semibold flex items-center gap-1.5 border border-slate-300 transition-colors cursor-pointer"
             title="Descargar archivo CSV"
           >
             <Download className="w-3.5 h-3.5" />
@@ -349,104 +350,107 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
         </div>
       </div>
 
+      {/* Multi-Platform Campaign Selector (Meta Ads, Google Ads, StackAdapt DSP) */}
+      <UnifiedCampaignControlBar />
+
       {/* =========================================================================
           THE EXACT "PLANTILLA DE EMBUDO COMERCIAL" (SIERRA PROVIDENCIA - EPIKA)
           ========================================================================= */}
-      <div className="bg-[#121212] rounded-xl shadow-2xl border border-[#262626] overflow-hidden font-sans">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden font-sans">
         
-        {/* Top Dark Header matching screenshot */}
-        <div className="bg-[#0D0D0D] border-b border-[#262626] text-white text-center py-3 px-4 font-black tracking-wider text-sm sm:text-base uppercase flex items-center justify-center gap-2">
+        {/* Top Header matching screenshot */}
+        <div className="bg-slate-900 text-white text-center py-3 px-4 font-black tracking-wider text-sm sm:text-base uppercase flex items-center justify-center gap-2">
           <span>PLANTILLA DE EMBUDO COMERCIAL</span>
         </div>
 
         {/* Project Name & Date Range Bar matching screenshot */}
-        <div className="bg-[#1A1A1A] border-b border-[#262626] flex flex-col sm:flex-row items-center justify-between text-xs text-[#E5E7EB] divide-y sm:divide-y-0 sm:divide-x divide-[#262626]">
+        <div className="bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-800 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
           <div className="w-full sm:w-1/2 p-2.5 flex items-center gap-2">
-            <span className="text-[#A3A3A3] font-bold uppercase tracking-wider text-[11px]">Proyecto / desarrollo:</span>
+            <span className="text-slate-500 font-bold uppercase tracking-wider text-[11px]">Proyecto / desarrollo:</span>
             <span className="bg-[#D4F634] text-black border border-black px-3.5 py-0.5 rounded font-black tracking-wide shadow-xs uppercase">
               Epika Chapultepec
             </span>
           </div>
-          <div className="w-full sm:w-1/2 p-2.5 sm:text-center text-[#A3A3A3] font-medium font-mono text-[11px]">
+          <div className="w-full sm:w-1/2 p-2.5 sm:text-center text-slate-500 font-medium font-mono text-[11px]">
             {period.periodLabel} ({period.dateRange})
           </div>
         </div>
 
-        {/* The Commercial Funnel Table in Elegant Dark */}
+        {/* The Commercial Funnel Table in Crisp Light */}
         <div className="overflow-x-auto">
           <table className="w-full text-center border-collapse text-xs">
             
             {/* Primary Table Headers */}
             <thead>
-              <tr className="bg-[#1A1A1A] text-[10px] text-[#A3A3A3] uppercase font-bold border-b border-[#262626]">
-                <th className="py-2.5 px-3 text-left min-w-[170px] border-r border-[#262626]">Detonador</th>
-                <th className="py-2.5 px-2 min-w-[65px] border-r border-[#262626]">Leads totales</th>
-                <th className="py-2.5 px-2 min-w-[85px] border-r border-[#262626]">Leads con datos reales</th>
+              <tr className="bg-slate-100 text-[10px] text-slate-600 uppercase font-bold border-b border-slate-200">
+                <th className="py-2.5 px-3 text-left min-w-[170px] border-r border-slate-200">Detonador</th>
+                <th className="py-2.5 px-2 min-w-[65px] border-r border-slate-200">Leads totales</th>
+                <th className="py-2.5 px-2 min-w-[85px] border-r border-slate-200">Leads con datos reales</th>
                 
                 {/* Meta Mensajes Columns */}
                 {showMetaMessagesColumns && (
                   <>
-                    <th className="py-2.5 px-2 min-w-[85px] border-r border-[#262626] bg-[#161616] text-[#D4F634]" title="Conversaciones de mensajería iniciadas (dato directo de la columna de campaña en Meta Ads)">
+                    <th className="py-2.5 px-2 min-w-[85px] border-r border-slate-200 bg-lime-50 text-lime-900 font-bold" title="Conversaciones de mensajería iniciadas (dato directo de la columna de campaña en Meta Ads)">
                       Conversaciones Iniciadas (Meta)
                     </th>
-                    <th className="py-2.5 px-2 min-w-[85px] border-r border-[#262626] bg-[#161616] text-white" title="Mensajes donde el prospecto respondió y compartió datos reales">
+                    <th className="py-2.5 px-2 min-w-[85px] border-r border-slate-200 bg-slate-50 text-slate-900 font-bold" title="Mensajes donde el prospecto respondió y compartió datos reales">
                       Mensajes Concretados (Meta)
                     </th>
                   </>
                 )}
 
-                <th className="py-2.5 px-2 min-w-[65px] border-r border-[#262626]">Mostró interés</th>
-                <th className="py-2.5 px-2 min-w-[75px] border-r border-[#262626]">Leads siguen vivos</th>
-                <th className="py-2.5 px-2 min-w-[65px] border-r border-[#262626]">Visitas</th>
-                <th className="py-2.5 px-2 min-w-[85px] border-r border-[#262626]">Habló de hacer una oferta</th>
-                <th className="py-2.5 px-2 min-w-[65px] border-r border-[#262626]">Ofertas</th>
-                <th className="py-2.5 px-2 min-w-[65px] border-r border-[#262626]">Ventas</th>
+                <th className="py-2.5 px-2 min-w-[65px] border-r border-slate-200">Mostró interés</th>
+                <th className="py-2.5 px-2 min-w-[75px] border-r border-slate-200">Leads siguen vivos</th>
+                <th className="py-2.5 px-2 min-w-[65px] border-r border-slate-200">Visitas</th>
+                <th className="py-2.5 px-2 min-w-[85px] border-r border-slate-200">Habló de hacer una oferta</th>
+                <th className="py-2.5 px-2 min-w-[65px] border-r border-slate-200">Ofertas</th>
+                <th className="py-2.5 px-2 min-w-[65px] border-r border-slate-200">Ventas</th>
                 {showInversionColumn && (
-                  <th className="py-2.5 px-2 min-w-[85px] border-r border-[#262626] bg-[#161616]">Inversión (MXN)</th>
+                  <th className="py-2.5 px-2 min-w-[85px] border-r border-slate-200 bg-slate-50">Inversión (MXN)</th>
                 )}
-                <th className="py-2.5 px-3 min-w-[130px] bg-[#161616]">Principal fuga</th>
-                <th className="py-2.5 px-1.5 w-8 bg-[#161616]"></th>
+                <th className="py-2.5 px-3 min-w-[130px] bg-slate-50">Principal fuga</th>
+                <th className="py-2.5 px-1.5 w-8 bg-slate-50"></th>
               </tr>
 
               {/* Indicador / Target Row (exact screenshot values: 133 | 80 | 64 | 48 | 10 | 6 | 2 | 1) */}
-              <tr className="bg-[#161616] text-[#A3A3A3] font-bold text-xs border-b border-[#262626]">
-                <td className="py-2 px-3 text-left font-bold border-r border-[#262626] text-white italic">
+              <tr className="bg-slate-50 text-slate-600 font-bold text-xs border-b border-slate-200">
+                <td className="py-2 px-3 text-left font-bold border-r border-slate-200 text-slate-900 italic">
                   Indicador
                 </td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">133</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-[#D4F634]">80</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">133</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-emerald-700 font-extrabold">80</td>
                 
                 {showMetaMessagesColumns && (
                   <>
-                    <td className="py-2 px-2 border-r border-[#262626] font-mono text-[#D4F634] text-[11px]" title="Objetivo Meta: Conversaciones de mensajería iniciadas">
+                    <td className="py-2 px-2 border-r border-slate-200 font-mono text-emerald-700 text-[11px]" title="Objetivo Meta: Conversaciones de mensajería iniciadas">
                       80
                     </td>
-                    <td className="py-2 px-2 border-r border-[#262626] font-mono text-white text-[11px]" title="Objetivo Meta: Concreción con datos reales (60%)">
+                    <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900 text-[11px]" title="Objetivo Meta: Concreción con datos reales (60%)">
                       48 (60%)
                     </td>
                   </>
                 )}
 
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">64</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">48</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">10</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">6</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-white">2</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono text-[#D4F634]">1</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">64</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">48</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">10</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">6</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-slate-900">2</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono text-emerald-700 font-extrabold">1</td>
                 {showInversionColumn && (
-                  <td className="py-2 px-2 border-r border-[#262626] font-mono text-[11px] text-[#D4F634]">
+                  <td className="py-2 px-2 border-r border-slate-200 font-mono text-[11px] text-emerald-700">
                     Presupuesto
                   </td>
                 )}
-                <td className="py-2 px-3 bg-[#1A1A1A] text-[#D4F634] font-semibold text-xs">
+                <td className="py-2 px-3 bg-slate-100 text-slate-800 font-semibold text-xs">
                   % asistencia
                 </td>
-                <td className="bg-[#161616]"></td>
+                <td className="bg-slate-50"></td>
               </tr>
             </thead>
 
             {/* Editable Channel Rows */}
-            <tbody className="divide-y divide-[#1F1F1F] bg-[#121212]">
+            <tbody className="divide-y divide-slate-200 bg-white">
               {rows.map((row) => {
                 const isMetaChannel = row.detonador.toLowerCase().includes('facebook') || 
                                       row.detonador.toLowerCase().includes('instagram') || 
@@ -455,37 +459,37 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
                                       row.tipoDetonador === 'whatsapp';
 
                 return (
-                  <tr key={row.id} className="hover:bg-[#1A1A1A] transition-colors text-white font-medium">
+                  <tr key={row.id} className="hover:bg-slate-50 transition-colors text-slate-900 font-medium">
                     
                     {/* Detonador Name */}
-                    <td className="py-2.5 px-3 text-left border-r border-[#1F1F1F] font-bold">
+                    <td className="py-2.5 px-3 text-left border-r border-slate-200 font-bold">
                       <input
                         type="text"
                         value={row.detonador}
                         onChange={(e) => handleTextChange(row.id, 'detonador', e.target.value)}
-                        className="w-full bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded px-1.5 py-0.5 text-xs font-bold text-white border border-transparent hover:border-[#333]"
+                        className="w-full bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded px-1.5 py-0.5 text-xs font-bold text-slate-900 border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Leads totales */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.leadsTotales}
                         onChange={(e) => handleCellChange(row.id, 'leadsTotales', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Leads con datos reales */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.leadsDatosReales}
                         onChange={(e) => handleCellChange(row.id, 'leadsDatosReales', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-[#D4F634] font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-emerald-700 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
@@ -493,143 +497,143 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
                     {showMetaMessagesColumns && (
                       <>
                         {/* Conversaciones Iniciadas (Meta Ads Manager Campaign Column) */}
-                        <td className="py-2.5 px-1 border-r border-[#1F1F1F] bg-[#161616]">
+                        <td className="py-2.5 px-1 border-r border-slate-200 bg-lime-50/50">
                           {isMetaChannel ? (
                             <input
                               type="number"
                               min="0"
                               value={row.mensajesIniciados !== undefined ? row.mensajesIniciados : row.leadsTotales}
                               onChange={(e) => handleCellChange(row.id, 'mensajesIniciados', e.target.value)}
-                              className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-[#D4F634] font-bold border border-transparent hover:border-[#333]"
+                              className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-lime-900 font-bold border border-transparent hover:border-slate-300"
                               title="Conversaciones de mensajería iniciadas en Meta (dato oficial de campaña)"
                             />
                           ) : (
-                            <span className="text-[#525252] text-xs font-mono">-</span>
+                            <span className="text-slate-400 text-xs font-mono">-</span>
                           )}
                         </td>
 
                         {/* Mensajes Concretados (Meta) */}
-                        <td className="py-2.5 px-1 border-r border-[#1F1F1F] bg-[#161616]">
+                        <td className="py-2.5 px-1 border-r border-slate-200 bg-slate-50">
                           {isMetaChannel ? (
                             <input
                               type="number"
                               min="0"
                               value={row.mensajesConcretados !== undefined ? row.mensajesConcretados : row.leadsDatosReales}
                               onChange={(e) => handleCellChange(row.id, 'mensajesConcretados', e.target.value)}
-                              className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                              className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                               title="Mensajes donde el cliente respondió y concretó datos reales"
                             />
                           ) : (
-                            <span className="text-[#525252] text-xs font-mono">-</span>
+                            <span className="text-slate-400 text-xs font-mono">-</span>
                           )}
                         </td>
                       </>
                     )}
 
                     {/* Mostró interés */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.mostroInteres}
                         onChange={(e) => handleCellChange(row.id, 'mostroInteres', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Leads siguen vivos */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.leadsVivos}
                         onChange={(e) => handleCellChange(row.id, 'leadsVivos', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Visitas */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.visitas}
                         onChange={(e) => handleCellChange(row.id, 'visitas', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Habló de hacer una oferta */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.habloOferta}
                         onChange={(e) => handleCellChange(row.id, 'habloOferta', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Ofertas */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.ofertas}
                         onChange={(e) => handleCellChange(row.id, 'ofertas', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-white font-bold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-slate-900 font-bold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Ventas */}
-                    <td className="py-2.5 px-1 border-r border-[#1F1F1F]">
+                    <td className="py-2.5 px-1 border-r border-slate-200">
                       <input
                         type="number"
                         min="0"
                         value={row.ventas}
                         onChange={(e) => handleCellChange(row.id, 'ventas', e.target.value)}
-                        className="w-14 text-center bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 font-mono text-[#D4F634] font-extrabold border border-transparent hover:border-[#333]"
+                        className="w-14 text-center bg-transparent hover:bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 font-mono text-emerald-700 font-extrabold border border-transparent hover:border-slate-300"
                       />
                     </td>
 
                     {/* Inversión */}
                     {showInversionColumn && (
-                      <td className="py-2.5 px-1 border-r border-[#1F1F1F] bg-[#161616]">
+                      <td className="py-2.5 px-1 border-r border-slate-200 bg-slate-50">
                         <div className="flex items-center justify-center font-mono">
-                          <span className="text-[#737373] text-[10px] mr-0.5">$</span>
+                          <span className="text-slate-400 text-[10px] mr-0.5">$</span>
                           <input
                             type="number"
                             min="0"
                             value={row.inversion}
                             onChange={(e) => handleCellChange(row.id, 'inversion', e.target.value)}
-                            className="w-16 text-right bg-transparent hover:bg-[#1A1A1A] focus:bg-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#D4F634] rounded py-0.5 text-[#E5E7EB] font-bold border border-transparent hover:border-[#333]"
+                            className="w-16 text-right bg-transparent hover:bg-slate-100 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-400 rounded py-0.5 text-slate-900 font-bold border border-transparent hover:border-slate-300"
                           />
                         </div>
                       </td>
                     )}
 
                     {/* Principal fuga */}
-                    <td className="py-2.5 px-3 border-r border-[#1F1F1F] bg-[#1A1A1A] text-white font-medium">
+                    <td className="py-2.5 px-3 border-r border-slate-200 bg-slate-50 text-slate-900 font-medium">
                       <select
                         value={row.principalFuga}
                         onChange={(e) => handleTextChange(row.id, 'principalFuga', e.target.value)}
-                        className="bg-transparent text-xs font-bold text-[#D4F634] focus:outline-none cursor-pointer"
+                        className="bg-transparent text-xs font-bold text-slate-900 focus:outline-none cursor-pointer"
                       >
-                        <option value="% calidad de datos" className="bg-[#121212] text-white">% calidad de datos</option>
-                        <option value="% interés inicial" className="bg-[#121212] text-white">% interés inicial</option>
-                        <option value="% leads vivos" className="bg-[#121212] text-white">% leads vivos</option>
-                        <option value="% asistencia" className="bg-[#121212] text-white">% asistencia</option>
-                        <option value="% interés en oferta" className="bg-[#121212] text-white">% interés en oferta</option>
-                        <option value="% oferta" className="bg-[#121212] text-white">% oferta</option>
-                        <option value="% cierre de oferta" className="bg-[#121212] text-white">% cierre de oferta</option>
+                        <option value="% calidad de datos" className="bg-white text-slate-900">% calidad de datos</option>
+                        <option value="% interés inicial" className="bg-white text-slate-900">% interés inicial</option>
+                        <option value="% leads vivos" className="bg-white text-slate-900">% leads vivos</option>
+                        <option value="% asistencia" className="bg-white text-slate-900">% asistencia</option>
+                        <option value="% interés en oferta" className="bg-white text-slate-900">% interés en oferta</option>
+                        <option value="% oferta" className="bg-white text-slate-900">% oferta</option>
+                        <option value="% cierre de oferta" className="bg-white text-slate-900">% cierre de oferta</option>
                       </select>
                     </td>
 
                     {/* Delete Row Button */}
-                    <td className="py-2.5 px-1 bg-[#121212]">
+                    <td className="py-2.5 px-1 bg-white">
                       <button
                         onClick={() => handleDeleteRow(row.id)}
-                        className="text-[#525252] hover:text-rose-400 p-1 transition-colors cursor-pointer"
+                        className="text-slate-400 hover:text-rose-600 p-1 transition-colors cursor-pointer"
                         title="Eliminar fila"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -640,43 +644,43 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
                 );
               })}
 
-              {/* TOTAL ROW in Elegant Dark */}
-              <tr className="bg-[#1A1A1A] text-white font-extrabold text-[13px] border-t-2 border-[#262626]">
-                <td className="py-3 px-3 text-left border-r border-[#262626] font-black tracking-wider text-[#D4F634]">
+              {/* TOTAL ROW in Crisp Light */}
+              <tr className="bg-slate-100 text-slate-900 font-extrabold text-[13px] border-t-2 border-slate-300">
+                <td className="py-3 px-3 text-left border-r border-slate-200 font-black tracking-wider text-slate-900">
                   TOTAL
                 </td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono">{calculations.totalLeads}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono text-[#D4F634]">{calculations.totalLeadsReales}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono">{calculations.totalLeads}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono text-emerald-700">{calculations.totalLeadsReales}</td>
                 
                 {showMetaMessagesColumns && (
                   <>
-                    <td className="py-3 px-2 border-r border-[#262626] font-mono text-[#D4F634] bg-[#1E1E1E]" title="Total Conversaciones de Mensajería Iniciadas en Meta (Columna Campañas)">
+                    <td className="py-3 px-2 border-r border-slate-200 font-mono text-lime-950 bg-lime-100/70" title="Total Conversaciones de Mensajería Iniciadas en Meta (Columna Campañas)">
                       {calculations.totalMensajesIniciadosMeta}
                     </td>
-                    <td className="py-3 px-2 border-r border-[#262626] font-mono text-white bg-[#202020]" title="Total Mensajes Concretados (Tasa de Concreción)">
+                    <td className="py-3 px-2 border-r border-slate-200 font-mono text-slate-900 bg-slate-200/60" title="Total Mensajes Concretados (Tasa de Concreción)">
                       {calculations.totalMensajesConcretadosMeta}{' '}
-                      <span className="text-[10px] text-[#D4F634] font-normal">
+                      <span className="text-[10px] text-slate-600 font-normal">
                         ({calculations.pctMensajesConcretadosMeta.toFixed(0)}%)
                       </span>
                     </td>
                   </>
                 )}
 
-                <td className="py-3 px-2 border-r border-[#262626] font-mono">{calculations.totalMostroInteres}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono">{calculations.totalLeadsVivos}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono text-white">{calculations.totalVisitas}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono">{calculations.totalHabloOferta}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono">{calculations.totalOfertas}</td>
-                <td className="py-3 px-2 border-r border-[#262626] font-mono text-[#D4F634]">{calculations.totalVentas}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono">{calculations.totalMostroInteres}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono">{calculations.totalLeadsVivos}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono text-slate-900">{calculations.totalVisitas}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono">{calculations.totalHabloOferta}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono">{calculations.totalOfertas}</td>
+                <td className="py-3 px-2 border-r border-slate-200 font-mono text-emerald-700">{calculations.totalVentas}</td>
                 {showInversionColumn && (
-                  <td className="py-3 px-2 border-r border-[#262626] font-mono font-bold text-white bg-[#222]">
+                  <td className="py-3 px-2 border-r border-slate-200 font-mono font-bold text-slate-900 bg-slate-200/50">
                     ${calculations.totalInversion.toLocaleString('es-MX')}
                   </td>
                 )}
-                <td className="py-3 px-3 bg-[#1A1A1A] text-[#D4F634] font-extrabold">
+                <td className="py-3 px-3 bg-slate-100 text-slate-900 font-extrabold">
                   % interés en oferta
                 </td>
-                <td className="bg-[#1A1A1A]"></td>
+                <td className="bg-slate-100"></td>
               </tr>
             </tbody>
 
@@ -686,60 +690,60 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
         {/* =========================================================================
             LOWER SECTION 1: % CONVERSIÓN VS ETAPA ANTERIOR
             ========================================================================= */}
-        <div className="border-t-2 border-[#262626] overflow-x-auto bg-[#121212]">
+        <div className="border-t-2 border-slate-200 overflow-x-auto bg-white">
           <table className="w-full text-center border-collapse text-xs">
             <thead>
-              <tr className="bg-[#1A1A1A] text-[10px] text-[#A3A3A3] uppercase font-bold border-b border-[#262626]">
-                <th className="py-2.5 px-4 text-left min-w-[200px] border-r border-[#262626]"></th>
-                <th className="py-2 px-2 min-w-[100px] border-r border-[#262626]">% calidad de datos</th>
-                <th className="py-2 px-2 min-w-[100px] border-r border-[#262626]">% interés inicial</th>
-                <th className="py-2 px-2 min-w-[100px] border-r border-[#262626]">% leads vivos</th>
-                <th className="py-2 px-2 min-w-[100px] border-r border-[#262626]">% asistencia</th>
-                <th className="py-2 px-2 min-w-[105px] border-r border-[#262626]">% interés en oferta</th>
-                <th className="py-2 px-2 min-w-[90px] border-r border-[#262626]">% oferta</th>
+              <tr className="bg-slate-100 text-[10px] text-slate-600 uppercase font-bold border-b border-slate-200">
+                <th className="py-2.5 px-4 text-left min-w-[200px] border-r border-slate-200"></th>
+                <th className="py-2 px-2 min-w-[100px] border-r border-slate-200">% calidad de datos</th>
+                <th className="py-2 px-2 min-w-[100px] border-r border-slate-200">% interés inicial</th>
+                <th className="py-2 px-2 min-w-[100px] border-r border-slate-200">% leads vivos</th>
+                <th className="py-2 px-2 min-w-[100px] border-r border-slate-200">% asistencia</th>
+                <th className="py-2 px-2 min-w-[105px] border-r border-slate-200">% interés en oferta</th>
+                <th className="py-2 px-2 min-w-[90px] border-r border-slate-200">% oferta</th>
                 <th className="py-2 px-2 min-w-[100px]">% cierre de oferta</th>
               </tr>
 
               {/* Benchmark Indicador row from screenshot: 60% | 80% | 75% | 21% | 60% | 33% | 50% */}
-              <tr className="bg-[#161616] text-[#A3A3A3] font-bold text-[12px] border-b border-[#262626]">
-                <td className="py-2 px-4 text-right border-r border-[#262626] font-bold italic text-white">
+              <tr className="bg-slate-50 text-slate-600 font-bold text-[12px] border-b border-slate-200">
+                <td className="py-2 px-4 text-right border-r border-slate-200 font-bold italic text-slate-900">
                   Indicador
                 </td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">60%</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">80%</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">75%</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">21%</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">60%</td>
-                <td className="py-2 px-2 border-r border-[#262626] font-mono">33%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">60%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">80%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">75%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">21%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">60%</td>
+                <td className="py-2 px-2 border-r border-slate-200 font-mono">33%</td>
                 <td className="py-2 px-2 font-mono">50%</td>
               </tr>
             </thead>
 
             {/* Calculated Conversion vs Previous Stage */}
-            <tbody className="bg-[#121212] font-bold text-white">
-              <tr className="border-b border-[#262626]">
-                <td className="py-2.5 px-4 text-left border-r border-[#262626] font-extrabold text-[#D4F634]">
+            <tbody className="bg-white font-bold text-slate-900">
+              <tr className="border-b border-slate-200">
+                <td className="py-2.5 px-4 text-left border-r border-slate-200 font-extrabold text-slate-900">
                   Conversión vs. etapa anterior
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono text-[#D4F634]">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono text-emerald-700">
                   {calculations.pctCalidadDatos.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctInteresInicial.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctLeadsVivos.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono text-white">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono text-slate-900">
                   {calculations.pctAsistencia.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctInteresOferta.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctOferta.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 font-mono text-[#D4F634]">
+                <td className="py-2.5 px-2 font-mono text-emerald-700">
                   {calculations.pctCierreOferta.toFixed(1)}%
                 </td>
               </tr>
@@ -750,48 +754,48 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
         {/* =========================================================================
             LOWER SECTION 2: % CONVERSIÓN ACUMULADA
             ========================================================================= */}
-        <div className="border-t border-[#262626] overflow-x-auto bg-[#121212]">
+        <div className="border-t border-slate-200 overflow-x-auto bg-white">
           <table className="w-full text-center border-collapse text-xs">
             <thead>
-              <tr className="bg-[#161616] text-[#A3A3A3] font-bold text-[12px] border-b border-[#262626]">
-                <td className="py-2 px-4 text-right min-w-[200px] border-r border-[#262626] font-bold italic text-white">
+              <tr className="bg-slate-50 text-slate-600 font-bold text-[12px] border-b border-slate-200">
+                <td className="py-2 px-4 text-right min-w-[200px] border-r border-slate-200 font-bold italic text-slate-900">
                   Indicador
                 </td>
-                <td className="py-2 px-2 min-w-[100px] border-r border-[#262626] font-mono">100%</td>
-                <td className="py-2 px-2 min-w-[100px] border-r border-[#262626] font-mono">80%</td>
-                <td className="py-2 px-2 min-w-[100px] border-r border-[#262626] font-mono">60%</td>
-                <td className="py-2 px-2 min-w-[100px] border-r border-[#262626] font-mono">13%</td>
-                <td className="py-2 px-2 min-w-[105px] border-r border-[#262626] font-mono">8%</td>
-                <td className="py-2 px-2 min-w-[90px] border-r border-[#262626] font-mono">3%</td>
+                <td className="py-2 px-2 min-w-[100px] border-r border-slate-200 font-mono">100%</td>
+                <td className="py-2 px-2 min-w-[100px] border-r border-slate-200 font-mono">80%</td>
+                <td className="py-2 px-2 min-w-[100px] border-r border-slate-200 font-mono">60%</td>
+                <td className="py-2 px-2 min-w-[100px] border-r border-slate-200 font-mono">13%</td>
+                <td className="py-2 px-2 min-w-[105px] border-r border-slate-200 font-mono">8%</td>
+                <td className="py-2 px-2 min-w-[90px] border-r border-slate-200 font-mono">3%</td>
                 <td className="py-2 px-2 min-w-[100px] font-mono">1%</td>
               </tr>
             </thead>
 
             {/* Calculated Cumulative Conversion */}
-            <tbody className="bg-[#121212] font-bold text-white">
+            <tbody className="bg-white font-bold text-slate-900">
               <tr>
-                <td className="py-2.5 px-4 text-left border-r border-[#262626] font-extrabold text-[#D4F634]">
+                <td className="py-2.5 px-4 text-left border-r border-slate-200 font-extrabold text-slate-900">
                   Conversión acumulada
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono text-[#D4F634]">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono text-emerald-700">
                   {calculations.pctAcumuladoLeadsReales.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctAcumuladoInteres.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctAcumuladoVivos.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono text-white">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono text-slate-900">
                   {calculations.pctAcumuladoVisitas.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctAcumuladoHabloOferta.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 border-r border-[#262626] font-mono">
+                <td className="py-2.5 px-2 border-r border-slate-200 font-mono">
                   {calculations.pctAcumuladoOfertas.toFixed(1)}%
                 </td>
-                <td className="py-2.5 px-2 font-mono text-[#D4F634]">
+                <td className="py-2.5 px-2 font-mono text-emerald-700">
                   {calculations.pctAcumuladoVentas.toFixed(1)}%
                 </td>
               </tr>
@@ -804,32 +808,32 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
       {/* =========================================================================
           APARTADO DIRECTO ABAJO DE LOS DATOS: REGISTRO & HISTORIAL DE GUARDADOS
           ========================================================================= */}
-      <section id="section-historial-guardados" className="bg-[#121212] rounded-xl border border-[#262626] p-5 shadow-2xl space-y-4">
+      <section id="section-historial-guardados" className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
         
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#262626] gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 gap-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#D4F634] text-black border border-black flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-sm">
               <History className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-white uppercase tracking-tight flex items-center gap-2 font-sans">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-tight flex items-center gap-2 font-sans">
                 Historial de Registros & Versiones Guardadas del Embudo
               </h3>
-              <p className="text-xs text-[#A3A3A3]">
+              <p className="text-xs text-slate-500">
                 Cada cambio guardado se registra aquí abajo con su snapshot de métricas, fecha exacta y opción de restauración.
               </p>
             </div>
           </div>
 
-          <span className="text-xs text-white font-mono bg-[#1A1A1A] px-3 py-1 rounded border border-[#262626] self-start sm:self-auto font-bold">
+          <span className="text-xs text-slate-700 font-mono bg-slate-100 px-3 py-1 rounded border border-slate-200 self-start sm:self-auto font-bold">
             {historyLog.length} registro(s) almacenados
           </span>
         </div>
 
         {/* Quick Note & Save Form */}
-        <div className="bg-[#181818] border border-[#262626] rounded-lg p-3.5 flex flex-col sm:flex-row items-center gap-3">
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 flex flex-col sm:flex-row items-center gap-3">
           <div className="w-full sm:flex-1">
-            <label className="text-[10px] text-[#A3A3A3] uppercase font-bold block mb-1">
+            <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">
               Guardar nueva revisión con nota descriptiva
             </label>
             <input
@@ -837,13 +841,13 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
               placeholder="p. ej. Cierre de semana con 3 citas confirmadas en Showroom Epika"
               value={saveNote}
               onChange={(e) => setSaveNote(e.target.value)}
-              className="w-full bg-[#0A0A0A] border border-[#333] rounded px-3 py-1.5 text-xs text-white placeholder-[#737373] focus:outline-none focus:ring-1 focus:ring-[#D4F634]"
+              className="w-full bg-white border border-slate-300 rounded px-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-400"
             />
           </div>
 
           <button
             onClick={handleSaveWithHistory}
-            className="w-full sm:w-auto mt-2 sm:mt-4 px-4 py-2 rounded-lg bg-[#D4F634] hover:bg-[#c5e628] text-black font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md active:scale-95 shrink-0 border border-black cursor-pointer"
+            className="w-full sm:w-auto mt-2 sm:mt-4 px-4 py-2 rounded-lg bg-[#D4F634] hover:bg-[#c5e628] text-black font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95 shrink-0 border border-black cursor-pointer"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Guardar en Historial</span>
@@ -855,26 +859,26 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
           {historyLog.map((entry, index) => (
             <div 
               key={entry.id}
-              className="bg-[#1A1A1A] border border-[#262626] hover:border-[#D4F634]/40 rounded-xl p-4 transition-all"
+              className="bg-slate-50/70 border border-slate-200 hover:border-slate-300 rounded-xl p-4 transition-all"
             >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-[#262626]">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-slate-200">
                 
                 <div className="flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-md bg-[#262626] text-[#D4F634] font-bold text-xs flex items-center justify-center font-mono">
+                  <span className="w-6 h-6 rounded-md bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center font-mono">
                     #{historyLog.length - index}
                   </span>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-white font-mono flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-[#D4F634]" />
+                      <span className="text-xs font-bold text-slate-900 font-mono flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-slate-600" />
                         {entry.timestamp}
                       </span>
-                      <span className="text-[10px] bg-[#D4F634]/15 text-[#D4F634] px-2 py-0.5 rounded border border-[#D4F634]/30 font-bold">
+                      <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded border border-slate-300 font-bold">
                         {entry.savedBy}
                       </span>
                     </div>
                     {entry.note && (
-                      <p className="text-xs text-[#A3A3A3] mt-1 italic">
+                      <p className="text-xs text-slate-600 mt-1 italic">
                         "{entry.note}"
                       </p>
                     )}
@@ -884,7 +888,7 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleRestoreRevision(entry)}
-                    className="text-xs px-3 py-1.5 rounded-lg bg-[#262626] hover:bg-[#D4F634] text-[#E5E7EB] hover:text-black font-bold flex items-center gap-1.5 transition-colors border border-[#333] cursor-pointer"
+                    className="text-xs px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-800 font-bold flex items-center gap-1.5 transition-colors border border-slate-300 cursor-pointer shadow-xs"
                     title="Cargar esta versión en la tabla superior"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
@@ -897,39 +901,39 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
               {/* Snapshot Metrics Chips */}
               <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 pt-3 text-center">
                 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Leads Totales</span>
-                  <span className="text-sm font-bold text-white font-mono">{entry.snapshot.totalLeads}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Leads Totales</span>
+                  <span className="text-sm font-bold text-slate-900 font-mono">{entry.snapshot.totalLeads}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Leads Reales</span>
-                  <span className="text-sm font-bold text-[#D4F634] font-mono">{entry.snapshot.totalLeadsReales}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Leads Reales</span>
+                  <span className="text-sm font-bold text-emerald-700 font-mono">{entry.snapshot.totalLeadsReales}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Mensajes Meta</span>
-                  <span className="text-sm font-bold text-white font-mono">{entry.snapshot.totalMensajesConcretadosMeta || 0}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Mensajes Meta</span>
+                  <span className="text-sm font-bold text-slate-900 font-mono">{entry.snapshot.totalMensajesConcretadosMeta || 0}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Citas Showroom</span>
-                  <span className="text-sm font-bold text-white font-mono">{entry.snapshot.totalVisitas}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Citas Showroom</span>
+                  <span className="text-sm font-bold text-slate-900 font-mono">{entry.snapshot.totalVisitas}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Ventas</span>
-                  <span className="text-sm font-bold text-[#D4F634] font-mono">{entry.snapshot.totalVentas}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Ventas</span>
+                  <span className="text-sm font-bold text-emerald-700 font-mono">{entry.snapshot.totalVentas}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626]">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">Inversión</span>
-                  <span className="text-sm font-bold text-[#E5E7EB] font-mono">${entry.snapshot.totalInversion.toLocaleString('es-MX')}</span>
+                <div className="bg-white p-2 rounded border border-slate-200">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">Inversión</span>
+                  <span className="text-sm font-bold text-slate-900 font-mono">${entry.snapshot.totalInversion.toLocaleString('es-MX')}</span>
                 </div>
 
-                <div className="bg-[#121212] p-2 rounded border border-[#262626] col-span-2 sm:col-span-1">
-                  <span className="text-[10px] text-[#A3A3A3] uppercase block font-semibold">CAC Resultante</span>
-                  <span className="text-sm font-bold text-[#D4F634] font-mono">
+                <div className="bg-white p-2 rounded border border-slate-200 col-span-2 sm:col-span-1">
+                  <span className="text-[10px] text-slate-500 uppercase block font-semibold">CAC Resultante</span>
+                  <span className="text-sm font-bold text-emerald-700 font-mono">
                     {entry.snapshot.cac > 0 ? `$${entry.snapshot.cac.toLocaleString('es-MX')}` : 'N/A'}
                   </span>
                 </div>
@@ -942,12 +946,12 @@ export const CommercialFunnelTable: React.FC<CommercialFunnelTableProps> = ({
 
       </section>
 
-      {/* Guide note in Elegant Dark */}
-      <div className="bg-[#121212] border border-[#262626] rounded-xl p-4 text-xs text-[#A3A3A3] flex items-start gap-3">
-        <Info className="w-4 h-4 text-[#D4F634] shrink-0 mt-0.5" />
+      {/* Guide note in Crisp Light */}
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600 flex items-start gap-3">
+        <Info className="w-4 h-4 text-slate-700 shrink-0 mt-0.5" />
         <div className="space-y-1">
-          <p className="font-bold text-white">Guía de Interpretación de Fuga Comercial Epika Chapultepec:</p>
-          <ul className="list-disc list-inside space-y-0.5 text-[#A3A3A3]">
+          <p className="font-bold text-slate-900">Guía de Interpretación de Fuga Comercial Epika Chapultepec:</p>
+          <ul className="list-disc list-inside space-y-0.5 text-slate-600">
             <li><strong>% calidad de datos:</strong> Porcentaje de leads que cuentan con teléfono y nombre verídico según reporte de Sierra Providencia.</li>
             <li><strong>Mensajes Concretados (Meta):</strong> Conversaciones de WhatsApp / Direct donde el usuario respondió activamente con interés.</li>
             <li><strong>% asistencia:</strong> Porcentaje de prospectos con interés que asisten a cita presencial en el showroom.</li>

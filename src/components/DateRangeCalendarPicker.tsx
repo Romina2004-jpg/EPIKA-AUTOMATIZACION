@@ -36,6 +36,48 @@ const MONTH_NAMES = [
 
 const DAYS_OF_WEEK = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'];
 
+const formatDateLocal = (d: Date) => {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const getTodayStr = () => formatDateLocal(new Date());
+
+const getOffsetDateStr = (daysOffset: number) => {
+  const d = new Date();
+  d.setDate(d.getDate() + daysOffset);
+  return formatDateLocal(d);
+};
+
+const getStartOfMonthStr = () => {
+  const d = new Date();
+  d.setDate(1);
+  return formatDateLocal(d);
+};
+
+const getStartOfWeekStr = () => {
+  const d = new Date();
+  const day = d.getDay() || 7; 
+  d.setDate(d.getDate() - day + 1);
+  return formatDateLocal(d);
+};
+
+const getStartOfBimesterStr = () => {
+  const d = new Date();
+  const month = d.getMonth();
+  const bimesterMonth = Math.floor(month / 2) * 2;
+  d.setMonth(bimesterMonth, 1);
+  return formatDateLocal(d);
+};
+
+const getStartOfYearStr = () => {
+  const d = new Date();
+  d.setMonth(0, 1);
+  return formatDateLocal(d);
+};
+
 export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = ({
   periods,
   selectedPeriodId,
@@ -57,11 +99,13 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
   const [hoverDate, setHoverDate] = useState<string | null>(null);
 
   // Month navigation in calendar
-  const initialYear = activePeriod.startDate ? parseInt(activePeriod.startDate.split('-')[0], 10) : 2026;
-  const initialMonth = activePeriod.startDate ? parseInt(activePeriod.startDate.split('-')[1], 10) - 1 : 7; // August = 7 (0-indexed)
+  const initialYear = activePeriod.startDate ? parseInt(activePeriod.startDate.split('-')[0], 10) : new Date().getFullYear();
+  const initialMonth = activePeriod.startDate ? parseInt(activePeriod.startDate.split('-')[1], 10) - 1 : new Date().getMonth();
   
   const [viewYear, setViewYear] = useState<number>(initialYear);
   const [viewMonth, setViewMonth] = useState<number>(initialMonth);
+
+  const todayStr = getTodayStr();
 
   // Synchronize when active period changes
   useEffect(() => {
@@ -349,64 +393,35 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-08-01', '2026-08-31', 'period-mensual-agosto')}
+                onClick={() => handlePresetSelect(getStartOfMonthStr(), todayStr, 'period-mensual-actual')}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-08-01' && endDate === '2026-08-31'
+                  startDate === getStartOfMonthStr() && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
               >
-                <span>Agosto 2026 (Mes Actual)</span>
-                <span className="text-[10px] text-slate-400">31d</span>
+                <span>{MONTH_NAMES[new Date().getMonth()]} {new Date().getFullYear()} (Mes Actual)</span>
+                <span className="text-[10px] text-slate-400">{calculateDaysBetween(getStartOfMonthStr(), todayStr)}d</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-08-10', '2026-08-26')}
+                onClick={() => handlePresetSelect(getStartOfWeekStr(), todayStr, 'period-semana-actual')}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-08-10' && endDate === '2026-08-26'
+                  startDate === getStartOfWeekStr() && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
               >
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span>10 - 26 Ago (Google Ads)</span>
-                </div>
-                <span className="text-[10px] font-bold text-emerald-700">17d</span>
+                <span>Semana Actual (Lunes a Hoy)</span>
+                <span className="text-[10px] text-slate-400">{calculateDaysBetween(getStartOfWeekStr(), todayStr)}d</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-07-27', '2026-08-25')}
+                onClick={() => handlePresetSelect(getOffsetDateStr(-6), todayStr)}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-07-27' && endDate === '2026-08-25'
-                    ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                    : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
-                }`}
-              >
-                <span>27 Jul - 25 Ago (Meta/DSP)</span>
-                <span className="text-[10px] text-slate-400">30d</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handlePresetSelect('2026-08-03', '2026-08-09', 'period-semana-actual')}
-                className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-08-03' && endDate === '2026-08-09'
-                    ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                    : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
-                }`}
-              >
-                <span>Semana 3 al 9 de Agosto</span>
-                <span className="text-[10px] text-slate-400">7d</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handlePresetSelect('2026-08-20', '2026-08-27')}
-                className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-08-20' && endDate === '2026-08-27'
+                  startDate === getOffsetDateStr(-6) && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
@@ -417,9 +432,9 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-08-13', '2026-08-27')}
+                onClick={() => handlePresetSelect(getOffsetDateStr(-13), todayStr)}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-08-13' && endDate === '2026-08-27'
+                  startDate === getOffsetDateStr(-13) && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
@@ -430,9 +445,9 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-07-28', '2026-08-27')}
+                onClick={() => handlePresetSelect(getOffsetDateStr(-29), todayStr)}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-07-28' && endDate === '2026-08-27'
+                  startDate === getOffsetDateStr(-29) && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
@@ -443,28 +458,28 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-07-01', '2026-08-31', 'period-bimestral-jul-ago')}
+                onClick={() => handlePresetSelect(getStartOfBimesterStr(), todayStr, 'period-bimestral-actual')}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-07-01' && endDate === '2026-08-31'
+                  startDate === getStartOfBimesterStr() && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
               >
-                <span>Bimestre Julio - Agosto</span>
-                <span className="text-[10px] text-slate-400">62d</span>
+                <span>Bimestre Actual</span>
+                <span className="text-[10px] text-slate-400">{calculateDaysBetween(getStartOfBimesterStr(), todayStr)}d</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => handlePresetSelect('2026-01-01', '2026-12-31', 'period-anual-2026')}
+                onClick={() => handlePresetSelect(getStartOfYearStr(), todayStr, 'period-anual-actual')}
                 className={`w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                  startDate === '2026-01-01' && endDate === '2026-12-31'
+                  startDate === getStartOfYearStr() && endDate === todayStr
                     ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     : 'text-slate-700 hover:bg-slate-200/60 hover:text-slate-900'
                 }`}
               >
-                <span>Año 2026 Completo (YTD)</span>
-                <span className="text-[10px] text-slate-400">365d</span>
+                <span>Año {new Date().getFullYear()} Completo (YTD)</span>
+                <span className="text-[10px] text-slate-400">{calculateDaysBetween(getStartOfYearStr(), todayStr)}d</span>
               </button>
             </div>
 
@@ -518,30 +533,37 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
                     const isStart = isSelectedStart(item.dateStr);
                     const isEnd = isSelectedEnd(item.dateStr);
                     const inRange = isInRange(item.dateStr);
+                    const isFuture = item.dateStr > todayStr;
 
-                    let dayClasses = "h-8 w-full rounded-md text-xs font-semibold flex items-center justify-center transition-all cursor-pointer relative ";
+                    let dayClasses = "h-8 w-full rounded-md text-xs font-semibold flex items-center justify-center transition-all relative ";
 
-                    if (isStart && isEnd) {
-                      dayClasses += "bg-emerald-600 text-white font-bold shadow-xs z-10";
-                    } else if (isStart) {
-                      dayClasses += "bg-emerald-600 text-white font-bold shadow-xs rounded-r-none z-10";
-                    } else if (isEnd) {
-                      dayClasses += "bg-emerald-600 text-white font-bold shadow-xs rounded-l-none z-10";
-                    } else if (inRange) {
-                      dayClasses += "bg-emerald-50 text-emerald-900 rounded-none hover:bg-emerald-100";
-                    } else if (!item.isCurrentMonth) {
-                      dayClasses += "text-slate-300 hover:bg-slate-100 hover:text-slate-500";
+                    if (isFuture) {
+                      dayClasses += "text-slate-200 cursor-not-allowed";
                     } else {
-                      dayClasses += "text-slate-800 hover:bg-slate-100";
+                      dayClasses += "cursor-pointer ";
+                      if (isStart && isEnd) {
+                        dayClasses += "bg-emerald-600 text-white font-bold shadow-xs z-10";
+                      } else if (isStart) {
+                        dayClasses += "bg-emerald-600 text-white font-bold shadow-xs rounded-r-none z-10";
+                      } else if (isEnd) {
+                        dayClasses += "bg-emerald-600 text-white font-bold shadow-xs rounded-l-none z-10";
+                      } else if (inRange) {
+                        dayClasses += "bg-emerald-50 text-emerald-900 rounded-none hover:bg-emerald-100";
+                      } else if (!item.isCurrentMonth) {
+                        dayClasses += "text-slate-300 hover:bg-slate-100 hover:text-slate-500";
+                      } else {
+                        dayClasses += "text-slate-800 hover:bg-slate-100";
+                      }
                     }
 
                     return (
                       <button
                         key={index}
                         type="button"
+                        disabled={isFuture}
                         onClick={() => handleDayClick(item.dateStr)}
-                        onMouseEnter={() => setHoverDate(item.dateStr)}
-                        onMouseLeave={() => setHoverDate(null)}
+                        onMouseEnter={() => !isFuture && setHoverDate(item.dateStr)}
+                        onMouseLeave={() => !isFuture && setHoverDate(null)}
                         className={dayClasses}
                       >
                         {item.dayNumber}
@@ -576,13 +598,13 @@ export const DateRangeCalendarPicker: React.FC<DateRangeCalendarPickerProps> = (
             <button
               type="button"
               onClick={() => {
-                setStartDate('2026-08-01');
-                setEndDate('2026-08-27');
+                setStartDate(getStartOfMonthStr());
+                setEndDate(todayStr);
               }}
               className="text-xs text-slate-500 hover:text-slate-900 font-medium flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-slate-200/60 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3 h-3" />
-              Restablecer a Agosto
+              Restablecer a {MONTH_NAMES[new Date().getMonth()]}
             </button>
 
             <div className="flex items-center gap-2">

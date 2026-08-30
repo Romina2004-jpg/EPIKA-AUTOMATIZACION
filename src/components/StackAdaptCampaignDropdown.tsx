@@ -12,7 +12,6 @@ import {
   MapPin,
   TrendingUp
 } from 'lucide-react';
-import { STACKADAPT_ACCOUNT_INFO, STACKADAPT_CAMPAIGNS_DATA, StackAdaptCampaignDetail } from '../data/stackAdaptData';
 
 interface StackAdaptCampaignDropdownProps {
   selectedCampaignId?: string;
@@ -43,17 +42,17 @@ export const StackAdaptCampaignDropdown: React.FC<StackAdaptCampaignDropdownProp
   const selectedCampaign: StackAdaptCampaignDetail | undefined = 
     activeSelectedId === 'all' 
       ? undefined 
-      : STACKADAPT_CAMPAIGNS_DATA.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
+      : stackCampaigns.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
 
   const allCampaignsTotals = {
-    spend: STACKADAPT_ACCOUNT_INFO.totalSpend,
-    impressions: STACKADAPT_ACCOUNT_INFO.totalImpressions,
-    clicks: STACKADAPT_ACCOUNT_INFO.totalClicks,
-    ctr: STACKADAPT_ACCOUNT_INFO.avgCtr,
-    cpc: STACKADAPT_ACCOUNT_INFO.avgCpc,
-    cpm: STACKADAPT_ACCOUNT_INFO.avgCpm,
-    leadsReported: STACKADAPT_ACCOUNT_INFO.totalLeadsReported,
-    cpl: STACKADAPT_ACCOUNT_INFO.avgCpl
+    spend: (stackCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0)),
+    impressions: (stackCampaigns.reduce((sum, c) => sum + (c.impressions || 0), 0)),
+    clicks: (stackCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0)),
+    ctr: (stackCampaigns.reduce((sum, c) => sum + (c.ctr || 0), 0) / (stackCampaigns.length || 1)),
+    cpc: (stackCampaigns.reduce((sum, c) => sum + (c.cpc || 0), 0) / (stackCampaigns.length || 1)),
+    cpm: (stackCampaigns.reduce((sum, c) => sum + (c.cpm || 0), 0) / (stackCampaigns.length || 1)),
+    leadsReported: (stackCampaigns.reduce((sum, c) => sum + (c.leadsReported || 0), 0)),
+    cpl: (stackCampaigns.reduce((sum, c) => sum + (c.costPerLead || 0), 0) / (stackCampaigns.length || 1))
   };
 
   const currentMetrics = selectedCampaign ? {
@@ -79,11 +78,11 @@ export const StackAdaptCampaignDropdown: React.FC<StackAdaptCampaignDropdownProp
             <div className="flex items-center gap-2">
               <span className="font-bold text-slate-900 text-sm">StackAdapt DSP Programmatic</span>
               <span className="text-[10px] bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/30 px-1.5 py-0.2 rounded font-mono font-bold">
-                Account: {STACKADAPT_ACCOUNT_INFO.accountId}
+                Account: {''}
               </span>
             </div>
             <p className="text-[11px] text-slate-500">
-              {STACKADAPT_ACCOUNT_INFO.accountName} • Geofencing & Audiencias AAA • {STACKADAPT_ACCOUNT_INFO.periodLabel}
+              {''} • Geofencing & Audiencias AAA • {''}
             </p>
           </div>
         </div>
@@ -101,9 +100,9 @@ export const StackAdaptCampaignDropdown: React.FC<StackAdaptCampaignDropdownProp
               className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-[#FF6B00] text-slate-900 text-xs font-medium rounded-lg px-3 py-2 pr-8 transition-colors cursor-pointer focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00]"
             >
               <option value="all">
-                Todas las campañas DSP — Costo Total: ${STACKADAPT_ACCOUNT_INFO.totalSpend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({STACKADAPT_ACCOUNT_INFO.totalLeadsReported} leads)
+                Todas las campañas DSP — Costo Total: ${(stackCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0)).toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({(stackCampaigns.reduce((sum, c) => sum + (c.leadsReported || 0), 0))} leads)
               </option>
-              {STACKADAPT_CAMPAIGNS_DATA.map(c => (
+              {stackCampaigns.map(c => (
                 <option key={c.id} value={c.id}>
                   {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.leadsReported} leads)
                 </option>
@@ -245,7 +244,7 @@ export const StackAdaptCampaignDropdown: React.FC<StackAdaptCampaignDropdownProp
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-mono">
-                {STACKADAPT_CAMPAIGNS_DATA.map((camp) => {
+                {stackCampaigns.map((camp) => {
                   const isSelected = activeSelectedId === camp.id;
                   return (
                     <tr 
@@ -294,3 +293,5 @@ export const StackAdaptCampaignDropdown: React.FC<StackAdaptCampaignDropdownProp
     </div>
   );
 };
+
+

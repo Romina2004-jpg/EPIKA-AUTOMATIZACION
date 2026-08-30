@@ -27,49 +27,58 @@ import {
 import { FunnelPeriod, FunnelCalculations } from '../types';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, Cell } from 'recharts';
 import { UnifiedCampaignControlBar } from './UnifiedCampaignControlBar';
-import { META_CAMPAIGNS_DATA, META_ACCOUNT_INFO, MetaCampaignDetail } from '../data/metaAdsData';
-import { GOOGLE_ADS_CAMPAIGNS_DATA, GOOGLE_ADS_ACCOUNT_INFO, GoogleAdsCampaignDetail } from '../data/googleAdsData';
-import { STACKADAPT_CAMPAIGNS_DATA, STACKADAPT_ACCOUNT_INFO, StackAdaptCampaignDetail } from '../data/stackAdaptData';
 
 interface KpiSummaryOverviewProps {
   period: FunnelPeriod;
   calculations: FunnelCalculations;
   onNavigateToTab: (tab: string) => void;
+  metaCampaigns?: any[];
+  googleCampaigns?: any[];
+  stackCampaigns?: any[];
 }
 
 export const KpiSummaryOverview: React.FC<KpiSummaryOverviewProps> = ({
   period,
   calculations,
-  onNavigateToTab
+  onNavigateToTab,
+  metaCampaigns = [],
+  googleCampaigns = [],
+  stackCampaigns = []
 }) => {
   const [selectedMetaCampaignId, setSelectedMetaCampaignId] = useState<string>('all');
   const [selectedMetaWaCampaignId, setSelectedMetaWaCampaignId] = useState<string>('all');
   const [selectedGoogleCampaignId, setSelectedGoogleCampaignId] = useState<string>('all');
   const [selectedStackCampaignId, setSelectedStackCampaignId] = useState<string>('all');
 
+  // Helper variables for totals
+  const totalMetaForms = metaCampaigns.reduce((sum, c) => sum + (c.formulariosCompletados || 0), 0);
+  const totalMetaWa = metaCampaigns.reduce((sum, c) => sum + (c.conversacionesIniciadas || 0), 0);
+  const totalGoogleConv = googleCampaigns.reduce((sum, c) => sum + (c.conversions || 0), 0);
+  const totalStackLeads = stackCampaigns.reduce((sum, c) => sum + (c.leadsReported || 0), 0);
+
   // Selected Meta Forms campaign object
-  const selectedMetaCampaign: MetaCampaignDetail | undefined = 
+  const selectedMetaCampaign = 
     selectedMetaCampaignId === 'all' 
       ? undefined 
-      : META_CAMPAIGNS_DATA.find(c => c.id === selectedMetaCampaignId || c.campaignId === selectedMetaCampaignId);
+      : metaCampaigns.find(c => c.id === selectedMetaCampaignId || c.campaignId === selectedMetaCampaignId);
 
   // Selected Meta WA campaign object
-  const selectedMetaWaCampaign: MetaCampaignDetail | undefined = 
+  const selectedMetaWaCampaign = 
     selectedMetaWaCampaignId === 'all' 
       ? undefined 
-      : META_CAMPAIGNS_DATA.find(c => c.id === selectedMetaWaCampaignId || c.campaignId === selectedMetaWaCampaignId);
+      : metaCampaigns.find(c => c.id === selectedMetaWaCampaignId || c.campaignId === selectedMetaWaCampaignId);
 
   // Selected Google campaign object
-  const selectedGoogleCampaign: GoogleAdsCampaignDetail | undefined = 
+  const selectedGoogleCampaign = 
     selectedGoogleCampaignId === 'all' 
       ? undefined 
-      : GOOGLE_ADS_CAMPAIGNS_DATA.find(c => c.id === selectedGoogleCampaignId || c.campaignId === selectedGoogleCampaignId);
+      : googleCampaigns.find(c => c.id === selectedGoogleCampaignId || c.campaignId === selectedGoogleCampaignId);
 
   // Selected StackAdapt campaign object
-  const selectedStackCampaign: StackAdaptCampaignDetail | undefined = 
+  const selectedStackCampaign = 
     selectedStackCampaignId === 'all' 
       ? undefined 
-      : STACKADAPT_CAMPAIGNS_DATA.find(c => c.id === selectedStackCampaignId || c.campaignId === selectedStackCampaignId);
+      : stackCampaigns.find(c => c.id === selectedStackCampaignId || c.campaignId === selectedStackCampaignId);
 
   // Aggregate leads breakdown for Question 1
   const metaFormsCount = period.rows
@@ -82,7 +91,7 @@ export const KpiSummaryOverview: React.FC<KpiSummaryOverviewProps> = ({
   // Dynamic Meta Card 1: Formularios Meta
   const displayMetaForms = selectedMetaCampaign 
     ? selectedMetaCampaign.formulariosCompletados 
-    : (META_ACCOUNT_INFO.totalFormulariosCompletados || directFormsCount);
+    : (totalMetaForms || directFormsCount);
 
   const displayMetaFormsSublabel = selectedMetaCampaign 
     ? (selectedMetaCampaign.formulariosCompletados > 0 
@@ -97,7 +106,7 @@ export const KpiSummaryOverview: React.FC<KpiSummaryOverviewProps> = ({
   // Dynamic Meta Card 2: Conversaciones Meta (WhatsApp / Mensajes)
   const displayMetaConversations = selectedMetaWaCampaign 
     ? selectedMetaWaCampaign.conversacionesIniciadas 
-    : (META_ACCOUNT_INFO.totalConversacionesIniciadas || 125);
+    : (totalMetaWa || 125);
 
   const displayMetaConversationsCost = selectedMetaWaCampaign 
     ? (selectedMetaWaCampaign.costoPorConversacionIniciada > 0 
@@ -114,8 +123,8 @@ export const KpiSummaryOverview: React.FC<KpiSummaryOverviewProps> = ({
     : 'Iniciadas en Campañas';
 
   // Dynamic Google & StackAdapt (Card 4)
-  const googleConversions = selectedGoogleCampaign ? selectedGoogleCampaign.conversions : GOOGLE_ADS_ACCOUNT_INFO.totalConversions;
-  const stackLeads = selectedStackCampaign ? selectedStackCampaign.leadsReported : STACKADAPT_ACCOUNT_INFO.totalLeadsReported;
+  const googleConversions = selectedGoogleCampaign ? selectedGoogleCampaign.conversions : totalGoogleConv;
+  const stackLeads = selectedStackCampaign ? selectedStackCampaign.leadsReported : totalStackLeads;
   const totalGoogleStack = googleConversions + stackLeads;
 
   const googleStackSublabel = selectedGoogleCampaign 
@@ -200,6 +209,9 @@ export const KpiSummaryOverview: React.FC<KpiSummaryOverviewProps> = ({
             onSelectGoogleCampaign={setSelectedGoogleCampaignId}
             selectedStackCampaignId={selectedStackCampaignId}
             onSelectStackCampaign={setSelectedStackCampaignId}
+            metaCampaigns={metaCampaigns}
+            googleCampaigns={googleCampaigns}
+            stackCampaigns={stackCampaigns}
           />
         </div>
 

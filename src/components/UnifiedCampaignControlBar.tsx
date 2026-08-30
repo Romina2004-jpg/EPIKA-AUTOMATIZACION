@@ -18,9 +18,7 @@ import {
   CheckCircle2,
   Globe
 } from 'lucide-react';
-import { META_CAMPAIGNS_DATA, META_ACCOUNT_INFO, MetaCampaignDetail } from '../data/metaAdsData';
-import { GOOGLE_ADS_CAMPAIGNS_DATA, GOOGLE_ADS_ACCOUNT_INFO, GoogleAdsCampaignDetail } from '../data/googleAdsData';
-import { STACKADAPT_CAMPAIGNS_DATA, STACKADAPT_ACCOUNT_INFO, StackAdaptCampaignDetail } from '../data/stackAdaptData';
+import { FunnelPeriod } from '../types';
 
 interface UnifiedCampaignControlBarProps {
   selectedMetaCampaignId?: string;
@@ -31,6 +29,9 @@ interface UnifiedCampaignControlBarProps {
   onSelectGoogleCampaign?: (id: string) => void;
   selectedStackCampaignId?: string;
   onSelectStackCampaign?: (id: string) => void;
+  metaCampaigns?: any[];
+  googleCampaigns?: any[];
+  stackCampaigns?: any[];
   className?: string;
 }
 
@@ -43,6 +44,9 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
   onSelectGoogleCampaign,
   selectedStackCampaignId = 'all',
   onSelectStackCampaign,
+  metaCampaigns = [],
+  googleCampaigns = [],
+  stackCampaigns = [],
   className = ''
 }) => {
   // Internal state if callbacks not passed
@@ -60,6 +64,12 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
   // Expandable panel states
   const [expandedSection, setExpandedSection] = useState<'none' | 'meta_forms' | 'meta_wa' | 'google' | 'stack' | 'all'>('none');
 
+  // Aggregate variables for dynamic data
+  const totalGoogleConversions = googleCampaigns.reduce((sum, c) => sum + (c.conversions || 0), 0);
+  const totalMetaForms = metaCampaigns.reduce((sum, c) => sum + (c.formulariosCompletados || 0), 0);
+  const totalMetaWa = metaCampaigns.reduce((sum, c) => sum + (c.conversacionesIniciadas || 0), 0);
+  const totalStackLeads = stackCampaigns.reduce((sum, c) => sum + (c.leadsReported || 0), 0);
+  
   const handleMetaChange = (id: string) => {
     if (onSelectMetaCampaign) onSelectMetaCampaign(id);
     else setInternalMetaId(id);
@@ -88,37 +98,50 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
   };
 
   // Selected Campaign Objects
+  const metaFormsCampaigns = metaCampaigns.filter(c => 
+    c.objective === 'OUTCOME_LEADS' || 
+    c.name.toLowerCase().includes('lead') || 
+    (c.formulariosCompletados && c.formulariosCompletados > 0)
+  );
+
+  const metaWaCampaigns = metaCampaigns.filter(c => 
+    c.objective === 'MESSAGES' || 
+    c.name.toLowerCase().includes('wa') || 
+    c.name.toLowerCase().includes('whatsapp') ||
+    (c.conversacionesIniciadas && c.conversacionesIniciadas > 0)
+  );
+
   const selectedMetaForms = activeMetaId === 'all' 
     ? undefined 
-    : META_CAMPAIGNS_DATA.find(c => c.id === activeMetaId || c.campaignId === activeMetaId);
+    : metaFormsCampaigns.find(c => c.id === activeMetaId || c.campaignId === activeMetaId);
 
   const selectedMetaWa = activeMetaWaId === 'all'
     ? undefined
-    : META_CAMPAIGNS_DATA.find(c => c.id === activeMetaWaId || c.campaignId === activeMetaWaId);
+    : metaWaCampaigns.find(c => c.id === activeMetaWaId || c.campaignId === activeMetaWaId);
 
   const selectedGoogle = activeGoogleId === 'all'
     ? undefined
-    : GOOGLE_ADS_CAMPAIGNS_DATA.find(c => c.id === activeGoogleId || c.campaignId === activeGoogleId);
+    : googleCampaigns.find(c => c.id === activeGoogleId || c.campaignId === activeGoogleId);
 
   const selectedStack = activeStackId === 'all'
     ? undefined
-    : STACKADAPT_CAMPAIGNS_DATA.find(c => c.id === activeStackId || c.campaignId === activeStackId);
+    : stackCampaigns.find(c => c.id === activeStackId || c.campaignId === activeStackId);
 
   const hasAnyFilter = activeMetaId !== 'all' || activeMetaWaId !== 'all' || activeGoogleId !== 'all' || activeStackId !== 'all';
 
-  // Metrics for 1. Meta Lead Forms
+  // Metrics for 1. Meta Forms
   const metaFormsMetrics = selectedMetaForms ? {
     leads: selectedMetaForms.formulariosCompletados,
-    cpl: selectedMetaForms.costoPorLeadReportado,
+    cpl: selectedMetaForms.costoPorLeadReportado > 0 ? selectedMetaForms.costoPorLeadReportado : (selectedMetaForms.spend / Math.max(1, selectedMetaForms.formulariosCompletados)),
     spend: selectedMetaForms.spend,
     clicks: selectedMetaForms.clicks,
     ctr: selectedMetaForms.ctr
   } : {
-    leads: META_ACCOUNT_INFO.totalFormulariosCompletados,
-    cpl: 534.81,
-    spend: 49737.49,
-    clicks: 2320,
-    ctr: 2.15
+    leads: totalMetaForms,
+    cpl: metaFormsCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0) / Math.max(1, totalMetaForms),
+    spend: metaFormsCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0),
+    clicks: metaFormsCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0),
+    ctr: 0 // Simplificado para total
   };
 
   // Metrics for 2. Meta WhatsApp Conversations
@@ -129,11 +152,11 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
     clicks: selectedMetaWa.clicks,
     messagesRate: ((selectedMetaWa.conversacionesIniciadas / Math.max(1, selectedMetaWa.clicks)) * 100)
   } : {
-    conversations: META_ACCOUNT_INFO.totalConversacionesIniciadas,
-    cpc: 97.26,
-    spend: 13616.60,
-    clicks: 1090,
-    messagesRate: 12.84
+    conversations: totalMetaWa,
+    cpc: metaWaCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0) / Math.max(1, totalMetaWa),
+    spend: metaWaCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0),
+    clicks: metaWaCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0),
+    messagesRate: 0
   };
 
   // Metrics for 3. Google Ads
@@ -145,12 +168,12 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
     ctr: selectedGoogle.ctr,
     cpc: selectedGoogle.cpc
   } : {
-    conversions: GOOGLE_ADS_ACCOUNT_INFO.totalConversions,
-    costPerConv: GOOGLE_ADS_ACCOUNT_INFO.avgCostPerConversion,
-    spend: GOOGLE_ADS_ACCOUNT_INFO.totalSpend,
-    clicks: GOOGLE_ADS_ACCOUNT_INFO.totalClicks,
-    ctr: GOOGLE_ADS_ACCOUNT_INFO.avgCtr,
-    cpc: GOOGLE_ADS_ACCOUNT_INFO.avgCpc
+    conversions: totalGoogleConversions,
+    costPerConv: googleCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0) / Math.max(1, totalGoogleConversions),
+    spend: googleCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0),
+    clicks: googleCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0),
+    ctr: 0,
+    cpc: 0
   };
 
   // Metrics for 4. StackAdapt DSP
@@ -162,12 +185,12 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
     ctr: selectedStack.ctr,
     cpc: selectedStack.cpc
   } : {
-    leads: STACKADAPT_ACCOUNT_INFO.totalLeadsReported,
-    cpl: STACKADAPT_ACCOUNT_INFO.avgCpl,
-    spend: STACKADAPT_ACCOUNT_INFO.totalSpend,
-    clicks: STACKADAPT_ACCOUNT_INFO.totalClicks,
-    ctr: STACKADAPT_ACCOUNT_INFO.avgCtr,
-    cpc: STACKADAPT_ACCOUNT_INFO.avgCpc
+    leads: totalStackLeads,
+    cpl: stackCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0) / Math.max(1, totalStackLeads),
+    spend: stackCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0),
+    clicks: stackCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0),
+    ctr: 0,
+    cpc: 0
   };
 
   return (
@@ -255,10 +278,10 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                 className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-blue-500 text-slate-900 text-xs font-medium rounded-lg px-2.5 py-2 pr-7 transition-colors cursor-pointer focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               >
                 <option value="all">
-                  Todos los Formularios — Costo Total: $45,808.85 ({META_ACCOUNT_INFO.totalFormulariosCompletados} leads)
+                  Todos los Formularios — ({totalMetaForms} leads)
                 </option>
-                {META_CAMPAIGNS_DATA.map(c => (
-                  <option key={c.id} value={c.id}>
+                {metaFormsCampaigns.map(c => (
+                  <option key={c.id || c.campaignId} value={c.id || c.campaignId}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.formulariosCompletados} leads)
                   </option>
                 ))}
@@ -317,10 +340,10 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                 className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-emerald-500 text-slate-900 text-xs font-medium rounded-lg px-2.5 py-2 pr-7 transition-colors cursor-pointer focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
               >
                 <option value="all">
-                  Todas las Conversaciones — Costo Total: $13,136.50 ({META_ACCOUNT_INFO.totalConversacionesIniciadas} chats)
+                  Todas las Conversaciones — ({totalMetaWa} chats)
                 </option>
-                {META_CAMPAIGNS_DATA.map(c => (
-                  <option key={c.id} value={c.id}>
+                {metaWaCampaigns.map(c => (
+                  <option key={c.id || c.campaignId} value={c.id || c.campaignId}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.conversacionesIniciadas} chats)
                   </option>
                 ))}
@@ -378,23 +401,12 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                 onChange={(e) => handleGoogleChange(e.target.value)}
                 className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-blue-500 text-slate-900 text-xs font-medium rounded-lg px-2.5 py-2 pr-7 transition-colors cursor-pointer focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               >
-                <option value="all">
-                  Todas las Campañas — Costo Total: ${GOOGLE_ADS_ACCOUNT_INFO.totalSpend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({GOOGLE_ADS_ACCOUNT_INFO.totalConversions} conv.)
-                </option>
-                <optgroup label="Campañas Activas">
-                  {GOOGLE_ADS_CAMPAIGNS_DATA.filter(c => c.status === 'ACTIVE').map(c => (
-                    <option key={c.id} value={c.id}>
-                      {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.conversions} conv.)
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Campañas Pausadas">
-                  {GOOGLE_ADS_CAMPAIGNS_DATA.filter(c => c.status !== 'ACTIVE').map(c => (
-                    <option key={c.id} value={c.id}>
-                      {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.conversions > 0 ? `${c.conversions} conv.` : 'Pausada'})
-                    </option>
-                  ))}
-                </optgroup>
+                <option value="all">Todo Google Ads</option>
+                {googleCampaigns.map(c => (
+                  <option key={c.id || c.campaignId} value={c.id || c.campaignId}>
+                    {c.name} ({c.status})
+                  </option>
+                ))}
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-slate-400">
                 <ChevronDown className="w-3.5 h-3.5" />
@@ -449,12 +461,10 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                 onChange={(e) => handleStackChange(e.target.value)}
                 className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-amber-500 text-slate-900 text-xs font-medium rounded-lg px-2.5 py-2 pr-7 transition-colors cursor-pointer focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
               >
-                <option value="all">
-                  Todas las Campañas DSP — Costo Total: ${STACKADAPT_ACCOUNT_INFO.totalSpend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({STACKADAPT_ACCOUNT_INFO.totalLeadsReported} leads)
-                </option>
-                {STACKADAPT_CAMPAIGNS_DATA.map(c => (
-                  <option key={c.id} value={c.id}>
-                    {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.leadsReported} leads)
+                <option value="all">Todo DSP Programático</option>
+                {stackCampaigns.map(c => (
+                  <option key={c.id || c.campaignId} value={c.id || c.campaignId}>
+                    {c.name} ({c.status || 'Active'})
                   </option>
                 ))}
               </select>
@@ -503,7 +513,7 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                 </h4>
               </div>
               <span className="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-mono font-bold border border-blue-200">
-                {selectedGoogle ? `${selectedGoogle.conversions} Conversiones` : `${GOOGLE_ADS_ACCOUNT_INFO.totalConversions} Conversiones Totales`}
+                {selectedGoogle ? `${selectedGoogle.conversions} Conversiones` : `${totalGoogleConversions} Conversiones Totales`}
               </span>
             </div>
 
@@ -532,8 +542,8 @@ export const UnifiedCampaignControlBar: React.FC<UnifiedCampaignControlBarProps>
                   StackAdapt Programmatic DSP (268858) — {selectedStack ? selectedStack.name : 'Geocercas y Retargeting'}
                 </h4>
               </div>
-              <span className="text-[10px] bg-amber-50 text-amber-800 px-2 py-0.5 rounded font-mono font-bold border border-amber-200">
-                {selectedStack ? `${selectedStack.leadsReported} Leads` : `${STACKADAPT_ACCOUNT_INFO.totalLeadsReported} Leads Totales`}
+              <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-mono font-bold border border-amber-200">
+                {selectedStack ? `${selectedStack.leadsReported} Leads` : `${totalStackLeads} Leads Totales`}
               </span>
             </div>
             {selectedStack && (

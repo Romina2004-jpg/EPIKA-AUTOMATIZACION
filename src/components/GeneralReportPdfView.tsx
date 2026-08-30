@@ -36,20 +36,23 @@ import {
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { UnifiedCampaignControlBar } from './UnifiedCampaignControlBar';
-import { META_CAMPAIGNS_DATA, META_ACCOUNT_INFO, MetaCampaignDetail } from '../data/metaAdsData';
-import { GOOGLE_ADS_CAMPAIGNS_DATA, GOOGLE_ADS_ACCOUNT_INFO, GoogleAdsCampaignDetail } from '../data/googleAdsData';
-import { STACKADAPT_CAMPAIGNS_DATA, STACKADAPT_ACCOUNT_INFO, StackAdaptCampaignDetail } from '../data/stackAdaptData';
 
 interface GeneralReportPdfViewProps {
   onBackToApp?: () => void;
   periods?: FunnelPeriod[];
   activePeriodId?: string;
+  metaCampaigns?: any[];
+  googleCampaigns?: any[];
+  stackCampaigns?: any[];
 }
 
 export const GeneralReportPdfView: React.FC<GeneralReportPdfViewProps> = ({
   onBackToApp,
   periods,
-  activePeriodId
+  activePeriodId,
+  metaCampaigns = [],
+  googleCampaigns = [],
+  stackCampaigns = []
 }) => {
   const [selectedMetaCampaignId, setSelectedMetaCampaignId] = useState<string>('all');
   const [selectedMetaWaCampaignId, setSelectedMetaWaCampaignId] = useState<string>('all');
@@ -252,33 +255,33 @@ export const GeneralReportPdfView: React.FC<GeneralReportPdfViewProps> = ({
     const selectedMetaForms: MetaCampaignDetail | undefined = 
       selectedMetaCampaignId === 'all' 
         ? undefined 
-        : META_CAMPAIGNS_DATA.find(c => c.id === selectedMetaCampaignId || c.campaignId === selectedMetaCampaignId);
+        : metaCampaigns.find(c => c.id === selectedMetaCampaignId || c.campaignId === selectedMetaCampaignId);
 
     // Selected Meta WhatsApp campaign calculations
     const selectedMetaWa: MetaCampaignDetail | undefined = 
       selectedMetaWaCampaignId === 'all' 
         ? undefined 
-        : META_CAMPAIGNS_DATA.find(c => c.id === selectedMetaWaCampaignId || c.campaignId === selectedMetaWaCampaignId);
+        : metaCampaigns.find(c => c.id === selectedMetaWaCampaignId || c.campaignId === selectedMetaWaCampaignId);
 
     // Selected Google Ads campaign calculations
     const selectedGoogle: GoogleAdsCampaignDetail | undefined =
       selectedGoogleCampaignId === 'all'
         ? undefined
-        : GOOGLE_ADS_CAMPAIGNS_DATA.find(c => c.id === selectedGoogleCampaignId || c.campaignId === selectedGoogleCampaignId);
+        : googleCampaigns.find(c => c.id === selectedGoogleCampaignId || c.campaignId === selectedGoogleCampaignId);
 
     // Selected StackAdapt campaign calculations
     const selectedStack: StackAdaptCampaignDetail | undefined =
       selectedStackCampaignId === 'all'
         ? undefined
-        : STACKADAPT_CAMPAIGNS_DATA.find(c => c.id === selectedStackCampaignId || c.campaignId === selectedStackCampaignId);
+        : stackCampaigns.find(c => c.id === selectedStackCampaignId || c.campaignId === selectedStackCampaignId);
 
     const metaFormsCount = selectedMetaForms 
       ? selectedMetaForms.formulariosCompletados 
-      : (META_ACCOUNT_INFO.totalFormulariosCompletados || metaTotalCount || 118);
+      : ((metaCampaigns.reduce((sum, c) => sum + (c.formulariosCompletados || 0), 0)) || metaTotalCount || 118);
 
     const metaFormsCost = selectedMetaForms 
       ? (selectedMetaForms.formulariosCompletados > 0 ? `$${selectedMetaForms.costoPorLeadReportado.toFixed(0)} / lead` : '$0 / lead')
-      : `$${META_ACCOUNT_INFO.costoPromedioPorLead.toFixed(0)} / lead`;
+      : `$${(metaCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0) / (metaCampaigns.reduce((sum, c) => sum + (c.formulariosCompletados || 0), 0) || 1)).toFixed(0)} / lead`;
 
     const metaFormsSublabel = selectedMetaForms 
       ? (selectedMetaForms.formulariosCompletados > 0 ? `Instant Forms [${selectedMetaForms.name}]` : 'Campaña WhatsApp')
@@ -286,7 +289,7 @@ export const GeneralReportPdfView: React.FC<GeneralReportPdfViewProps> = ({
 
     const metaConversationsCount = selectedMetaWa 
       ? selectedMetaWa.conversacionesIniciadas 
-      : (META_ACCOUNT_INFO.totalConversacionesIniciadas || 125);
+      : ((metaCampaigns.reduce((sum, c) => sum + (c.conversacionesIniciadas || 0), 0)) || 125);
 
     const metaConversationsCost = selectedMetaWa 
       ? (selectedMetaWa.costoPorConversacionIniciada > 0 ? `$${selectedMetaWa.costoPorConversacionIniciada.toFixed(1)} / c` : '$0.0 / c')
@@ -301,8 +304,8 @@ export const GeneralReportPdfView: React.FC<GeneralReportPdfViewProps> = ({
       : 'Conversaciones WhatsApp | $97.1 / c';
 
     // Google & StackAdapt dynamic metrics
-    const dynamicGoogleConv = selectedGoogle ? selectedGoogle.conversions : GOOGLE_ADS_ACCOUNT_INFO.totalConversions;
-    const dynamicStackLeads = selectedStack ? selectedStack.leadsReported : STACKADAPT_ACCOUNT_INFO.totalLeadsReported;
+    const dynamicGoogleConv = selectedGoogle ? selectedGoogle.conversions : (googleCampaigns.reduce((sum, c) => sum + (c.conversions || 0), 0));
+    const dynamicStackLeads = selectedStack ? selectedStack.leadsReported : (stackCampaigns.reduce((sum, c) => sum + (c.leadsReported || 0), 0));
     const dynamicGoogleStackCount = dynamicGoogleConv + dynamicStackLeads;
 
     const dynamicGoogleStackLabel = selectedGoogle
@@ -1637,3 +1640,4 @@ export const GeneralReportPdfView: React.FC<GeneralReportPdfViewProps> = ({
     </div>
   );
 };
+

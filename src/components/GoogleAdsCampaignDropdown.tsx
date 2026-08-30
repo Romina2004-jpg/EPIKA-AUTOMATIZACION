@@ -14,7 +14,6 @@ import {
   Video,
   LayoutGrid
 } from 'lucide-react';
-import { GOOGLE_ADS_ACCOUNT_INFO, GOOGLE_ADS_CAMPAIGNS_DATA, GoogleAdsCampaignDetail } from '../data/googleAdsData';
 
 interface GoogleAdsCampaignDropdownProps {
   selectedCampaignId?: string;
@@ -45,17 +44,17 @@ export const GoogleAdsCampaignDropdown: React.FC<GoogleAdsCampaignDropdownProps>
   const selectedCampaign: GoogleAdsCampaignDetail | undefined = 
     activeSelectedId === 'all' 
       ? undefined 
-      : GOOGLE_ADS_CAMPAIGNS_DATA.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
+      : googleCampaigns.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
 
   const allCampaignsTotals = {
-    spend: GOOGLE_ADS_ACCOUNT_INFO.totalSpend,
-    impressions: GOOGLE_ADS_ACCOUNT_INFO.totalImpressions,
-    clicks: GOOGLE_ADS_ACCOUNT_INFO.totalClicks,
-    ctr: GOOGLE_ADS_ACCOUNT_INFO.avgCtr,
-    cpc: GOOGLE_ADS_ACCOUNT_INFO.avgCpc,
-    conversions: GOOGLE_ADS_ACCOUNT_INFO.totalConversions,
-    costPerConversion: GOOGLE_ADS_ACCOUNT_INFO.avgCostPerConversion,
-    conversionRate: GOOGLE_ADS_ACCOUNT_INFO.avgConversionRate
+    spend: (googleCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0)),
+    impressions: (googleCampaigns.reduce((sum, c) => sum + (c.impressions || 0), 0)),
+    clicks: (googleCampaigns.reduce((sum, c) => sum + (c.clicks || 0), 0)),
+    ctr: (googleCampaigns.reduce((sum, c) => sum + (c.ctr || 0), 0) / (googleCampaigns.length || 1)),
+    cpc: (googleCampaigns.reduce((sum, c) => sum + (c.cpc || 0), 0) / (googleCampaigns.length || 1)),
+    conversions: (googleCampaigns.reduce((sum, c) => sum + (c.conversions || 0), 0)),
+    costPerConversion: (googleCampaigns.reduce((sum, c) => sum + (c.costPerConversion || 0), 0) / (googleCampaigns.length || 1)),
+    conversionRate: (googleCampaigns.reduce((sum, c) => sum + (c.conversionRate || 0), 0) / (googleCampaigns.length || 1))
   };
 
   const currentMetrics = selectedCampaign ? {
@@ -81,11 +80,11 @@ export const GoogleAdsCampaignDropdown: React.FC<GoogleAdsCampaignDropdownProps>
             <div className="flex items-center gap-2">
               <span className="font-bold text-slate-900 text-sm">Google Ads Manager</span>
               <span className="text-[10px] bg-[#4285F4]/10 text-[#4285F4] border border-[#4285F4]/30 px-1.5 py-0.2 rounded font-mono font-bold">
-                ID: {GOOGLE_ADS_ACCOUNT_INFO.customerId}
+                ID: {''}
               </span>
             </div>
             <p className="text-[11px] text-slate-500">
-              {GOOGLE_ADS_ACCOUNT_INFO.accountName} ({GOOGLE_ADS_ACCOUNT_INFO.adminEmail}) • {GOOGLE_ADS_ACCOUNT_INFO.periodLabel}
+              {''} ({''}) • {''}
             </p>
           </div>
         </div>
@@ -103,17 +102,17 @@ export const GoogleAdsCampaignDropdown: React.FC<GoogleAdsCampaignDropdownProps>
               className="w-full appearance-none bg-white hover:bg-slate-50 border border-slate-300 hover:border-[#4285F4] text-slate-900 text-xs font-medium rounded-lg px-3 py-2 pr-8 transition-colors cursor-pointer focus:outline-none focus:border-[#4285F4] focus:ring-1 focus:ring-[#4285F4]"
             >
               <option value="all">
-                Todas las campañas — Costo Total: ${GOOGLE_ADS_ACCOUNT_INFO.totalSpend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({GOOGLE_ADS_ACCOUNT_INFO.totalConversions} conversiones)
+                Todas las campañas — Costo Total: ${(googleCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0)).toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({(googleCampaigns.reduce((sum, c) => sum + (c.conversions || 0), 0))} conversiones)
               </option>
               <optgroup label="Campañas Activas (Habilitadas)">
-                {GOOGLE_ADS_CAMPAIGNS_DATA.filter(c => c.status === 'ACTIVE').map(c => (
+                {googleCampaigns.filter(c => c.status === 'ACTIVE').map(c => (
                   <option key={c.id} value={c.id}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.conversions} conv.)
                   </option>
                 ))}
               </optgroup>
               <optgroup label="Campañas Pausadas / Históricas">
-                {GOOGLE_ADS_CAMPAIGNS_DATA.filter(c => c.status !== 'ACTIVE').map(c => (
+                {googleCampaigns.filter(c => c.status !== 'ACTIVE').map(c => (
                   <option key={c.id} value={c.id}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.conversions > 0 ? `${c.conversions} conv.` : 'Pausada'})
                   </option>
@@ -280,7 +279,7 @@ export const GoogleAdsCampaignDropdown: React.FC<GoogleAdsCampaignDropdownProps>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-mono">
-                {GOOGLE_ADS_CAMPAIGNS_DATA.map((camp) => {
+                {googleCampaigns.map((camp) => {
                   const isSelected = activeSelectedId === camp.id;
                   return (
                     <tr 
@@ -335,3 +334,5 @@ export const GoogleAdsCampaignDropdown: React.FC<GoogleAdsCampaignDropdownProps>
     </div>
   );
 };
+
+

@@ -47,10 +47,15 @@ export default function App() {
     googleAds: AdPlatformSyncStatus;
     stackAdapt: AdPlatformSyncStatus;
   }>({
-    meta: { platform: 'meta', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 118, whatsappMessages: 125, formulariosCompletados: 118 },
-    googleAds: { platform: 'google_ads', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 89, spend: 52621.15, clicks: 6386 },
-    stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: 'Hoy, 10:15 AM', status: 'healthy', recordsImported: 7 }
+    meta: { platform: 'meta', isConnected: false, lastSynced: 'No sincronizado', status: 'error', recordsImported: 0, whatsappMessages: 0, formulariosCompletados: 0 },
+    googleAds: { platform: 'google_ads', isConnected: false, lastSynced: 'No sincronizado', status: 'error', recordsImported: 0, spend: 0, clicks: 0 },
+    stackAdapt: { platform: 'stackadapt', isConnected: false, lastSynced: 'No sincronizado', status: 'error', recordsImported: 0 }
   });
+
+  // Dynamic campaign data from APIs
+  const [metaCampaigns, setMetaCampaigns] = useState<any[]>([]);
+  const [googleCampaigns, setGoogleCampaigns] = useState<any[]>([]);
+  const [stackCampaigns, setStackCampaigns] = useState<any[]>([]);
 
   const [notification, setNotification] = useState<{ type: 'success' | 'info'; message: string } | null>(null);
 
@@ -156,18 +161,27 @@ export default function App() {
   const handleSyncAll = async () => {
     setIsSyncing(true);
     try {
-      const [metaRes, googleRes, stackRes] = await Promise.all([
-        fetch('/api/sync/meta', { method: 'POST' }).then(r => r.json()),
-        fetch('/api/sync/google-ads', { method: 'POST' }).then(r => r.json()),
-        fetch('/api/sync/stackadapt', { method: 'POST' }).then(r => r.json())
+      const dateBody = JSON.stringify({ startDate: activePeriod.startDate, endDate: activePeriod.endDate });
+      const queryParams = `?startDate=${activePeriod.startDate || ''}&endDate=${activePeriod.endDate || ''}`;
+      
+      const [metaRes, metaCampsRes, googleRes, stackRes] = await Promise.all([
+        fetch('/api/sync/meta', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: dateBody }).then(r => r.json()),
+        fetch(`/api/meta/campaigns${queryParams}`).then(r => r.json()),
+        fetch('/api/sync/google-ads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: dateBody }).then(r => r.json()),
+        fetch('/api/sync/stackadapt', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: dateBody }).then(r => r.json())
       ]);
 
       const nowStr = 'Ahora mismo';
+      
       setSyncStatus({
-        meta: { platform: 'meta', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: metaRes.totals?.totalLeadsReportados || 118, whatsappMessages: metaRes.totals?.totalConversacionesIniciadas || 125, formulariosCompletados: metaRes.totals?.totalFormularios || 118 },
-        googleAds: { platform: 'google_ads', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: googleRes.metrics?.conversions || 89, spend: googleRes.metrics?.spend || 52621.15, clicks: googleRes.metrics?.clicks || 6386 },
-        stackAdapt: { platform: 'stackadapt', isConnected: true, lastSynced: nowStr, status: 'healthy', recordsImported: stackRes.metrics?.leadsReported || 7 }
+        meta: { platform: 'meta', isConnected: metaRes.success, lastSynced: nowStr, status: metaRes.success ? 'healthy' : 'error', recordsImported: metaRes.totals?.totalLeadsReportados || metaRes.metrics?.leadsReported || 0, whatsappMessages: metaRes.totals?.totalConversacionesIniciadas || metaRes.metrics?.conversacionesIniciadas || 0, formulariosCompletados: metaRes.totals?.totalFormularios || metaRes.metrics?.metaForms || 0 },
+        googleAds: { platform: 'google_ads', isConnected: googleRes.success, lastSynced: nowStr, status: googleRes.success ? 'healthy' : 'error', recordsImported: googleRes.metrics?.conversions || 0, spend: googleRes.metrics?.spend || 0, clicks: googleRes.metrics?.clicks || 0 },
+        stackAdapt: { platform: 'stackadapt', isConnected: stackRes.success, lastSynced: nowStr, status: stackRes.success ? 'healthy' : 'error', recordsImported: stackRes.metrics?.leadsReported || 0 }
       });
+
+      if (metaCampsRes.success && (metaCampsRes.campaigns || metaCampsRes.data)) setMetaCampaigns(metaCampsRes.campaigns || metaCampsRes.data);
+      if (googleRes.success && googleRes.campaigns) setGoogleCampaigns(googleRes.campaigns);
+      if (stackRes.success && stackRes.campaigns) setStackCampaigns(stackRes.campaigns);
 
       showNotification('Sincronización con Meta Ads, Google Ads (453-930-3033) y StackAdapt completada exitosamente.');
     } catch (e) {
@@ -177,9 +191,17 @@ export default function App() {
     }
   };
 
+  // Auto-sync on application load or when period changes
+  useEffect(() => {
+    // This will trigger the sync both on initial load, and whenever the active period dates change.
+    handleSyncAll();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activePeriod.startDate, activePeriod.endDate]);
+
   const handleSyncPlatform = async (platform: 'meta' | 'google_ads' | 'stackadapt') => {
     const endpoint = platform === 'meta' ? '/api/sync/meta' : platform === 'google_ads' ? '/api/sync/google-ads' : '/api/sync/stackadapt';
-    const res = await fetch(endpoint, { method: 'POST' });
+    const dateBody = JSON.stringify({ startDate: activePeriod.startDate, endDate: activePeriod.endDate });
+    const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: dateBody });
     const data = await res.json();
     showNotification(`Sincronizado ${platform.toUpperCase()}: ${data.message || 'Éxito'}`);
   };
@@ -238,6 +260,9 @@ export default function App() {
             period={activePeriod}
             calculations={calculations}
             onNavigateToTab={setActiveTab}
+            metaCampaigns={metaCampaigns}
+            googleCampaigns={googleCampaigns}
+            stackCampaigns={stackCampaigns}
           />
         )}
 
@@ -269,6 +294,9 @@ export default function App() {
             periods={periods}
             activePeriodId={selectedPeriodId}
             onBackToApp={() => setActiveTab('overview')}
+            metaCampaigns={metaCampaigns}
+            googleCampaigns={googleCampaigns}
+            stackCampaigns={stackCampaigns}
           />
         )}
 
@@ -277,6 +305,9 @@ export default function App() {
             periods={periods}
             activePeriodId={selectedPeriodId}
             onBackToApp={() => setActiveTab('overview')}
+            metaCampaigns={metaCampaigns}
+            googleCampaigns={googleCampaigns}
+            stackCampaigns={stackCampaigns}
           />
         )}
 

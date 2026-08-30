@@ -43,17 +43,38 @@ const META_CONFIG = {
 // StackAdapt default credentials
 const STACKADAPT_CONFIG = {
   apiToken: process.env.STACKADAPT_API_TOKEN || 'e6bcab244d239a36b68a3daabf593313fc0ce33263f5698b97d30fb204489fac',
-  accountId: process.env.STACKADAPT_ACCOUNT_ID || '268858'
+  accountId: process.env.STACKADAPT_ACCOUNT_ID || '135782'
 };
 
 // Google Ads credentials for Épika Chapultepec
 const GOOGLE_ADS_CONFIG = {
   developerToken: process.env.GOOGLE_ADS_DEVELOPER_TOKEN || '9WP0xwvo9PYPwZ02KYs_Ag',
-  clientId: process.env.GOOGLE_ADS_CLIENT_ID || '359442674926-kj0e2tufn6il1doudpt66qev1odm1npp.apps.googleusercontent.com',
-  customerId: process.env.GOOGLE_ADS_CUSTOMER_ID || '453-930-3033',
+  clientId: process.env.GOOGLE_ADS_CLIENT_ID || '',
+  customerId: process.env.GOOGLE_ADS_CUSTOMER_ID || '171-833-1328',
+  clientSecret: process.env.GOOGLE_ADS_CLIENT_SECRET || '',
+  refreshToken: process.env.GOOGLE_ADS_REFRESH_TOKEN || '',
   accountName: 'Épika Chapultepec',
   adminEmail: 'brandhouseadmon@gmail.com'
 };
+
+async function getGoogleAdsAccessToken() {
+  const url = 'https://oauth2.googleapis.com/token';
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: GOOGLE_ADS_CONFIG.clientId,
+      client_secret: GOOGLE_ADS_CONFIG.clientSecret,
+      refresh_token: GOOGLE_ADS_CONFIG.refreshToken,
+      grant_type: 'refresh_token'
+    })
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error_description || data.error || 'Failed to obtain Google Ads access token');
+  }
+  return data.access_token;
+}
 
 // ==================== API ROUTES ====================
 
@@ -98,6 +119,8 @@ app.post('/api/credentials', (req, res) => {
     if (googleAds.customerId !== undefined) GOOGLE_ADS_CONFIG.customerId = googleAds.customerId;
     if (googleAds.developerToken && !googleAds.developerToken.includes('••••')) GOOGLE_ADS_CONFIG.developerToken = googleAds.developerToken;
     if (googleAds.clientId !== undefined) GOOGLE_ADS_CONFIG.clientId = googleAds.clientId;
+    if (googleAds.clientSecret && !googleAds.clientSecret.includes('••••')) GOOGLE_ADS_CONFIG.clientSecret = googleAds.clientSecret;
+    if (googleAds.refreshToken && !googleAds.refreshToken.includes('••••')) GOOGLE_ADS_CONFIG.refreshToken = googleAds.refreshToken;
   }
   if (stackAdapt) {
     if (stackAdapt.accountId !== undefined) STACKADAPT_CONFIG.accountId = stackAdapt.accountId;
@@ -194,67 +217,81 @@ app.put('/api/funnels/:id', (req, res) => {
   }
 });
 
-// Meta Ads Live Sync with full Graph API extraction
-app.post('/api/sync/meta', async (req, res) => {
-  try {
-    const actId = META_CONFIG.adAccountId.startsWith('act_')
-      ? META_CONFIG.adAccountId
-      : `act_${META_CONFIG.adAccountId}`;
+  // Meta Ads Live Sync with full Graph API extraction
+app.post('/api/sync/meta', express.json(), async (req, res) => {
+  const actId = META_CONFIG.adAccountId.startsWith('act_')
+    ? META_CONFIG.adAccountId
+    : `act_${META_CONFIG.adAccountId}`;
+  const token = META_CONFIG.accessToken;
+  const { startDate, endDate } = req.body || {};
 
-    const token = META_CONFIG.accessToken;
-    let liveData: any = null;
-    let syncError: string | null = null;
-
-    if (token) {
-      try {
-        const fields = 'spend,impressions,reach,clicks,actions,cost_per_action_type,ctr,cpc';
-        const metaUrl = `https://graph.facebook.com/v19.0/${actId}/insights?fields=${fields}&date_preset=maximum&access_token=${token}`;
-        const response = await fetch(metaUrl, { method: 'GET', headers: { 'Accept': 'application/json' } });
-        const json = await response.json();
-        if (json.data && json.data.length > 0) {
-          liveData = json.data[0];
-        } else if (json.error) {
-          syncError = json.error.message;
-        }
-      } catch (e: any) {
-        syncError = e.message;
+  if (token) {
+    try {
+      let liveData: any = null;
+      let dateFilter = 'date_preset=maximum';
+      if (startDate && endDate) {
+        const timeRangeObj = JSON.stringify({ since: startDate, until: endDate });
+        dateFilter = `time_range=${encodeURIComponent(timeRangeObj)}`;
       }
+
+      const fields = 'spend,impressions,reach,clicks,actions,cost_per_action_type,ctr,cpc';
+      const metaUrl = `https://graph.facebook.com/v19.0/${actId}/insights?fields=${fields}&${dateFilter}&access_token=${token}`;
+    const response = await fetch(metaUrl, { method: 'GET', headers: { 'Accept': 'application/json' } });
+    const json = await response.json();
+    
+    if (json.error) {
+      return res.status(400).json({ success: false, error: json.error.message });
+    }
+
+    if (json.data && json.data.length > 0) {
+      liveData = json.data[0];
+    } else {
+      liveData = { spend: 0, impressions: 0, reach: 0, clicks: 0, actions: [] };
     }
 
     let metaForms = 0;
     let whatsappMessages = 0;
     let conversacionesIniciadas = 0;
-    let spend = liveData ? parseFloat(liveData.spend || '0') : 63354.09;
-    let impressions = liveData ? parseInt(liveData.impressions || '0', 10) : 262700;
-    let reach = liveData ? parseInt(liveData.reach || '0', 10) : 74404;
-    let clicks = liveData ? parseInt(liveData.clicks || '0', 10) : 5430;
+    let spend = parseFloat(liveData.spend || '0');
+    let impressions = parseInt(liveData.impressions || '0', 10);
+    let reach = parseInt(liveData.reach || '0', 10);
+    let clicks = 0;
 
-    if (liveData?.actions) {
+    if (liveData.actions) {
       for (const act of liveData.actions) {
-        if (act.action_type === 'lead' || act.action_type === 'leadgen_grouped' || act.action_type === 'onsite_conversion.lead_grouped' || act.action_type === 'offsite_complete_registration_add_meta_leads') {
+        if (act.action_type === 'link_click') clicks = parseInt(act.value || '0', 10);
+        // Lead forms / registrations
+        if (['lead', 'leadgen_grouped', 'onsite_conversion.lead_grouped',
+             'offsite_complete_registration_add_meta_leads', 'onsite_conversion.lead_form_lead_grouped'].includes(act.action_type)) {
           metaForms = Math.max(metaForms, parseInt(act.value || '0', 10));
         }
-        if (act.action_type === 'onsite_conversion.messaging_conversation_started_7d' || act.action_type === 'contact') {
-          whatsappMessages = Math.max(whatsappMessages, parseInt(act.value || '0', 10));
-          conversacionesIniciadas = Math.max(conversacionesIniciadas, parseInt(act.value || '0', 10));
+        // WhatsApp / messaging conversations started
+        if (['onsite_conversion.messaging_conversation_started_7d',
+             'onsite_conversion.messaging_first_reply',
+             'contact'].includes(act.action_type)) {
+          const val = parseInt(act.value || '0', 10);
+          // prefer conversation_started_7d as most accurate
+          if (act.action_type === 'onsite_conversion.messaging_conversation_started_7d') {
+            conversacionesIniciadas = val;
+            whatsappMessages = val;
+          } else if (conversacionesIniciadas === 0) {
+            conversacionesIniciadas = Math.max(conversacionesIniciadas, val);
+            whatsappMessages = Math.max(whatsappMessages, val);
+          }
         }
       }
     }
 
-    if (metaForms === 0) metaForms = 93;
-    if (whatsappMessages === 0) whatsappMessages = 140;
-    if (conversacionesIniciadas === 0) conversacionesIniciadas = 140;
     const reportedLeads = metaForms + whatsappMessages;
-
-    const cplReported = reportedLeads > 0 ? (spend / reportedLeads).toFixed(2) : '271.91';
+    const cplReported = reportedLeads > 0 ? (spend / reportedLeads).toFixed(2) : '0.00';
 
     res.json({
       success: true,
       platform: 'meta',
       account: actId,
-      accountName: 'Epika Ads 2 (2043417892891975)',
+      accountName: 'Epika Ads (Real Data)',
       dateRange: 'Datos Oficiales en Vivo (Meta Graph API)',
-      connected: !syncError,
+      connected: true,
       lastSynced: new Date().toLocaleTimeString('es-MX'),
       metrics: {
         spend,
@@ -265,14 +302,17 @@ app.post('/api/sync/meta', async (req, res) => {
         metaForms,
         whatsappMessages,
         conversacionesIniciadas,
-        cpc: clicks > 0 ? (spend / clicks).toFixed(2) : '12.67',
-        ctr: impressions > 0 ? ((clicks / impressions) * 100).toFixed(2) + '%' : '1.63%',
+        cpc: clicks > 0 ? (spend / clicks).toFixed(2) : '0.00',
+        ctr: impressions > 0 ? ((clicks / impressions) * 100).toFixed(2) + '%' : '0.00%',
         cplReported
       },
-      notice: syncError ? `Meta API Token conectado (Aviso: ${syncError}). Se muestran datos reales de Epika Ads 2.` : 'Sincronización en vivo con Meta Graph API exitosa'
+      notice: 'Sincronización en vivo con Meta Graph API exitosa'
     });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
+  }
+  } else {
+    res.status(401).json({ success: false, error: 'No Meta Access Token configured.' });
   }
 });
 
@@ -282,12 +322,20 @@ app.get('/api/meta/campaigns', async (req, res) => {
     ? META_CONFIG.adAccountId
     : `act_${META_CONFIG.adAccountId}`;
   const token = META_CONFIG.accessToken;
+  const { startDate, endDate } = req.query;
 
   // Try live query to Meta Graph API
   if (token) {
     try {
-      const campUrl = `https://graph.facebook.com/v19.0/${actId}/campaigns?fields=id,name,status,objective,effective_status,daily_budget,lifetime_budget,insights{spend,impressions,reach,clicks,ctr,cpc,cpm,actions,cost_per_action_type}&date_preset=maximum&limit=50&access_token=${token}`;
-      const adsUrl = `https://graph.facebook.com/v19.0/${actId}/ads?fields=id,name,status,campaign{id,name},adset{id,name},insights{spend,impressions,reach,clicks,ctr,cpc,actions,cost_per_action_type}&date_preset=maximum&limit=100&access_token=${token}`;
+      let dateFilter = 'date_preset(maximum)';
+      if (startDate && endDate) {
+        const timeRangeObj = JSON.stringify({ since: startDate, until: endDate });
+        // En consultas anidadas (insights.time_range({since, until})) 
+        dateFilter = `time_range(${encodeURIComponent(timeRangeObj)})`;
+      }
+
+      const campUrl = `https://graph.facebook.com/v19.0/${actId}/campaigns?fields=id,name,status,objective,effective_status,daily_budget,lifetime_budget,insights.${dateFilter}{spend,impressions,reach,clicks,ctr,cpc,cpm,actions,cost_per_action_type}&limit=50&access_token=${token}`;
+      const adsUrl = `https://graph.facebook.com/v19.0/${actId}/ads?fields=id,name,status,campaign{id,name},adset{id,name},insights.${dateFilter}{spend,impressions,reach,clicks,ctr,cpc,actions,cost_per_action_type}&limit=100&access_token=${token}`;
 
       const [campRes, adsRes] = await Promise.all([
         fetch(campUrl, { method: 'GET', headers: { Accept: 'application/json' } }),
@@ -319,8 +367,12 @@ app.get('/api/meta/campaigns', async (req, res) => {
               if (['lead', 'leadgen_grouped', 'onsite_conversion.lead_grouped', 'offsite_complete_registration_add_meta_leads'].includes(act.action_type)) {
                 forms = Math.max(forms, parseInt(act.value || '0', 10));
               }
-              if (['onsite_conversion.messaging_conversation_started_7d', 'contact'].includes(act.action_type)) {
-                msgs = Math.max(msgs, parseInt(act.value || '0', 10));
+              if (['onsite_conversion.messaging_conversation_started_7d', 'onsite_conversion.messaging_first_reply', 'contact'].includes(act.action_type)) {
+                if (act.action_type === 'onsite_conversion.messaging_conversation_started_7d') {
+                  msgs = parseInt(act.value || '0', 10);
+                } else if (msgs === 0) {
+                  msgs = Math.max(msgs, parseInt(act.value || '0', 10));
+                }
               }
               if (act.action_type === 'link_click') {
                 linkClicks = parseInt(act.value || '0', 10);
@@ -351,6 +403,7 @@ app.get('/api/meta/campaigns', async (req, res) => {
 
               let aForms = 0;
               let aMsgs = 0;
+              let aLinkClicks = 0;
               if (aIns?.actions) {
                 for (const act of aIns.actions) {
                   if (['lead', 'leadgen_grouped', 'onsite_conversion.lead_grouped', 'offsite_complete_registration_add_meta_leads'].includes(act.action_type)) {
@@ -358,6 +411,9 @@ app.get('/api/meta/campaigns', async (req, res) => {
                   }
                   if (['onsite_conversion.messaging_conversation_started_7d', 'contact'].includes(act.action_type)) {
                     aMsgs = Math.max(aMsgs, parseInt(act.value || '0', 10));
+                  }
+                  if (act.action_type === 'link_click') {
+                    aLinkClicks = parseInt(act.value || '0', 10);
                   }
                 }
               }
@@ -376,7 +432,7 @@ app.get('/api/meta/campaigns', async (req, res) => {
                 spend: aSpend,
                 impressions: aImp,
                 reach: aReach,
-                clicks: aClicks,
+                clicks: aLinkClicks,
                 ctr: parseFloat(aCtr.toFixed(2)),
                 cpc: parseFloat(aCpc.toFixed(2)),
                 leadsReported: aLeads,
@@ -400,7 +456,7 @@ app.get('/api/meta/campaigns', async (req, res) => {
             spend: parseFloat(spend.toFixed(2)),
             impressions,
             reach,
-            clicks,
+            clicks: linkClicks,
             linkClicks,
             ctr: parseFloat(ctr.toFixed(2)),
             cpc: parseFloat(cpc.toFixed(2)),
@@ -424,134 +480,16 @@ app.get('/api/meta/campaigns', async (req, res) => {
           dateRange: 'Datos Oficiales en Vivo',
           campaigns
         });
+      } else {
+        return res.status(400).json({ success: false, error: campJson.error?.message || 'No se encontraron campañas.' });
       }
     } catch (err: any) {
-      console.warn('Meta Graph API live query fallback to verified account data:', err.message);
+      console.warn('Meta Graph API live query error:', err.message);
+      return res.status(500).json({ success: false, error: err.message });
     }
+  } else {
+    return res.status(401).json({ success: false, error: 'No Meta Access Token configured.' });
   }
-
-  // Fallback to verified authentic account data
-  res.json({
-    success: true,
-    account: META_CONFIG.adAccountId,
-    accountName: 'Epika Ads 2 (2043417892891975)',
-    dateRange: 'Último año: 28 ago 2025 – 27 ago 2026',
-    live: false,
-    source: 'Cuenta Publicitaria Epika Ads 2 (act_2043417892891975)',
-    campaigns: [
-      {
-        id: '120253570596410728',
-        campaignId: '120253570596410728',
-        name: '[BH] LEADS 2026 - Agosto',
-        status: 'ACTIVE',
-        effectiveStatus: 'ACTIVE',
-        objective: 'OUTCOME_LEADS',
-        objectiveLabel: 'Clientes potenciales (3 conjuntos > 11 anuncios)',
-        budgetType: 'CBO',
-        budgetAmount: 'CBO Activo',
-        spend: 45808.85,
-        impressions: 113700,
-        reach: 58108,
-        clicks: 2980,
-        linkClicks: 1940,
-        ctr: 2.62,
-        cpc: 15.37,
-        cpm: 402.89,
-        conversacionesIniciadas: 0,
-        costoPorConversacionIniciada: 0,
-        formulariosCompletados: 93,
-        leadsReported: 93,
-        costoPorLeadReportado: 492.57,
-        startDate: '2026-08-10',
-        endDate: '2026-09-30',
-        ads: [
-          { id: '120253570987130728', adId: '120253570987130728', name: 'Ago - Ad 2', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 1', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 19350.20, impressions: 44200, reach: 22600, clicks: 1150, ctr: 2.60, cpc: 16.83, leadsReported: 42, formulariosCompletados: 42, conversacionesIniciadas: 0, costoPorResultado: 460.72, resultadoTipo: 'Cliente potencial' },
-          { id: '120253570992380728', adId: '120253570992380728', name: 'Ago - Ad 1', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 2', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 11200.40, impressions: 25600, reach: 13100, clicks: 670, ctr: 2.62, cpc: 16.72, leadsReported: 23, formulariosCompletados: 23, conversacionesIniciadas: 0, costoPorResultado: 486.97, resultadoTipo: 'Cliente potencial' },
-          { id: '120253571089200728', adId: '120253571089200728', name: 'Ago - Ad 5', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 3', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 5800.00, impressions: 13200, reach: 6750, clicks: 345, ctr: 2.61, cpc: 16.81, leadsReported: 11, formulariosCompletados: 11, conversacionesIniciadas: 0, costoPorResultado: 527.27, resultadoTipo: 'Cliente potencial' },
-          { id: '120253571148540728', adId: '120253571148540728', name: 'Ago - Ad 8', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 1', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 5120.00, impressions: 11700, reach: 5980, clicks: 305, ctr: 2.61, cpc: 16.79, leadsReported: 9, formulariosCompletados: 9, conversacionesIniciadas: 0, costoPorResultado: 568.89, resultadoTipo: 'Cliente potencial' },
-          { id: '120253571034450728', adId: '120253571034450728', name: 'Ago - Ad 4', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 2', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 4850.00, impressions: 11100, reach: 5670, clicks: 290, ctr: 2.61, cpc: 16.72, leadsReported: 8, formulariosCompletados: 8, conversacionesIniciadas: 0, costoPorResultado: 606.25, resultadoTipo: 'Cliente potencial' },
-          { id: '120253570997030728', adId: '120253570997030728', name: 'Ago - Ad 3', adSetId: '120253570596420728', adSetName: '[BH] LEADS - Conjunto 3', campaignId: '120253570596410728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 3416.89, impressions: 7900, reach: 4008, clicks: 220, ctr: 2.78, cpc: 15.53, leadsReported: 0, formulariosCompletados: 0, conversacionesIniciadas: 0, costoPorResultado: 0, resultadoTipo: 'Cliente potencial' }
-        ]
-      },
-      {
-        id: '120253570642760728',
-        campaignId: '120253570642760728',
-        name: '[BH] WA 2026 - Agosto',
-        status: 'ACTIVE',
-        effectiveStatus: 'ACTIVE',
-        objective: 'MESSAGES',
-        objectiveLabel: 'Interacción (1 conjunto > 6 anuncios)',
-        budgetType: 'CBO',
-        budgetAmount: 'CBO Activo',
-        spend: 13136.50,
-        impressions: 149000,
-        reach: 16296,
-        clicks: 2450,
-        linkClicks: 1820,
-        ctr: 1.64,
-        cpc: 5.36,
-        cpm: 88.16,
-        conversacionesIniciadas: 140,
-        costoPorConversacionIniciada: 93.83,
-        formulariosCompletados: 0,
-        leadsReported: 140,
-        costoPorLeadReportado: 93.83,
-        startDate: '2026-08-10',
-        endDate: '2026-08-31',
-        ads: [
-          { id: '120253589433960728', adId: '120253589433960728', name: 'WA - Ago - Ad 2', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 7300.00, impressions: 85900, reach: 9400, clicks: 1410, ctr: 1.64, cpc: 5.18, conversacionesIniciadas: 81, leadsReported: 81, costoPorResultado: 90.12, resultadoTipo: 'Conversación WhatsApp' },
-          { id: '120253589486740728', adId: '120253589486740728', name: 'WA - Ago - Ad 3', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 4240.00, impressions: 48700, reach: 5320, clicks: 800, ctr: 1.64, cpc: 5.30, conversacionesIniciadas: 46, leadsReported: 46, costoPorResultado: 92.17, resultadoTipo: 'Conversación WhatsApp' },
-          { id: '120253571157390728', adId: '120253571157390728', name: 'WA - Ago - Ad 1', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 1500.00, impressions: 13100, reach: 1430, clicks: 215, ctr: 1.64, cpc: 6.98, conversacionesIniciadas: 12, leadsReported: 12, costoPorResultado: 125.00, resultadoTipo: 'Conversación WhatsApp' },
-          { id: '120253589614490728', adId: '120253589614490728', name: 'WA - Ago - Carrusel 2', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 60.65, impressions: 900, reach: 98, clicks: 15, ctr: 1.67, cpc: 4.04, conversacionesIniciadas: 1, leadsReported: 1, costoPorResultado: 60.65, resultadoTipo: 'Conversación WhatsApp' },
-          { id: '120253589519340728', adId: '120253589519340728', name: 'WA - Ago - Carrusel 1', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 25.00, impressions: 390, reach: 43, clicks: 6, ctr: 1.54, cpc: 4.17, conversacionesIniciadas: 0, leadsReported: 0, costoPorResultado: 0, resultadoTipo: 'Conversación WhatsApp' },
-          { id: '120253589658490728', adId: '120253589658490728', name: 'WA - Ago - Carrusel 3', adSetId: '120253571157380728', adSetName: '[BH] WA - Agosto', campaignId: '120253570642760728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 10.85, impressions: 0, reach: 5, clicks: 4, ctr: 0, cpc: 2.71, conversacionesIniciadas: 0, leadsReported: 0, costoPorResultado: 0, resultadoTipo: 'Conversación WhatsApp' }
-        ]
-      },
-      {
-        id: '120253335110950728',
-        campaignId: '120253335110950728',
-        name: 'Agosto 2026 - Leads',
-        status: 'PAUSED',
-        effectiveStatus: 'PAUSED',
-        objective: 'OUTCOME_LEADS',
-        objectiveLabel: 'Cliente Potencial (Formulario)',
-        budgetType: 'LIFETIME',
-        budgetAmount: 85000.00,
-        spend: 27927.52,
-        impressions: 160468,
-        reach: 102450,
-        clicks: 2004,
-        linkClicks: 1621,
-        ctr: 1.25,
-        cpc: 13.94,
-        cpm: 174.04,
-        conversacionesIniciadas: 1,
-        costoPorConversacionIniciada: 27927.52,
-        formulariosCompletados: 36,
-        leadsReported: 36,
-        costoPorLeadReportado: 775.76,
-        startDate: '2026-08-01',
-        ads: [
-          { id: '120253336057450728', adId: '120253336057450728', name: 'Torre 2', adSetId: '120253335110960728', adSetName: 'Conjunto Torre 2', campaignId: '120253335110950728', status: 'ACTIVE', effectiveStatus: 'ACTIVE', spend: 23069.37, impressions: 107775, reach: 69882, clicks: 1358, ctr: 1.26, cpc: 16.99, leadsReported: 23, formulariosCompletados: 23, costoPorResultado: 1003.02, resultadoTipo: 'Formulario' },
-          { id: '120253335110960728', adId: '120253335110960728', name: 'Torre 1', adSetId: '120253335110960728', adSetName: 'Conjunto Torre 1', campaignId: '120253335110950728', status: 'PAUSED', effectiveStatus: 'PAUSED', spend: 4858.15, impressions: 52693, reach: 41640, clicks: 646, ctr: 1.23, cpc: 7.52, leadsReported: 13, formulariosCompletados: 13, costoPorResultado: 373.70, resultadoTipo: 'Formulario' }
-        ]
-      },
-      { id: '120252809517950728', campaignId: '120252809517950728', name: 'Julio - Interacción - FB', status: 'PAUSED', effectiveStatus: 'PAUSED', objective: 'OUTCOME_ENGAGEMENT', objectiveLabel: 'Interacción', budgetType: 'DAILY', budgetAmount: 50.00, spend: 511.65, impressions: 7339, reach: 4952, clicks: 548, ctr: 7.47, cpc: 0.93, conversacionesIniciadas: 0, costoPorConversacionIniciada: 0, formulariosCompletados: 0, leadsReported: 0, costoPorLeadReportado: 0, startDate: '2026-07-01' },
-      { id: '120252809785800728', campaignId: '120252809785800728', name: 'Julio - Interacción - IG', status: 'PAUSED', effectiveStatus: 'PAUSED', objective: 'OUTCOME_ENGAGEMENT', objectiveLabel: 'Interacción', budgetType: 'DAILY', budgetAmount: 50.00, spend: 471.76, impressions: 2529, reach: 1981, clicks: 2, ctr: 0.08, cpc: 235.88, conversacionesIniciadas: 0, costoPorConversacionIniciada: 0, formulariosCompletados: 0, leadsReported: 0, costoPorLeadReportado: 0, startDate: '2026-07-01' },
-      { id: '120251353511420728', campaignId: '120251353511420728', name: 'Junio - Interacción - FB', status: 'PAUSED', effectiveStatus: 'PAUSED', objective: 'OUTCOME_ENGAGEMENT', objectiveLabel: 'Interacción', budgetType: 'DAILY', budgetAmount: 0, spend: 0, impressions: 0, reach: 0, clicks: 0, ctr: 0, cpc: 0, conversacionesIniciadas: 0, costoPorConversacionIniciada: 0, formulariosCompletados: 0, leadsReported: 0, costoPorLeadReportado: 0, startDate: '2026-06-01' },
-      { id: '120251353384080728', campaignId: '120251353384080728', name: 'Junio - Interacción - IG', status: 'PAUSED', effectiveStatus: 'PAUSED', objective: 'OUTCOME_ENGAGEMENT', objectiveLabel: 'Interacción', budgetType: 'DAILY', budgetAmount: 0, spend: 0, impressions: 0, reach: 0, clicks: 0, ctr: 0, cpc: 0, conversacionesIniciadas: 0, costoPorConversacionIniciada: 0, formulariosCompletados: 0, leadsReported: 0, costoPorLeadReportado: 0, startDate: '2026-06-01' },
-      { id: '120249629598080728', campaignId: '120249629598080728', name: 'Mayo 2026 - Weekend', status: 'PAUSED', effectiveStatus: 'PAUSED', objective: 'OUTCOME_LEADS', objectiveLabel: 'Clientes Potenciales', budgetType: 'DAILY', budgetAmount: 0, spend: 0, impressions: 0, reach: 0, clicks: 0, ctr: 0, cpc: 0, conversacionesIniciadas: 0, costoPorConversacionIniciada: 0, formulariosCompletados: 0, leadsReported: 0, costoPorLeadReportado: 0, startDate: '2026-05-01' }
-    ],
-    totals: {
-      totalLeadsReportados: 233,
-      totalFormularios: 93,
-      totalConversacionesIniciadas: 140,
-      totalGastoMeta: 58945.35,
-      totalImpresiones: 262700,
-      totalAlcance: 74404,
-      costoPorLeadReportado: 252.98
-    }
-  });
 });
 
 // Detailed Ads API endpoint for a specific campaign or all ads
@@ -569,15 +507,19 @@ app.get('/api/meta/ads', (req, res) => {
 app.post('/api/sync/stackadapt', async (req, res) => {
   try {
     let campaigns: any[] = [];
-    let spendUsd = 1116.35;
-    let spendMxn = 21210.73;
-    let impressions = 183353;
-    let clicks = 1960;
-    let leadsReported = 7;
-    let ctr = 1.07;
-    let ecpcUsd = 0.57;
-    let ecpmUsd = 6.09;
+    let spendUsd = 0;
+    let spendMxn = 0;
+    let impressions = 0;
+    let clicks = 0;
+    let leadsReported = 0;
+    let ctr = 0;
+    let ecpcUsd = 0;
+    let ecpmUsd = 0;
     let notice = 'Conexión exitosa con StackAdapt Programmatic DSP (GraphQL)';
+
+    if (!STACKADAPT_CONFIG.apiToken || STACKADAPT_CONFIG.apiToken === 'e6bcab244d239a36b68a3daabf593313fc0ce33263f5698b97d30fb204489fac' && STACKADAPT_CONFIG.accountId === '135782' && process.env.STACKADAPT_API_TOKEN !== 'api-key-268858.txt' && req.body.stackadapt_token !== 'api-key-268858.txt') {
+        // Just for safety if it's the actual token string.
+    }
 
     try {
       const gqlQuery = `
@@ -635,43 +577,55 @@ app.post('/api/sync/stackadapt', async (req, res) => {
         body: JSON.stringify({ query: gqlQuery })
       });
 
-      if (response.ok) {
-        const gqlData = await response.json();
-        const outcome = gqlData.data?.campaignDelivery;
-        if (outcome?.totalStats) {
-          spendUsd = parseFloat(outcome.totalStats.cost) || spendUsd;
-          spendMxn = +(spendUsd * 19.00).toFixed(2);
-          impressions = parseInt(outcome.totalStats.impressionsBigint) || impressions;
-          clicks = parseInt(outcome.totalStats.clicksBigint) || clicks;
-          leadsReported = parseInt(outcome.totalStats.conversions) || 0;
-          ctr = parseFloat(outcome.totalStats.ctr) || ctr;
-          ecpcUsd = parseFloat(outcome.totalStats.ecpc) || ecpcUsd;
-          ecpmUsd = parseFloat(outcome.totalStats.ecpm) || ecpmUsd;
-        }
-        if (outcome?.records?.edges) {
-          campaigns = outcome.records.edges.map((e: any) => {
-            const m = e.node.metrics;
-            const cCostUsd = parseFloat(m.cost) || 0;
-            const cConvs = parseInt(m.conversions) || 0;
-            return {
-              id: e.node.campaign.id,
-              name: e.node.campaign.name,
-              channelType: e.node.campaign.channelType,
-              spendUsd: cCostUsd,
-              spendMxn: +(cCostUsd * 19.00).toFixed(2),
-              impressions: parseInt(m.impressionsBigint) || 0,
-              clicks: parseInt(m.clicksBigint) || 0,
-              ctr: parseFloat(m.ctr) || 0,
-              leadsReported: cConvs,
-              cplUsd: cConvs > 0 ? +(cCostUsd / cConvs).toFixed(2) : 0,
-              cplMxn: cConvs > 0 ? +((cCostUsd * 19.00) / cConvs).toFixed(2) : 0
-            };
-          });
-          notice = `Conectado en vivo: ${campaigns.length} campañas sincronizadas con StackAdapt (${leadsReported} conversiones/leads totales reales)`;
-        }
+      if (!response.ok) {
+         return res.status(response.status).json({ success: false, error: 'StackAdapt API error: ' + response.statusText });
+      }
+
+      const gqlData = await response.json();
+      
+      if (gqlData.errors) {
+         return res.status(400).json({ success: false, error: gqlData.errors[0]?.message || 'GraphQL Error' });
+      }
+
+      const outcome = gqlData.data?.campaignDelivery;
+      if (outcome?.totalStats) {
+        spendUsd = parseFloat(outcome.totalStats.cost) || spendUsd;
+        spendMxn = +(spendUsd * 19.00).toFixed(2);
+        impressions = parseInt(outcome.totalStats.impressionsBigint) || impressions;
+        clicks = parseInt(outcome.totalStats.clicksBigint) || clicks;
+        leadsReported = parseInt(outcome.totalStats.conversions) || 0;
+        ctr = parseFloat(outcome.totalStats.ctr) || ctr;
+        ecpcUsd = parseFloat(outcome.totalStats.ecpc) || ecpcUsd;
+        ecpmUsd = parseFloat(outcome.totalStats.ecpm) || ecpmUsd;
+      }
+      if (outcome?.records?.edges) {
+        campaigns = outcome.records.edges.map((e: any) => {
+          const m = e.node.metrics;
+          const cCostUsd = parseFloat(m.cost) || 0;
+          const cConvs = parseInt(m.conversions) || 0;
+          return {
+            id: e.node.campaign.id,
+            name: e.node.campaign.name,
+            channelType: e.node.campaign.channelType,
+            spendUsd: cCostUsd,
+            spendMxn: +(cCostUsd * 19.00).toFixed(2),
+            spend: +(cCostUsd * 19.00).toFixed(2),
+            impressions: parseInt(m.impressionsBigint) || 0,
+            clicks: parseInt(m.clicksBigint) || 0,
+            ctr: parseFloat(m.ctr) || 0,
+            cpc: parseFloat(m.ecpc) || 0,
+            cpm: parseFloat(m.ecpm) || 0,
+            leadsReported: cConvs,
+            cplUsd: cConvs > 0 ? +(cCostUsd / cConvs).toFixed(2) : 0,
+            cplMxn: cConvs > 0 ? +((cCostUsd * 19.00) / cConvs).toFixed(2) : 0,
+            cpl: cConvs > 0 ? +((cCostUsd * 19.00) / cConvs).toFixed(2) : 0,
+            costPerLead: cConvs > 0 ? +((cCostUsd * 19.00) / cConvs).toFixed(2) : 0
+          };
+        });
+        notice = `Conectado en vivo: ${campaigns.length} campañas sincronizadas con StackAdapt (${leadsReported} conversiones/leads totales reales)`;
       }
     } catch (e: any) {
-      notice = `StackAdapt conectado: ${e.message}`;
+      return res.status(500).json({ success: false, error: 'StackAdapt conexión fallida: ' + e.message });
     }
 
     res.json({
@@ -687,13 +641,13 @@ app.post('/api/sync/stackadapt', async (req, res) => {
         impressions,
         clicks,
         leadsReported,
-        cpc: (spendMxn / (clicks || 1)).toFixed(2),
+        cpc: clicks > 0 ? (spendMxn / clicks).toFixed(2) : '0.00',
         cpcUsd: ecpcUsd.toFixed(2),
         ctr: ctr.toFixed(2) + '%',
-        cpm: (spendMxn / ((impressions || 1) / 1000)).toFixed(2),
+        cpm: impressions > 0 ? (spendMxn / (impressions / 1000)).toFixed(2) : '0.00',
         cpmUsd: ecpmUsd.toFixed(2),
-        cplReported: (spendMxn / (leadsReported || 1)).toFixed(2),
-        cplReportedUsd: (spendUsd / (leadsReported || 1)).toFixed(2)
+        cplReported: leadsReported > 0 ? (spendMxn / leadsReported).toFixed(2) : '0.00',
+        cplReportedUsd: leadsReported > 0 ? (spendUsd / leadsReported).toFixed(2) : '0.00'
       },
       notice
     });
@@ -705,196 +659,96 @@ app.post('/api/sync/stackadapt', async (req, res) => {
 // Google Ads Sync Endpoint
 app.post('/api/sync/google-ads', async (req, res) => {
   try {
-    const totalSpend = 37691.25; // Inversión total oficial Google Ads: $37,691.25 MXN
-    const totalImpressions = 1204536; // 1.20 M Impresiones
-    const totalClicks = 92524; // 92,524 Clics
-    const totalConversions = 58.00; // 58,00 Conversiones
-    const avgCtr = 7.68; // 7,68 % CTR
-    const avgCpc = 0.41; // $0.41 MXN
-    const avgCostPerConversion = 649.85; // $649.85 MXN por conversión ($37,691.25 / 58)
+    const rawCustomerId = GOOGLE_ADS_CONFIG.customerId.replace(/-/g, '');
+    let accessToken;
+    try {
+      accessToken = await getGoogleAdsAccessToken();
+    } catch (e: any) {
+      return res.status(401).json({ success: false, error: 'Google Ads Auth Error: ' + e.message });
+    }
 
-    const campaigns = [
-      {
-        id: 'g_camp_search_ago2026',
-        campaignId: '21650392801',
-        name: 'ÉPIKA - Search - Ago2026',
-        status: 'ACTIVE',
-        statusLabel: 'Habilitado (Activa)',
-        type: 'SEARCH',
-        typeLabel: 'Red de Búsqueda (Search)',
-        periodLabel: 'Agosto 2026',
-        budget: '$650.00/día',
-        spend: 14908.28,
-        impressions: 8894,
-        clicks: 1158,
-        ctr: 13.02,
-        cpc: 12.87,
-        conversions: 22.00,
-        costPerConversion: 677.65,
-        conversionRate: 1.90,
-        adGroupName: 'Departamentos Preventa Chapultepec GDL'
+    const gaqlQuery = `
+      SELECT 
+        campaign.id, 
+        campaign.name, 
+        campaign.status,
+        campaign.advertising_channel_type,
+        metrics.impressions, 
+        metrics.clicks, 
+        metrics.cost_micros, 
+        metrics.conversions 
+      FROM campaign 
+      WHERE segments.date DURING THIS_MONTH
+    `;
+
+    const url = `https://googleads.googleapis.com/v17/customers/${rawCustomerId}/googleAds:searchStream`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'developer-token': GOOGLE_ADS_CONFIG.developerToken,
+        'Content-Type': 'application/json'
       },
-      {
-        id: 'g_camp_youtube_ago',
-        campaignId: '21650392802',
-        name: 'ÉPIKA - Youtube - Agosto26*',
-        status: 'ACTIVE',
-        statusLabel: 'Habilitado (Activa)',
-        type: 'YOUTUBE',
-        typeLabel: 'Video In-Stream & Shorts',
-        periodLabel: 'Agosto 2026',
-        budget: '$450.00/día',
-        spend: 11804.30,
-        impressions: 1136088,
-        clicks: 87706,
-        ctr: 7.72,
-        cpc: 0.13,
-        conversions: 18.00,
-        costPerConversion: 655.79,
-        conversionRate: 0.02,
-        adGroupName: 'Video Recorrido Showroom y Amenidades'
-      },
-      {
-        id: 'g_camp_display_ago',
-        campaignId: '21650392803',
-        name: 'ÉPIKA - Display - Agosto',
-        status: 'ACTIVE',
-        statusLabel: 'Habilitado (Activa)',
-        type: 'DISPLAY',
-        typeLabel: 'Red de Display & Remarketing',
-        periodLabel: 'Agosto 2026',
-        budget: '$350.00/día',
-        spend: 7617.34,
-        impressions: 58104,
-        clicks: 3463,
-        ctr: 5.96,
-        cpc: 2.20,
-        conversions: 12.00,
-        costPerConversion: 634.78,
-        conversionRate: 0.35,
-        adGroupName: 'Remarketing Audiencia Alta Intención GDL'
-      },
-      {
-        id: 'g_camp_search_foraneo',
-        campaignId: '21650392804',
-        name: 'ÉPIKA - Search Foráneo Ago/Sep',
-        status: 'ACTIVE',
-        statusLabel: 'Habilitado (Activa)',
-        type: 'SEARCH',
-        typeLabel: 'Red de Búsqueda Foráneos',
-        periodLabel: 'Agosto - Septiembre 2026',
-        budget: '$150.00/día',
-        spend: 1675.83,
-        impressions: 390,
-        clicks: 116,
-        ctr: 29.74,
-        cpc: 14.45,
-        conversions: 4.00,
-        costPerConversion: 418.96,
-        conversionRate: 3.45,
-        adGroupName: 'Preventa Colonia Americana - Foráneos'
-      },
-      {
-        id: 'g_camp_search_ago_ant',
-        campaignId: '21650392805',
-        name: 'Agosto 2026 - Epika - Search',
-        status: 'PAUSED',
-        statusLabel: 'Pausada',
-        type: 'SEARCH',
-        typeLabel: 'Red de Búsqueda Local',
-        periodLabel: 'Agosto 2026 (Anterior)',
-        budget: '$100.00/día',
-        spend: 1086.99,
-        impressions: 1060,
-        clicks: 81,
-        ctr: 7.64,
-        cpc: 13.42,
-        conversions: 2.00,
-        costPerConversion: 543.50,
-        conversionRate: 2.47,
-        adGroupName: 'Búsqueda Local Guadalajara'
-      },
-      {
-        id: 'g_camp_pmax_06',
-        campaignId: '21650392816',
-        name: 'Enero 2026 - P Max',
-        status: 'PAUSED',
-        statusLabel: 'Pausada (Histórica)',
-        type: 'PERFORMANCE_MAX',
-        typeLabel: 'Performance Max',
-        periodLabel: 'Histórico',
-        budget: 'Pausado',
-        spend: 0,
-        impressions: 0,
-        clicks: 0,
-        ctr: 0,
-        cpc: 0,
-        conversions: 0,
-        costPerConversion: 0,
-        conversionRate: 0,
-        adGroupName: 'Performance Max Grupo de Recursos'
-      },
-      {
-        id: 'g_camp_openhouse_07',
-        campaignId: '21650392817',
-        name: 'Épika - OPEN HOUSE 2023-2024',
-        status: 'PAUSED',
-        statusLabel: 'Pausada (Histórica)',
-        type: 'SEARCH',
-        typeLabel: 'Evento Open House',
-        periodLabel: 'Histórico',
-        budget: 'Pausado',
-        spend: 0,
-        impressions: 0,
-        clicks: 0,
-        ctr: 0,
-        cpc: 0,
-        conversions: 0,
-        costPerConversion: 0,
-        conversionRate: 0,
-        adGroupName: 'Invitación Open House'
-      },
-      {
-        id: 'g_camp_display_mar25_08',
-        campaignId: '21650392818',
-        name: 'Display - Marzo 2025',
-        status: 'PAUSED',
-        statusLabel: 'Pausada (Histórica)',
-        type: 'DISPLAY',
-        typeLabel: 'Display',
-        periodLabel: 'Histórico',
-        budget: 'Pausado',
-        spend: 0,
-        impressions: 0,
-        clicks: 0,
-        ctr: 0,
-        cpc: 0,
-        conversions: 0,
-        costPerConversion: 0,
-        conversionRate: 0,
-        adGroupName: 'Display Branding 2025'
-      },
-      {
-        id: 'g_camp_display_abr_jul25_09',
-        campaignId: '21650392819',
-        name: 'Display Abril a Julio 2025',
-        status: 'PAUSED',
-        statusLabel: 'Pausada (Histórica)',
-        type: 'DISPLAY',
-        typeLabel: 'Display',
-        periodLabel: 'Histórico',
-        budget: 'Pausado',
-        spend: 0,
-        impressions: 0,
-        clicks: 0,
-        ctr: 0,
-        cpc: 0,
-        conversions: 0,
-        costPerConversion: 0,
-        conversionRate: 0,
-        adGroupName: 'Display Verano 2025'
-      }
-    ];
+      body: JSON.stringify({ query: gaqlQuery })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return res.status(response.status).json({ success: false, error: 'Google Ads API Error: ' + errorText });
+    }
+
+    const dataText = await response.text();
+    let rows: any[] = [];
+    try {
+       const jsonArray = JSON.parse(dataText);
+       if (Array.isArray(jsonArray)) {
+         jsonArray.forEach(batch => {
+           if (batch.results) {
+             rows = rows.concat(batch.results);
+           }
+         });
+       }
+    } catch (e) {
+       console.error('Failed to parse Google Ads response', e);
+    }
+
+    let totalSpend = 0;
+    let totalImpressions = 0;
+    let totalClicks = 0;
+    let totalConversions = 0;
+
+    const campaigns = rows.map((r: any) => {
+      const spend = r.metrics?.costMicros ? parseInt(r.metrics.costMicros) / 1000000 : 0;
+      const impressions = r.metrics?.impressions ? parseInt(r.metrics.impressions) : 0;
+      const clicks = r.metrics?.clicks ? parseInt(r.metrics.clicks) : 0;
+      const conversions = r.metrics?.conversions ? parseFloat(r.metrics.conversions) : 0;
+      
+      totalSpend += spend;
+      totalImpressions += impressions;
+      totalClicks += clicks;
+      totalConversions += conversions;
+
+      return {
+        id: r.campaign?.id || '',
+        campaignId: r.campaign?.id || '',
+        name: r.campaign?.name || 'Campaña Desconocida',
+        status: r.campaign?.status || 'UNKNOWN',
+        statusLabel: r.campaign?.status === 'ENABLED' ? 'Habilitado (Activa)' : 'Pausada',
+        type: r.campaign?.advertisingChannelType || 'UNKNOWN',
+        typeLabel: r.campaign?.advertisingChannelType || 'Red de Google',
+        spend,
+        impressions,
+        clicks,
+        ctr: impressions > 0 ? (clicks / impressions) * 100 : 0,
+        cpc: clicks > 0 ? spend / clicks : 0,
+        conversions,
+        costPerConversion: conversions > 0 ? spend / conversions : 0
+      };
+    });
+
+    const avgCtr = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
+    const avgCpc = totalClicks > 0 ? totalSpend / totalClicks : 0;
+    const avgCostPerConversion = totalConversions > 0 ? totalSpend / totalConversions : 0;
 
     res.json({
       success: true,
@@ -902,14 +756,14 @@ app.post('/api/sync/google-ads', async (req, res) => {
       account: GOOGLE_ADS_CONFIG.customerId,
       accountName: GOOGLE_ADS_CONFIG.accountName,
       adminEmail: GOOGLE_ADS_CONFIG.adminEmail,
-      period: 'Agosto 2026 (Oficial Google Ads)',
+      period: 'Mes Actual (Oficial Google Ads)',
       connected: true,
       lastSynced: new Date().toLocaleTimeString('es-MX'),
-      campaignsCount: 25,
-      activeCampaignsCount: 4,
+      campaignsCount: campaigns.length,
+      activeCampaignsCount: campaigns.filter((c: any) => c.status === 'ENABLED').length,
       campaigns,
       metrics: {
-        spend: totalSpend,
+        spend: parseFloat(totalSpend.toFixed(2)),
         impressions: totalImpressions,
         clicks: totalClicks,
         conversions: totalConversions,
@@ -918,9 +772,9 @@ app.post('/api/sync/google-ads', async (req, res) => {
         cpc: avgCpc.toFixed(2),
         ctr: avgCtr.toFixed(2) + '%',
         cplReported: avgCostPerConversion.toFixed(2),
-        conversionRate: '0.06%'
+        conversionRate: totalClicks > 0 ? ((totalConversions / totalClicks) * 100).toFixed(2) + '%' : '0.00%'
       },
-      notice: 'Cuenta Google Ads (453-930-3033 - Épika Chapultepec) sincronizada: 92,524 clics, 1.20 M impresiones, $37,691.25 coste y 7.68% CTR promedio'
+      notice: 'Sincronización en vivo con Google Ads exitosa'
     });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
@@ -928,21 +782,10 @@ app.post('/api/sync/google-ads', async (req, res) => {
 });
 
 // Google Ads Campaigns Detail Endpoint
-app.get('/api/google-ads/campaigns', (req, res) => {
+app.get('/api/google-ads/campaigns', async (req, res) => {
   res.json({
-    success: true,
-    customerId: GOOGLE_ADS_CONFIG.customerId,
-    accountName: GOOGLE_ADS_CONFIG.accountName,
-    adminEmail: GOOGLE_ADS_CONFIG.adminEmail,
-    periodLabel: 'Agosto 2026 (Oficial Google Ads)',
-    totalSpend: 37691.25,
-    totalConversions: 58.00,
-    totalClicks: 92524,
-    totalImpressions: 1204536,
-    avgCpc: 0.41,
-    avgCostPerConversion: 649.85,
-    avgCtr: 7.68,
-    totalCampaignsCount: 25
+    success: false,
+    error: 'Endpoint descontinuado. Use /api/sync/google-ads'
   });
 });
 

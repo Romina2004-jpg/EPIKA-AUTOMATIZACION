@@ -39,20 +39,23 @@ import {
   Flame,
   PieChart
 } from 'lucide-react';
-import { META_ACCOUNT_INFO, META_CAMPAIGNS_DATA } from '../data/metaAdsData';
-import { GOOGLE_ADS_ACCOUNT_INFO, GOOGLE_ADS_CAMPAIGNS_DATA } from '../data/googleAdsData';
-import { STACKADAPT_ACCOUNT_INFO, STACKADAPT_CAMPAIGNS_DATA } from '../data/stackAdaptData';
 
 interface SummarizedReportPdfViewProps {
   onBackToApp?: () => void;
   periods?: FunnelPeriod[];
   activePeriodId?: string;
+  metaCampaigns?: any[];
+  googleCampaigns?: any[];
+  stackCampaigns?: any[];
 }
 
 export const SummarizedReportPdfView: React.FC<SummarizedReportPdfViewProps> = ({
   onBackToApp,
   periods,
-  activePeriodId
+  activePeriodId,
+  metaCampaigns = [],
+  googleCampaigns = [],
+  stackCampaigns = []
 }) => {
   // Selected period for synchronization
   const [selectedPeriod, setSelectedPeriod] = useState<FunnelPeriod | null>(() => {
@@ -551,13 +554,13 @@ export const SummarizedReportPdfView: React.FC<SummarizedReportPdfViewProps> = (
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5 text-[#D4F634] font-bold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Meta Ads ID: {META_ACCOUNT_INFO.adAccountId}
+              Meta Ads ID: {''}
             </span>
             <span className="flex items-center gap-1.5 text-slate-300">
-              Google Ads ID: {GOOGLE_ADS_ACCOUNT_INFO.customerId}
+              Google Ads ID: {''}
             </span>
             <span className="flex items-center gap-1.5 text-slate-300">
-              StackAdapt DSP ID: {STACKADAPT_ACCOUNT_INFO.accountId}
+              StackAdapt DSP ID: {''}
             </span>
           </div>
           <div className="text-slate-400">
@@ -1319,3 +1322,5 @@ export const SummarizedReportPdfView: React.FC<SummarizedReportPdfViewProps> = (
     </div>
   );
 };
+
+

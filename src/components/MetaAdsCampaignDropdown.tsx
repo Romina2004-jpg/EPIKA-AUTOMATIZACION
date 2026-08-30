@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  META_CAMPAIGNS_DATA, 
-  META_ACCOUNT_INFO, 
-  META_INSTANT_FORMS,
-  MetaCampaignDetail 
-} from '../data/metaAdsData';
-import { 
   Layers, 
   ChevronDown, 
   ChevronUp, 
@@ -51,19 +45,19 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
   const selectedCampaign: MetaCampaignDetail | undefined = 
     activeSelectedId === 'all' 
       ? undefined 
-      : META_CAMPAIGNS_DATA.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
+      : metaCampaigns.find(c => c.id === activeSelectedId || c.campaignId === activeSelectedId);
 
   // Totals for "Todas las Campañas" (Matching exact account data from Meta Ads Manager)
   const allCampaignsTotals = {
-    spend: META_ACCOUNT_INFO.totalSpendPeriod || 63354.09,
-    impressions: META_ACCOUNT_INFO.totalImpressions || 262700,
-    reach: META_ACCOUNT_INFO.totalReach || 74404,
+    spend: (metaCampaigns.reduce((sum, c) => sum + (c.spend || 0), 0)),
+    impressions: (metaCampaigns.reduce((sum, c) => sum + (c.impressions || 0), 0)),
+    reach: (metaCampaigns.reduce((sum, c) => sum + (c.reach || 0), 0)),
     clicks: 5430,
     ctr: 2.07,
     cpc: 11.67,
     leadsReported: 233, // 93 Formularios + 140 Conversaciones WhatsApp
-    formulariosCompletados: META_ACCOUNT_INFO.totalFormulariosCompletados || 93,
-    conversacionesIniciadas: META_ACCOUNT_INFO.totalConversacionesIniciadas || 140,
+    formulariosCompletados: (metaCampaigns.reduce((sum, c) => sum + (c.formulariosCompletados || 0), 0)) || 93,
+    conversacionesIniciadas: (metaCampaigns.reduce((sum, c) => sum + (c.conversacionesIniciadas || 0), 0)) || 140,
     cpl: 271.91
   };
 
@@ -95,14 +89,14 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
                 Meta Ads Manager
               </span>
               <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#1877F2]/10 text-[#1877F2] border border-[#1877F2]/30">
-                {META_ACCOUNT_INFO.accountName}
+                {''}
               </span>
               <span className="text-[10px] text-slate-500 font-mono">
-                (ID: {META_ACCOUNT_INFO.adAccountId})
+                (ID: {''})
               </span>
             </div>
             <p className="text-[11px] text-slate-500">
-              Desglose y filtro oficial por campaña ({META_ACCOUNT_INFO.dateRange})
+              Desglose y filtro oficial por campaña ({''})
             </p>
           </div>
         </div>
@@ -123,14 +117,14 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
                 Todas las campañas — Costo Total: $58,945.35 MXN (233 resultados)
               </option>
               <optgroup label="Campañas Activas (Agosto 2026)">
-                {META_CAMPAIGNS_DATA.filter(c => c.status === 'ACTIVE').map(c => (
+                {metaCampaigns.filter(c => c.status === 'ACTIVE').map(c => (
                   <option key={c.id} value={c.id}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.leadsReported} resultados)
                   </option>
                 ))}
               </optgroup>
               <optgroup label="Campañas Desactivadas / Históricas">
-                {META_CAMPAIGNS_DATA.filter(c => c.status !== 'ACTIVE').map(c => (
+                {metaCampaigns.filter(c => c.status !== 'ACTIVE').map(c => (
                   <option key={c.id} value={c.id}>
                     {c.name} — Costo Total: ${c.spend.toLocaleString('es-MX', { minimumFractionDigits: 2 })} ({c.leadsReported > 0 ? `${c.leadsReported} leads` : 'Sin gasto en ago'})
                   </option>
@@ -245,7 +239,7 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
             }`}
           >
             <ClipboardList className="w-3.5 h-3.5 text-[#D4F634]" />
-            <span>Formularios de anuncios ({META_INSTANT_FORMS.length})</span>
+            <span>Formularios de anuncios ({([]).length})</span>
             <span className="ml-1 px-1.5 py-0.2 bg-[#D4F634] text-black text-[10px] font-black rounded-full font-mono">
               466 leads
             </span>
@@ -318,7 +312,7 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-[11px] font-sans">
-                {META_INSTANT_FORMS.map((form) => (
+                {([]).map((form) => (
                   <tr key={form.id} className="hover:bg-blue-50/40 transition-colors">
                     <td className="py-2 px-3 text-center">
                       <input 
@@ -421,7 +415,7 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
-                  {(selectedCampaign ? [selectedCampaign] : META_CAMPAIGNS_DATA).map((camp) => (
+                  {(selectedCampaign ? [selectedCampaign] : metaCampaigns).map((camp) => (
                     <React.Fragment key={camp.id}>
                       {/* Campaign Master Row */}
                       <tr className="bg-slate-50/70 font-bold text-slate-900 hover:bg-slate-100/70">
@@ -490,3 +484,6 @@ export const MetaAdsCampaignDropdown: React.FC<MetaAdsCampaignDropdownProps> = (
     </div>
   );
 };
+
+
+

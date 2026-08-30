@@ -40,7 +40,9 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
 
   const [googleCustomerId, setGoogleCustomerId] = useState(() => localStorage.getItem('epika_google_id') || '453-930-3033');
   const [googleDevToken, setGoogleDevToken] = useState(() => localStorage.getItem('epika_google_dev_token') || '9WP0xwvo9PYPwZ02KYs_Ag');
-  const [googleClientId, setGoogleClientId] = useState(() => localStorage.getItem('epika_google_client_id') || '359442674926-kj0e2tufn6il1doudpt66qev1odm1npp.apps.googleusercontent.com');
+  const [googleClientId, setGoogleClientId] = useState(() => localStorage.getItem('epika_google_client_id') || '');
+  const [googleClientSecret, setGoogleClientSecret] = useState(() => localStorage.getItem('epika_google_client_secret') || '');
+  const [googleRefreshToken, setGoogleRefreshToken] = useState(() => localStorage.getItem('epika_google_refresh_token') || '');
 
   const [stackAdaptAccountId, setStackAdaptAccountId] = useState(() => localStorage.getItem('epika_stack_id') || '268858');
   const [stackAdaptToken, setStackAdaptToken] = useState(() => localStorage.getItem('epika_stack_token') || 'e6bcab244d239a36b68a3daabf593313fc0ce33263f5698b97d30fb204489fac');
@@ -60,6 +62,8 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
     localStorage.setItem('epika_google_id', googleCustomerId);
     localStorage.setItem('epika_google_dev_token', googleDevToken);
     localStorage.setItem('epika_google_client_id', googleClientId);
+    localStorage.setItem('epika_google_client_secret', googleClientSecret);
+    localStorage.setItem('epika_google_refresh_token', googleRefreshToken);
 
     localStorage.setItem('epika_stack_id', stackAdaptAccountId);
     localStorage.setItem('epika_stack_token', stackAdaptToken);
@@ -70,7 +74,7 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           meta: { adAccountId: metaAccountId, appId: metaAppId, appSecret: metaAppSecret, accessToken: metaAccessToken },
-          googleAds: { customerId: googleCustomerId, developerToken: googleDevToken, clientId: googleClientId },
+          googleAds: { customerId: googleCustomerId, developerToken: googleDevToken, clientId: googleClientId, clientSecret: googleClientSecret, refreshToken: googleRefreshToken },
           stackAdapt: { accountId: stackAdaptAccountId, apiToken: stackAdaptToken }
         })
       });
@@ -90,7 +94,9 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
 
     setGoogleCustomerId('453-930-3033');
     setGoogleDevToken('9WP0xwvo9PYPwZ02KYs_Ag');
-    setGoogleClientId('359442674926-kj0e2tufn6il1doudpt66qev1odm1npp.apps.googleusercontent.com');
+    setGoogleClientId('');
+      setGoogleClientSecret('');
+      setGoogleRefreshToken('');
 
     setStackAdaptAccountId('268858');
     setStackAdaptToken('e6bcab244d239a36b68a3daabf593313fc0ce33263f5698b97d30fb204489fac');
@@ -279,6 +285,26 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
                   className="w-full bg-slate-50 border border-slate-300 rounded px-3 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-slate-900 focus:bg-white focus:outline-none"
                 />
               </div>
+              <div>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Client Secret</label>
+                <input
+                  type={showTokens ? "text" : "password"}
+                  value={googleClientSecret}
+                  onChange={(e) => setGoogleClientSecret(e.target.value)}
+                  placeholder="Client Secret"
+                  className="w-full bg-slate-50 border border-slate-300 rounded px-3 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-slate-900 focus:bg-white focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Refresh Token</label>
+                <input
+                  type={showTokens ? "text" : "password"}
+                  value={googleRefreshToken}
+                  onChange={(e) => setGoogleRefreshToken(e.target.value)}
+                  placeholder="Refresh Token"
+                  className="w-full bg-slate-50 border border-slate-300 rounded px-3 py-1.5 font-mono text-slate-900 text-xs focus:ring-1 focus:ring-slate-900 focus:bg-white focus:outline-none"
+                />
+              </div>
             </div>
 
             <div className="pt-2 flex items-center justify-between border-t border-slate-200">
@@ -371,3 +397,5 @@ export const ApiCredentialsModal: React.FC<ApiCredentialsModalProps> = ({
     </div>
   );
 };
+
+

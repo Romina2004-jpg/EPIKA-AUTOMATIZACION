@@ -30,10 +30,10 @@ export const STACKADAPT_ACCOUNT_INFO = {
   currencyNative: 'USD',
   exchangeRateUsdToMxn: 19.00,
   periodLabel: 'Agosto 2026 (Datos Oficiales en Vivo GraphQL)',
-  totalSpend: 21210.73,
+  totalSpend: 0,
   totalSpendUsd: 1116.35,
   totalImpressions: 183353,
-  totalClicks: 1960,
+  totalClicks: 0,
   totalLeadsReported: 7, // EXACTO de la API de StackAdapt (3 Nativo + 3 Display + 1 Video)
   avgCtr: 1.07,
   avgCpc: 10.82,
@@ -56,13 +56,13 @@ export const STACKADAPT_CAMPAIGNS_DATA: StackAdaptCampaignDetail[] = [
     targetingStrategy: 'Audiencias de alta afinidad inversión inmobiliaria, Guadalajara y foráneos',
     periodLabel: '10 ago - 30 ago 2026',
     budget: '$42.78 USD/día',
-    spend: 7643.70, // $402.30 USD
-    impressions: 54024,
-    clicks: 168,
+    spend: 0, // $402.30 USD
+    impressions: 0,
+    clicks: 0,
     ctr: 0.31,
     cpc: 45.50,
     cpm: 141.50,
-    leadsReported: 3, // 3 conversiones reales
+    leadsReported: 0, // 3 conversiones reales
     cpl: 2547.90
   },
   {
@@ -76,13 +76,13 @@ export const STACKADAPT_CAMPAIGNS_DATA: StackAdaptCampaignDetail[] = [
     targetingStrategy: 'Geocercas y segmentación demográfica ABC+ zona metropolitana de Guadalajara',
     periodLabel: '17 ago - 30 ago 2026',
     budget: '$74.25 USD/día',
-    spend: 7010.62, // $368.98 USD
-    impressions: 69452,
-    clicks: 103,
+    spend: 0, // $368.98 USD
+    impressions: 0,
+    clicks: 0,
     ctr: 0.15,
     cpc: 68.06,
     cpm: 100.95,
-    leadsReported: 3, // 3 conversiones reales
+    leadsReported: 0, // 3 conversiones reales
     cpl: 2336.87
   },
   {
@@ -96,13 +96,13 @@ export const STACKADAPT_CAMPAIGNS_DATA: StackAdaptCampaignDetail[] = [
     targetingStrategy: 'Audiencias video premium y retargeting de alto impacto',
     periodLabel: '19 ago - 31 ago 2026',
     budget: 'Vuelo Activo',
-    spend: 6556.52, // $345.08 USD
-    impressions: 59877,
-    clicks: 1689,
+    spend: 0, // $345.08 USD
+    impressions: 0,
+    clicks: 0,
     ctr: 2.82,
     cpc: 3.88,
     cpm: 109.50,
-    leadsReported: 1, // 1 conversión real
+    leadsReported: 0, // 1 conversión real
     cpl: 6556.52
   },
   {
